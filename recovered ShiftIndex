@@ -1,0 +1,13 @@
+public int shiftIndex(int i, int z)
+{
+    int index = Array.IndexOf<string>(this.scale[0], this.rootNote);
+    if (z == 0)
+    {
+        return Array.IndexOf<string>(this.scale[0], this.tuning[i]);
+    }
+    if (index <= Array.IndexOf<string>(this.scale[0], this.tuning[i]))
+    {
+        return (Array.IndexOf<string>(this.scale[0], this.tuning[i]) - index);
+    }
+    return ((this.scale[0].Length + Array.IndexOf<string>(this.scale[0], this.tuning[i])) - index);
+}
