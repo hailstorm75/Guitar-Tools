@@ -8,17 +8,35 @@
         Title="MainWindow" Height="360" Width="525"
         Name="mainWindow">
     <StackPanel>
-        <Menu x:Name="menu" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="497">
+        <Menu x:Name="menu" Width="525" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top">
             <MenuItem Header="Edit">
                 <MenuItem Cursor="Hand" Header="Scale" Background="{x:Null}"/>
             </MenuItem>
         </Menu>
-        <Viewbox>
-            <Grid x:Name="mainGrid" Width="525" Height="300">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Viewbox Stretch="Uniform" Grid.Row="0">
+            <Grid x:Name="mainGrid" Width="525" Height="170">
                 <Grid x:Name="noteGrid" ShowGridLines="False" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
             </Grid>
         </Viewbox>
-
+        <Viewbox Grid.Row="1" Height="139">
+            <Grid MinWidth="525" Name="uiGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Viewbox Grid.Column="0" HorizontalAlignment="Center" Name="uiC1">
+                </Viewbox>
+                <Viewbox Grid.Column="1" HorizontalAlignment="Center" Name="uiC2">
+                </Viewbox>
+            </Grid>
+        </Viewbox>
+        
     </StackPanel>
 
 

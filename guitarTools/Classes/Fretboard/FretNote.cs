@@ -14,7 +14,7 @@ namespace guitarTools
         private Border noteBody;
         private Viewbox box;
 
-        public FretNote(int index, double size, bool isActive, Point xy, ref Grid grid)
+        public FretNote(int index, double size, bool isActive, Point xy, Grid grid)
         {
             #region Defining variables
             Index = index;
