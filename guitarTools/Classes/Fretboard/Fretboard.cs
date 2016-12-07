@@ -1,33 +1,32 @@
 ﻿using System;
+using System.Threading;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Threading.Tasks;
 
 namespace guitarTools.Classes.Fretboard
 {
+    // TODO Write documentation for Fretboard class
     class Fretboard
     {
-        #region SQL Setup
-        SqlConnection sqlConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\SQL\Data.mdf';Integrated Security=True;Connect Timeout=30");
-        SqlCommand sqlComm = new SqlCommand();
-        SqlDataReader sqlRead;
+        #region Properties
+        private static List<List<FretNote>> NoteList { get; set; }
+        private static Grid MainGrid { get; set; }
+        private static Grid NoteGrid { get; set; }
+        private static ushort Strings { get; set; }
+        private static ushort Frets { get; set; }
+        private static double Width { get; set; }
+        private static double Height { get; set; }
+        private static double Size { get; set; }
+        private static int Tuning { get; set; }
         #endregion
 
-        public List<List<FretNote>> NoteList { get; set; }
-        private Grid MainGrid { get; set; }
-        private Grid NoteGrid { get; set; }
-        private ushort Strings { get; set; }
-        private ushort Frets { get; set; }
-        private double Width { get; set; }
-        private double Height { get; set; }
-        private double Size { get; set; }
-        private int Tuning { get; set; }
-        
         public Fretboard(Grid mainGrid, Grid noteGrid, ushort strings, ushort frets, List<List<FretNote>> noteList, int tuning)
         {
+            // Assigning values to properties
             MainGrid = mainGrid;
             NoteGrid = noteGrid;
             Strings = strings;
@@ -38,12 +37,16 @@ namespace guitarTools.Classes.Fretboard
             NoteList = noteList;
             Tuning = tuning;
 
+
+
+            // Creating the fretboard            
             CreateGrid();
             CreateNotes();
+            CreateMarkers();         
             DrawFretboard();
         }
 
-        private void CreateGrid()
+        private static void CreateGrid()
         {
             // Adding columns and rows to grid
             for (ushort i = 0; i <= Frets; i++) NoteGrid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -51,9 +54,9 @@ namespace guitarTools.Classes.Fretboard
             for (ushort i = 0; i <= Strings; i++) NoteGrid.RowDefinitions.Add(new RowDefinition());
         }
 
-        private void CreateNotes()
+        private static void CreateNotes()
         {
-            string[] data = FetchData<string>("SELECT Interval FROM tableTuning WHERE Id = " + 10, 1)[0].Split(' ');
+            string[] data = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Id = " + 10, 1)[0].Split(' ');
 
             // Creating notes and adding them to the grid
             for (int numString = 0; numString < Strings; numString++)
@@ -71,8 +74,11 @@ namespace guitarTools.Classes.Fretboard
                 }
 
                 NoteList.Add(tempNoteList);
-            }
+            }         
+        }
 
+        private static void CreateMarkers()
+        {
             // Creating fret markers and adding them to the grid
             for (int x = 3, y = 1; x < Frets; x += 2, y++)
             {
@@ -89,56 +95,24 @@ namespace guitarTools.Classes.Fretboard
             }
         }
 
-        private void DrawFretboard()
+        private static void DrawFretboard()
         {
             NoteGrid.Height = Size * Strings;
 
             // Drawing the frets
             for (ushort i = 1; i <= Frets; i++)
-            {
+            {            
                 Line fret = new Line()
                 {
                     X1 = MainGrid.Width / (Frets + 1) * i,
                     X2 = MainGrid.Width / (Frets + 1) * i,
                     Y1 = 0,
-                    Y2 = NoteGrid.Height - NoteGrid.Height / Strings,
+                    Y2 = Size * Strings - Size,
                     StrokeThickness = i != 1 ? 1 : 2, // Inline IF ELSE
                     Stroke = Brushes.Black
                 };
                 MainGrid.Children.Add(fret);
             }
-        }
-
-        private List<T> FetchData<T>(string command, ushort columnCount)
-        {
-            // Opening SQL connection and setting up  
-            #region SQL Setup
-            sqlConn.Open();
-            sqlComm.Connection = sqlConn;
-            sqlComm.CommandText = command;
-            sqlRead = sqlComm.ExecuteReader();
-            #endregion
-
-            // Defining generic list
-            List<T> data = new List<T>();
-
-            // Executes only if table has content
-            #region Data extraction
-            if (sqlRead.HasRows)
-            {
-                while (sqlRead.Read())
-                {
-                    for (int column = 0; column < columnCount; column++)
-                        data.Add((T)Convert.ChangeType(sqlRead[column], typeof(T))); // Converts to selected generic type and appends to list
-                }
-            }
-            else MessageBox.Show("ERROR: No rows");
-            #endregion
-
-            // Closing SQL connection
-            sqlConn.Close();
-
-            return data;
         }
     }
 }

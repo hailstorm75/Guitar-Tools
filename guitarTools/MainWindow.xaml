@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:guitarTools"
         mc:Ignorable="d"
         Title="MainWindow" Height="360" Width="525"
+        MinHeight="360" MinWidth="525"
         Name="mainWindow">
     <StackPanel>
         <Menu x:Name="menu" Width="525" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top">
@@ -24,21 +25,19 @@
                 <Grid x:Name="noteGrid" ShowGridLines="False" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
             </Grid>
         </Viewbox>
-        <Viewbox Grid.Row="1" Height="139">
-            <Grid MinWidth="525" Name="uiGrid">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Viewbox Grid.Column="0" HorizontalAlignment="Center" Name="uiC1">
-                </Viewbox>
-                <Viewbox Grid.Column="1" HorizontalAlignment="Center" Name="uiC2">
-                </Viewbox>
-            </Grid>
-        </Viewbox>
-        
+        <Border Background="AliceBlue" >
+            <Viewbox Grid.Row="1" Height="139">
+                <Grid Name="uiGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Viewbox Grid.Column="0" HorizontalAlignment="Center" Name="uiC1">
+                    </Viewbox>
+                    <Viewbox Grid.Column="1" HorizontalAlignment="Center" Name="uiC2">
+                    </Viewbox>
+                </Grid>
+            </Viewbox>
+        </Border>
     </StackPanel>
-
-
-
 </Window>

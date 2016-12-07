@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -14,6 +15,7 @@ namespace guitarTools
         private Border noteBody;
         private Viewbox box;
 
+        
         public FretNote(int index, double size, bool isActive, Point xy, Grid grid)
         {
             #region Defining variables
