@@ -5,17 +5,20 @@ using System.Windows.Shapes;
 
 namespace guitarTools.Classes.Wheel_Select
 {
+    // TODO Write documentation for WheelButton class
+
     class WheelButton
     {
-        private double w = 80;
-        private double h = 55;
+        private double width = 80;
+        private double height = 55;
+        public string LabelContent { get; set; }
 
         public WheelButton(Viewbox viewbox)
         {
             Grid container = new Grid()
             {
-                Width = w,
-                Height = h
+                Width = width,
+                Height = height
             };
 
             Path shape = new Path()
@@ -34,16 +37,16 @@ namespace guitarTools.Classes.Wheel_Select
                 StrokeThickness = 0
             };
 
+            // TODO Place label vertically center
             Label label = new Label()
             {
-                Content = "C#",
+                Content = LabelContent,
                 Foreground = Brushes.White,
-                FontSize = h * 0.5,
+                FontSize = height * 0.5,
 
                 HorizontalContentAlignment = HorizontalAlignment.Center,
                 VerticalContentAlignment = VerticalAlignment.Center,
             };
-
             
             container.Children.Add(shape);           
             container.Children.Add(cutout);
@@ -52,8 +55,10 @@ namespace guitarTools.Classes.Wheel_Select
             viewbox.Child = container;
         }
 
+        // TODO Move arc down the Y axis to fit grid container
         private PathGeometry DrawButton()
         {
+            // TODO Calculate correct arc size
             ArcSegment arcTop = new ArcSegment()
             {
                 Point = new Point(0, 0),
@@ -62,8 +67,8 @@ namespace guitarTools.Classes.Wheel_Select
 
             PointCollection coords = new PointCollection();
             coords.Add(new Point(0,0));
-            coords.Add(new Point(w, 0));
-            coords.Add(new Point(w-w*0.3, h));
+            coords.Add(new Point(width, 0));
+            coords.Add(new Point(width-width*0.3, height));
 
             PolyLineSegment rectangle = new PolyLineSegment() { Points = coords };
 
@@ -76,13 +81,13 @@ namespace guitarTools.Classes.Wheel_Select
             PathFigure pathFigureArc = new PathFigure()
             {
                 Segments = psColArcTop,
-                StartPoint = new Point(w,0)
+                StartPoint = new Point(width,0)
             };
 
             PathFigure pathFigureRec = new PathFigure()
             {               
                 Segments = psColRec,
-                StartPoint = new Point(w*0.3, h)
+                StartPoint = new Point(width*0.3, height)
             };
 
             PathFigureCollection pathFigureCollection = new PathFigureCollection();
@@ -98,7 +103,7 @@ namespace guitarTools.Classes.Wheel_Select
         {
             ArcSegment bottomArc = new ArcSegment()
             {
-                Point = new Point(w * 0.3, h),
+                Point = new Point(width * 0.3, height),
                 Size = new Size(60, 60),
             };
 
@@ -108,7 +113,7 @@ namespace guitarTools.Classes.Wheel_Select
             PathFigure pathFigureArc = new PathFigure()
             {
                 Segments = psColArcBot,
-                StartPoint = new Point(w - w * 0.3, h)
+                StartPoint = new Point(width - width * 0.3, height)
             };
 
             PathFigureCollection pathFigureCollection = new PathFigureCollection();
@@ -121,7 +126,5 @@ namespace guitarTools.Classes.Wheel_Select
 
             return pathGeometry;
         }
-
-
     }
 }

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace guitarTools.Classes.Wheel_Select
+﻿namespace guitarTools.Classes.Wheel_Select
 {
+    // TODO Write code for WheelSelect class
+
     class WheelSelect
     {
+        public WheelSelect()
+        {
+            
+        }
     }
 }

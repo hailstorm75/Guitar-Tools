@@ -12,6 +12,3 @@ C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\
 C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Debug\guitarTools.csproj.GenerateResource.Cache
 C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Debug\guitarTools.exe
 C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Debug\guitarTools.pdb
-C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\bin\Debug\Data.mdf
-C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\bin\Debug\Data_log.ldf
-C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Debug\guitarTools_Content.g.cs
