@@ -7,13 +7,13 @@ namespace guitarTools.Classes.Wheel_Select
 {
     // TODO Write documentation for WheelButton class
 
-    class WheelButton
+    class WheelButton : Button
     {
         private double width = 80;
         private double height = 55;
         public string LabelContent { get; set; }
 
-        public WheelButton(Viewbox viewbox)
+        public WheelButton()
         {
             Grid container = new Grid()
             {
@@ -51,6 +51,8 @@ namespace guitarTools.Classes.Wheel_Select
             container.Children.Add(shape);           
             container.Children.Add(cutout);
             container.Children.Add(label);
+
+            Viewbox viewbox = new Viewbox();         
 
             viewbox.Child = container;
         }

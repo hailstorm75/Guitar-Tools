@@ -5,6 +5,8 @@ using System.Windows.Media;
 
 namespace guitarTools
 {
+    // TODO Write documentation for FretNote class
+
     class FretNote
     {
         private int Index { get; set; }
@@ -14,7 +16,6 @@ namespace guitarTools
         private Label noteText;
         private Border noteBody;
         private Viewbox box;
-
         
         public FretNote(int index, double size, bool isActive, Point xy, Grid grid)
         {
@@ -65,11 +66,10 @@ namespace guitarTools
             #endregion
         }
 
-        // Not finished
-        public void Update(bool isActive)
+        public void NewRoot(int ShiftBy)
         {
-            this.IsActive = isActive;
-            noteBody.Background = this.IsActive ? Brushes.DarkBlue : Brushes.Crimson;
+            //IntLimited a = new IntLimited(Index + ShiftBy, 0, 12);
+            noteText.Content = MusicKeys[(new IntLimited(Index + ShiftBy, 0, 12)).GetValue];
         }
     }
 }

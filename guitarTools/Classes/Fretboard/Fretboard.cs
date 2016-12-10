@@ -1,11 +1,8 @@
-﻿using System;
-using System.Threading;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using System.Threading.Tasks;
 
 namespace guitarTools.Classes.Fretboard
 {
@@ -13,15 +10,15 @@ namespace guitarTools.Classes.Fretboard
     class Fretboard
     {
         #region Properties
-        private static List<List<FretNote>> NoteList { get; set; }
-        private static Grid MainGrid { get; set; }
-        private static Grid NoteGrid { get; set; }
-        private static ushort Strings { get; set; }
-        private static ushort Frets { get; set; }
-        private static double Width { get; set; }
-        private static double Height { get; set; }
-        private static double Size { get; set; }
-        private static int Tuning { get; set; }
+        private List<List<FretNote>> NoteList { get; set; }
+        private Grid MainGrid { get; set; }
+        private Grid NoteGrid { get; set; }
+        private ushort Strings { get; set; }
+        private ushort Frets { get; set; }
+        private double Width { get; set; }
+        private double Height { get; set; }
+        private double Size { get; set; }
+        private int Tuning { get; set; }
         #endregion
 
         public Fretboard(Grid mainGrid, Grid noteGrid, ushort strings, ushort frets, List<List<FretNote>> noteList, int tuning)
@@ -37,8 +34,6 @@ namespace guitarTools.Classes.Fretboard
             NoteList = noteList;
             Tuning = tuning;
 
-
-
             // Creating the fretboard            
             CreateGrid();
             CreateNotes();
@@ -46,7 +41,7 @@ namespace guitarTools.Classes.Fretboard
             DrawFretboard();
         }
 
-        private static void CreateGrid()
+        private void CreateGrid()
         {
             // Adding columns and rows to grid
             for (ushort i = 0; i <= Frets; i++) NoteGrid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -54,9 +49,9 @@ namespace guitarTools.Classes.Fretboard
             for (ushort i = 0; i <= Strings; i++) NoteGrid.RowDefinitions.Add(new RowDefinition());
         }
 
-        private static void CreateNotes()
+        private void CreateNotes()
         {
-            string[] data = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Id = " + 10, 1)[0].Split(' ');
+            string[] data = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Id = " + 10)[0].Split(' ');
 
             // Creating notes and adding them to the grid
             for (int numString = 0; numString < Strings; numString++)
@@ -77,7 +72,7 @@ namespace guitarTools.Classes.Fretboard
             }         
         }
 
-        private static void CreateMarkers()
+        private void CreateMarkers()
         {
             // Creating fret markers and adding them to the grid
             for (int x = 3, y = 1; x < Frets; x += 2, y++)
@@ -95,7 +90,7 @@ namespace guitarTools.Classes.Fretboard
             }
         }
 
-        private static void DrawFretboard()
+        private void DrawFretboard()
         {
             NoteGrid.Height = Size * Strings;
 
@@ -113,6 +108,17 @@ namespace guitarTools.Classes.Fretboard
                 };
                 MainGrid.Children.Add(fret);
             }
+        }
+
+        public void UpdateRoot(int newRoot)
+        {
+            IntLimited currentRoot = new IntLimited(Tuning, 0, 12);
+            currentRoot.GetValue = currentRoot - newRoot;
+            int shiftIndex = currentRoot.GetValue;
+
+            foreach (List<FretNote> String in NoteList)
+                foreach (FretNote Note in String)
+                    Note.NewRoot(shiftIndex);
         }
     }
 }

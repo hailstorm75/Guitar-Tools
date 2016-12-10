@@ -5,18 +5,23 @@ using System.Data.SqlClient;
 namespace guitarTools.Classes
 {
     // TODO Write documentation for SQLCommands class
+    /// <summary>
+    /// 
+    /// </summary>
 
     class SQLCommands
     {
+        #region Property definition
         public static SqlConnection SqlConn { get; set; }
         public static SqlCommand SqlComm { get; set; }
         public static SqlDataReader SqlRead;
+        #endregion
 
         public bool CheckConnection()
         {
             try
             {
-                SqlConnection sqlConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\SQL\Data.mdf';Integrated Security=True;Connect Timeout=30");
+                SqlConnection sqlConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='|DataDirectory|\Data.mdf';Integrated Security=True;Connect Timeout=30");
                 return true;
             }
             catch (Exception)
@@ -25,24 +30,19 @@ namespace guitarTools.Classes
             }           
         }
 
-        private static void Connect()
+        private static void Connect(string command)
         {
-            // TODO Set relative path for SQL Connection
-            SqlConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\SQL\Data.mdf';Integrated Security=True;Connect Timeout=30");
+            SqlConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='|DataDirectory|\Data.mdf';Integrated Security=True;Connect Timeout=30");
             SqlComm = new SqlCommand();
-        }
-
-        public static List<T> FetchList<T>(string command, ushort columnCount)
-        {
-            Connect();
-
-            // Opening SQL connection and setting up  
-            #region SQL Setup
             SqlConn.Open();
             SqlComm.Connection = SqlConn;
             SqlComm.CommandText = command;
             SqlRead = SqlComm.ExecuteReader();
-            #endregion
+        }
+
+        public static List<T> FetchList<T>(string command)
+        {
+            Connect(command);
 
             // Defining generic list
             List<T> data = new List<T>();
@@ -53,8 +53,7 @@ namespace guitarTools.Classes
             {
                 while (SqlRead.Read())
                 {
-                    for (int column = 0; column < columnCount; column++)
-                        data.Add((T)Convert.ChangeType(SqlRead[column], typeof(T))); // Converts to selected generic type and appends to list
+                    data.Add((T)Convert.ChangeType(SqlRead[0], typeof(T))); // Converts to selected generic type and appends to list
                 }
             }
             #endregion
@@ -62,15 +61,14 @@ namespace guitarTools.Classes
             // Closing SQL connection
             SqlConn.Close();
 
-            return data;
+            return data; // Returning fetched data
         }
 
-        // TODO Write logic for method
-        public static T FetchData<T>(string command, ushort columnCount)
+        public static T FetchData<T>(string command)
         {
-            Connect();
-
-            return (T)Convert.ChangeType(5, typeof(int));
+            Connect(command);
+          
+            return (T)Convert.ChangeType(SqlRead[0], typeof(T));
         }
     }
 }
