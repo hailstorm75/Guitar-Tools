@@ -5,9 +5,9 @@ using System.Windows.Shapes;
 
 namespace guitarTools.Classes.Wheel_Select
 {
-    // TODO Write documentation for WheelButton class
+    // DOC Write documentation for WheelButton class
 
-    class WheelButton : Button
+    class WheelButton
     {
         private double width = 80;
         private double height = 55;
@@ -37,7 +37,7 @@ namespace guitarTools.Classes.Wheel_Select
                 StrokeThickness = 0
             };
 
-            // TODO Place label vertically center
+            // UNDONE Place label vertically center
             Label label = new Label()
             {
                 Content = LabelContent,
@@ -50,17 +50,13 @@ namespace guitarTools.Classes.Wheel_Select
             
             container.Children.Add(shape);           
             container.Children.Add(cutout);
-            container.Children.Add(label);
-
-            Viewbox viewbox = new Viewbox();         
-
-            viewbox.Child = container;
+            container.Children.Add(label);       
         }
 
-        // TODO Move arc down the Y axis to fit grid container
+        // UNDONE Move arc down the Y axis to fit grid container
         private PathGeometry DrawButton()
         {
-            // TODO Calculate correct arc size
+            // UNDONE Calculate correct arc size
             ArcSegment arcTop = new ArcSegment()
             {
                 Point = new Point(0, 0),

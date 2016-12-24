@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using guitarTools.Classes.Wheel_Select;
 using guitarTools.Classes.Fretboard;
+using guitarTools.Classes;
 
 namespace guitarTools
 {
@@ -12,6 +13,7 @@ namespace guitarTools
 
     public partial class MainWindow : Window
     {
+        Fretboard fretboard;
         public MainWindow()
         {
             InitializeComponent();
@@ -23,13 +25,16 @@ namespace guitarTools
             #endregion
 
             // Creating default fretboard
-            Fretboard fretboard = new Fretboard(mainGrid, noteGrid, strings, frets, NoteList, 4);
-            
-            fretboard.UpdateRoot(11);
+            fretboard = new Fretboard(mainGrid, noteGrid, strings, frets, NoteList, 4);
 
-            // TODO Delete test elements
-            // WheelButton a = new WheelButton(uiC1);
-            // WheelButton b = new WheelButton(uiC2);
+            foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableScales"))
+                cbScale.Items.Add(item);
+        }
+
+        private void cbRoot_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (fretboard.Root != cbRoot.SelectedIndex)
+                fretboard.UpdateRoot(cbRoot.SelectedIndex);
         }
     }
 }

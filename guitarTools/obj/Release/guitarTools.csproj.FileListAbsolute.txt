@@ -1,0 +1,16 @@
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\bin\Release\Data.mdf
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\bin\Release\Data_log.ldf
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\bin\Release\guitarTools.exe.config
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\bin\Release\guitarTools.exe
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\bin\Release\guitarTools.pdb
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\MainWindow.g.cs
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\App.g.cs
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools_Content.g.cs
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools_MarkupCompile.cache
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools_MarkupCompile.lref
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\MainWindow.baml
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools.g.resources
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools.Properties.Resources.resources
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools.csproj.GenerateResource.Cache
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools.exe
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools.pdb

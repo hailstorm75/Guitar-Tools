@@ -6,7 +6,7 @@ using System.Windows.Shapes;
 
 namespace guitarTools.Classes.Fretboard
 {
-    // TODO Write documentation for Fretboard class
+    // DOC Write documentation for Fretboard class
     class Fretboard
     {
         #region Properties
@@ -18,7 +18,7 @@ namespace guitarTools.Classes.Fretboard
         private double Width { get; set; }
         private double Height { get; set; }
         private double Size { get; set; }
-        private int Tuning { get; set; }
+        public int Root { get; set; }
         #endregion
 
         public Fretboard(Grid mainGrid, Grid noteGrid, ushort strings, ushort frets, List<List<FretNote>> noteList, int tuning)
@@ -32,7 +32,7 @@ namespace guitarTools.Classes.Fretboard
             Height = mainGrid.Height / strings;
             Size = Width <= Height ? Width : Height;
             NoteList = noteList;
-            Tuning = tuning;
+            Root = tuning;
 
             // Creating the fretboard            
             CreateGrid();
@@ -61,7 +61,7 @@ namespace guitarTools.Classes.Fretboard
 
                 for (int numFret = 0; numFret <= Frets; numFret++)
                 {
-                    IntLimited key = new IntLimited(numFret + Tuning, 0, 12);
+                    IntLimited key = new IntLimited(numFret + Root, 0, 12);
                     key.GetValue = key + index;
 
                     FretNote note = new FretNote(key.GetValue, Size * 0.8, true, new Point(numFret, numString), NoteGrid);
@@ -112,7 +112,7 @@ namespace guitarTools.Classes.Fretboard
 
         public void UpdateRoot(int newRoot)
         {
-            IntLimited currentRoot = new IntLimited(Tuning, 0, 12);
+            IntLimited currentRoot = new IntLimited(Root, 0, 12);
             currentRoot.GetValue = currentRoot - newRoot;
             int shiftIndex = currentRoot.GetValue;
 

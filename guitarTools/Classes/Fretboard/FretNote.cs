@@ -5,7 +5,7 @@ using System.Windows.Media;
 
 namespace guitarTools
 {
-    // TODO Write documentation for FretNote class
+    // DOC Write documentation for FretNote class
 
     class FretNote
     {
@@ -68,7 +68,6 @@ namespace guitarTools
 
         public void NewRoot(int ShiftBy)
         {
-            //IntLimited a = new IntLimited(Index + ShiftBy, 0, 12);
             noteText.Content = MusicKeys[(new IntLimited(Index + ShiftBy, 0, 12)).GetValue];
         }
     }

@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace guitarTools.Classes
 {
-    // TODO Write documentation for SQLCommands class
+    // DOC Write documentation for SQLCommands class
     /// <summary>
     /// 
     /// </summary>
