@@ -7,5 +7,6 @@ For more information go to https://github.com/hailstorm75/Guitar-Tools/projects/
 # Status
  - Scale root is selectable
  - UI Controls are not complete
+
 # Issues
  - Window is not scalable
