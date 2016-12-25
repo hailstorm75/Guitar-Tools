@@ -16,7 +16,10 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" HorizontalAlignment="Center" Content="{Binding Title, ElementName=mainWindow}" Foreground="White" Margin="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+                <DockPanel Grid.Column="0">
+                    <Image Source="icon.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0" Height="25" Width="25" />
+                    <Label  HorizontalAlignment="Center" Content="{Binding Title, ElementName=mainWindow}" Foreground="White" Margin="5,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="{Binding ActualHeight, ElementName=WindowTop, Mode=OneWay}"/>
+                </DockPanel>
                 <DockPanel Grid.Column="2">
                     <Button x:Name="btnMinimize"
                             VerticalAlignment="Center" 
@@ -62,25 +65,29 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel x:Name="stackPanel" HorizontalAlignment="Center" Margin="10,0,5,0" Grid.Column="0">
                         <DockPanel>
-                            <Label Content="Root: " HorizontalAlignment="Center" Name="lbRoot" Width="{Binding ActualWidth, ElementName=lbScale, Mode=OneWay}" />
+                            <Label Content="Root: " HorizontalAlignment="Center" Name="lbRoot" Width="{Binding ActualWidth, ElementName=lbTuning, Mode=OneWay}" />
                             <ComboBox Name="cbRoot" MinWidth="100" SelectionChanged="cbRoot_SelectionChanged">
-                                <ComboBoxItem Content="C" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="C#" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="D" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="D#" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="E" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="F" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="F#" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="G" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="G#" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="A" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="A#" HorizontalAlignment="Center"/>
-                                <ComboBoxItem Content="B" HorizontalAlignment="Center"/>
+                                <ComboBoxItem Content="C"/>
+                                <ComboBoxItem Content="C#"/>
+                                <ComboBoxItem Content="D"/>
+                                <ComboBoxItem Content="D#"/>
+                                <ComboBoxItem Content="E"/>
+                                <ComboBoxItem Content="F"/>
+                                <ComboBoxItem Content="F#"/>
+                                <ComboBoxItem Content="G"/>
+                                <ComboBoxItem Content="G#"/>
+                                <ComboBoxItem Content="A"/>
+                                <ComboBoxItem Content="A#"/>
+                                <ComboBoxItem Content="B"/>
                             </ComboBox>
                         </DockPanel>
                         <DockPanel Margin="0,10,0,0">
-                            <Label Content="Scale: " HorizontalAlignment="Center" Name="lbScale"/>
-                            <ComboBox Name="cbScale" MinWidth="100"/>
+                            <Label Content="Tuning: " HorizontalAlignment="Center" Name="lbTuning" />
+                            <ComboBox Name="cbTuning" MinWidth="100" SelectionChanged="cbTuning_SelectionChanged"/>
+                        </DockPanel>
+                        <DockPanel Margin="0,10,0,0">
+                            <Label Content="Scale: " HorizontalAlignment="Center" Name="lbScale"  Width="{Binding ActualWidth, ElementName=lbTuning, Mode=OneWay}" />
+                            <ComboBox Name="cbScale" MinWidth="100" SelectionChanged="cbScale_SelectionChanged"/>
                         </DockPanel>
                     </StackPanel>
                     <StackPanel Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}" HorizontalAlignment="Center" Margin="5,0,10,0" Grid.Column="2">
@@ -105,9 +112,6 @@
                         <Button Content="Apply" Margin="0,5,0,0"/>
                     </StackPanel>
                 </Grid>
-
-
-                    <!--</DockPanel>-->
             </Border>
         </StackPanel>
     </StackPanel>

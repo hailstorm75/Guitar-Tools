@@ -29,18 +29,43 @@ namespace guitarTools
 
             // Creating default fretboard
             fretboard = new Fretboard(mainGrid, noteGrid, strings, frets, NoteList, 4);
-            cbRoot.SelectedIndex = 4;
 
+            #region Setting up Controls
+            // The root notes are constant - no need to fetch from database
+            cbRoot.SelectedIndex = 4; // Setting default root note to "E"
+
+            // Adding tunings from database
+            foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableTuning WHERE Strings = " + strings))
+                cbTuning.Items.Add(item);
+
+            cbTuning.SelectedIndex = 0; // Setting default tuning to "Standard"
+
+            // Adding scales from database
             foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableScales"))
                 cbScale.Items.Add(item);
+            #endregion
         }
 
+        #region ComboBoxes
         private void cbRoot_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (fretboard.Root != cbRoot.SelectedIndex)
                 fretboard.UpdateRoot(cbRoot.SelectedIndex);
         }
 
+        private void cbTuning_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if ("FILL IN" != cbTuning.SelectedValue.ToString())
+                fretboard.UpdateTuning(cbTuning.SelectedValue.ToString());
+        }
+
+        private void cbScale_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+        #endregion
+
+        #region WindowEvents
         private void WindowTop_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -83,6 +108,7 @@ namespace guitarTools
         {
             //change the WindowStyle back to None, but only after the Window has been activated
             Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action(() => WindowStyle = WindowStyle.None));
-        }
+        }       
+        #endregion
     }
 }

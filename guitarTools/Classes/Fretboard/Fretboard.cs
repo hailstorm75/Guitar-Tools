@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -130,6 +131,11 @@ namespace guitarTools.Classes.Fretboard
             foreach (List<FretNote> String in NoteList)
                 foreach (FretNote Note in String)
                     Note.NewRoot(shiftIndex);
+        }
+
+        public void UpdateTuning(string newTuning)
+        {
+
         }
     }
 }
