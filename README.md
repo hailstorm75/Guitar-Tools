@@ -7,7 +7,9 @@ For more information go to https://github.com/hailstorm75/Guitar-Tools/project
 If you wish to see the application for yourself, please download these two files:
  - https://github.com/hailstorm75/Guitar-Tools/blob/master/guitarTools/bin/Debug/guitarTools.exe
  - https://github.com/hailstorm75/Guitar-Tools/blob/master/guitarTools/bin/Debug/Data.mdf
+ 
 To run the app, open guitarTools.exe
+
 Note: The files must be saved in the same location! Otherwise the application won't run.
 
 ## Version 0.12.16
