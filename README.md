@@ -3,6 +3,9 @@ Displays guitar scales on a fretboard with extended string and fret support.
 Allows the user to select tuning, string amount, fret amount, scale type.
 For more information go to https://github.com/hailstorm75/Guitar-Tools/project
 
+## Progress
+You can track the project progress here: https://github.com/hailstorm75/Guitar-Tools/projects/1
+
 ## Download
 If you wish to see the application for yourself, please download these two files:
  - https://github.com/hailstorm75/Guitar-Tools/blob/master/guitarTools/bin/Debug/guitarTools.exe
