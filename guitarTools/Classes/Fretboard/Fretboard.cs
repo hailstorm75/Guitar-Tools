@@ -51,24 +51,27 @@ namespace guitarTools.Classes.Fretboard
 
         private void CreateNotes()
         {
+            // Passing selected tuning from database to array
             string[] data = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Id = " + 10)[0].Split(' ');
 
             // Creating notes and adding them to the grid
             for (int numString = 0; numString < Strings; numString++)
             {
                 List<FretNote> tempNoteList = new List<FretNote>();
-                int index = int.Parse(data[numString]);
+                int index = int.Parse(data[numString]);     // Getting 
 
                 for (int numFret = 0; numFret <= Frets; numFret++)
                 {
+                    // Calculating note order based on tuning and root note
                     IntLimited key = new IntLimited(numFret + Root, 0, 12);
                     key.GetValue = key + index;
 
+                    // Creating the note
                     FretNote note = new FretNote(key.GetValue, Size * 0.8, true, new Point(numFret, numString), NoteGrid);
                     tempNoteList.Add(note);
                 }
 
-                NoteList.Add(tempNoteList);
+                NoteList.Add(tempNoteList); // Generating list of notes for future reference
             }         
         }
 
@@ -113,9 +116,14 @@ namespace guitarTools.Classes.Fretboard
         public void UpdateRoot(int newRoot)
         {
             IntLimited currentRoot = new IntLimited(Root, 0, 12);
-            currentRoot.GetValue = currentRoot - newRoot;
+
+            // Calculating difference between new and current value
+            currentRoot.GetValue = currentRoot - newRoot;  
+
+            // Passing calculated value to variable
             int shiftIndex = currentRoot.GetValue;
 
+            // Updating each note to new root
             foreach (List<FretNote> String in NoteList)
                 foreach (FretNote Note in String)
                     Note.NewRoot(shiftIndex);
