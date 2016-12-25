@@ -1,22 +1,26 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace guitarTools
 {
-    // DOC Write documentation for FretNote class
+    /// <summary>
+    /// FretNote is an object which represents a note on the fretboard
+    /// It is created and managed by the Fretboard object
+    /// </summary>
 
     class FretNote
     {
+        #region Properties
         private int Index { get; set; }
         private bool IsActive { get; set; }
         private string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
         private Label noteText;
         private Border noteBody;
-        private Viewbox box;
-        
+        private Viewbox box; 
+        #endregion
+
         public FretNote(int index, double size, bool isActive, Point xy, Grid grid)
         {
             #region Defining variables
@@ -25,7 +29,6 @@ namespace guitarTools
             #endregion
 
             #region Creating objects visual representation
-
             //Creating a Border
             noteBody = new Border()
             {
@@ -68,6 +71,7 @@ namespace guitarTools
 
         public void NewRoot(int ShiftBy)
         {
+            // Updates Label content to suit the new root
             noteText.Content = MusicKeys[(new IntLimited(Index + ShiftBy, 0, 12)).GetValue];
         }
     }

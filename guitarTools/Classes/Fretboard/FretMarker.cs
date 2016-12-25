@@ -6,6 +6,7 @@ namespace guitarTools
     /// <summary>
     /// Contains the definition of the Fret Marker object.
     /// Creates the UI elementes, binds them and places into grid cell.
+    /// It is created and managed by the Fretboard object
     /// </summary>
 
     class FretMarker

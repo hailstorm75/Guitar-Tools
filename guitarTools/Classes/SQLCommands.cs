@@ -4,9 +4,9 @@ using System.Data.SqlClient;
 
 namespace guitarTools.Classes
 {
-    // DOC Write documentation for SQLCommands class
     /// <summary>
-    /// 
+    /// A set of instructions which fetch data from the 
+    /// database and output them to a variable or list
     /// </summary>
 
     class SQLCommands
@@ -19,6 +19,7 @@ namespace guitarTools.Classes
 
         public bool CheckConnection()
         {
+            // Returns a boolean value based on connection success/failure
             try
             {
                 SqlConnection sqlConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='|DataDirectory|\Data.mdf';Integrated Security=True;Connect Timeout=30");
@@ -32,17 +33,20 @@ namespace guitarTools.Classes
 
         private static void Connect(string command)
         {
+            // Defines connection to database
             SqlConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename='|DataDirectory|\Data.mdf';Integrated Security=True;Connect Timeout=30");
             SqlComm = new SqlCommand();
-            SqlConn.Open();
+        
+            SqlConn.Open();                 // Opens the connection
             SqlComm.Connection = SqlConn;
-            SqlComm.CommandText = command;
+            
+            SqlComm.CommandText = command;  // Passes the command
             SqlRead = SqlComm.ExecuteReader();
         }
 
         public static List<T> FetchList<T>(string command)
         {
-            Connect(command);
+            Connect(command); // Connects to database and sends command
 
             // Defining generic list
             List<T> data = new List<T>();
@@ -57,18 +61,19 @@ namespace guitarTools.Classes
                 }
             }
             #endregion
+          
+            SqlConn.Close(); // Closing SQL connection
 
-            // Closing SQL connection
-            SqlConn.Close();
-
-            return data; // Returning fetched data
+            return data; // Returns fetched data
         }
 
         public static T FetchData<T>(string command)
         {
-            Connect(command);
-          
-            return (T)Convert.ChangeType(SqlRead[0], typeof(T));
+            Connect(command); // Connects to database and sends command
+
+            SqlConn.Close(); // Closing SQL connection
+
+            return (T)Convert.ChangeType(SqlRead[0], typeof(T)); // Returns fetched  data
         }
     }
 }

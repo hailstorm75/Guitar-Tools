@@ -6,7 +6,10 @@ using System.Windows.Shapes;
 
 namespace guitarTools.Classes.Fretboard
 {
-    // DOC Write documentation for Fretboard class
+    /// <summary>
+    /// Fretboard creates and manages fret notes, markers and their grid
+    /// </summary>
+
     class Fretboard
     {
         #region Properties
@@ -58,7 +61,7 @@ namespace guitarTools.Classes.Fretboard
             for (int numString = 0; numString < Strings; numString++)
             {
                 List<FretNote> tempNoteList = new List<FretNote>();
-                int index = int.Parse(data[numString]);     // Getting 
+                int index = int.Parse(data[numString]);     // Getting individual string tunning
 
                 for (int numFret = 0; numFret <= Frets; numFret++)
                 {
