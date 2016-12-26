@@ -72,12 +72,11 @@ namespace guitarTools.Classes.Fretboard
                 for (int numFret = 0; numFret <= Frets; numFret++)
                 {
                     // Calculating note order based on tuning and root note
-                    IntLimited key = new IntLimited(numFret + Root, 0, 12);                                       
+                    IntLimited key = new IntLimited(numFret, 0, 12);                                       
                     key.GetValue = key + index;
 
-                    // Checking if note fits scale
-                    IntLimited a = new IntLimited(key.GetValue - Root, 0, 12);                    
-                    bool IsActive = scale.Contains((a.GetValue).ToString()) ? true : false;
+                    // Checking if note fits scale                  
+                    bool IsActive = scale.Contains(key.GetValue.ToString()) ? true : false;
 
                     // Creating the note
                     FretNote note = new FretNote(key.GetValue, Size * 0.8, IsActive, new Point(numFret, numString), NoteGrid);
@@ -168,12 +167,21 @@ namespace guitarTools.Classes.Fretboard
             string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
             string[] tuning = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Name = '" + Tuning + "' AND Strings = " + Strings)[0].Split(' ');
 
-            foreach (List<FretNote> String in NoteList)
+            for (int numString = 0; numString < NoteList.Count; numString++)
             {
-                foreach (FretNote Note in String)
+                int index = int.Parse(tuning[numString]);     // Getting individual string tunning
+
+                for (int numFret = 0; numFret < NoteList[numString].Count; numFret++)
                 {
-                    IntLimited a = new IntLimited(Note.Index - Root, 0, 12);
-                    Note.ChangeState(scale.Contains((a.GetValue).ToString()) ? true : false);
+                    // Calculating note order based on tuning and root note
+                    IntLimited key = new IntLimited(numFret, 0, 12);                                       
+                    key.GetValue = key + index;
+
+                    // Checking if note fits scale                  
+                    bool IsActive = scale.Contains(key.GetValue.ToString()) ? true : false;
+
+                    // Creating the note
+                    NoteList[numString][numFret].ShiftTuning(key.GetValue);
                 }
             }
         }

@@ -76,7 +76,7 @@ namespace guitarTools
 
         public void ShiftTuning(int ShiftBy)
         {
-            noteText.Content = MusicKeys[(new IntLimited(Index + ShiftBy, 0, 12)).GetValue];
+            noteText.Content = MusicKeys[(new IntLimited(ShiftBy, 0, 12)).GetValue];
         }
     }
 }

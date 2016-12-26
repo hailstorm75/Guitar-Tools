@@ -37,7 +37,7 @@ The application will now close.", "Guitar Tools");
             #endregion
 
             // Creating default fretboard
-            fretboard = new Fretboard(mainGrid, noteGrid, strings, frets, NoteList, 4, "Standard", "Ionian");
+            fretboard = new Fretboard(mainGrid, noteGrid, strings, frets, NoteList, 4, "Drop A", "Ionian");
 
             #region Setting up Controls
             // The root notes are constant - no need to fetch from database
@@ -47,7 +47,7 @@ The application will now close.", "Guitar Tools");
             foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableTuning WHERE Strings = " + strings))
                 cbTuning.Items.Add(item);
 
-            cbTuning.SelectedIndex = 0; // Setting default tuning to "Standard"
+            cbTuning.SelectedIndex = 1; // Setting default tuning to "Standard"
 
             // Adding scales from database
             foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableScales"))
@@ -66,7 +66,7 @@ The application will now close.", "Guitar Tools");
 
         private void cbTuning_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if ("FILL IN" != cbTuning.SelectedValue.ToString())
+            if (fretboard.Tuning != cbTuning.SelectedValue.ToString())
                 fretboard.UpdateTuning(cbTuning.SelectedValue.ToString());
         }
 
