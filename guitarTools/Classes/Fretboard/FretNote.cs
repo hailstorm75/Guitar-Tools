@@ -12,7 +12,7 @@ namespace guitarTools
     class FretNote
     {
         #region Properties
-        private int Index { get; set; }
+        public int Index { get; set; }
         private bool IsActive { get; set; }
         private string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
@@ -34,8 +34,8 @@ namespace guitarTools
             {
                 BorderBrush = Brushes.Black,
                 BorderThickness = new Thickness(1),
-                Background = IsActive ? Brushes.DarkBlue : Brushes.Crimson, //Inline IF ELSE operation
-                Opacity = 0.5,
+                Background = Brushes.SlateBlue, 
+                Opacity = IsActive ? 1 : 0.5,                   //Inline IF ELSE operation
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 Width = size,
@@ -69,9 +69,13 @@ namespace guitarTools
             #endregion
         }
 
-        public void NewRoot(int ShiftBy)
+        public void ChangeState(bool IsActive)
         {
-            // Updates Label content to suit the new root
+            noteBody.Opacity = IsActive ? 1 : 0.5;
+        }
+
+        public void ShiftTuning(int ShiftBy)
+        {
             noteText.Content = MusicKeys[(new IntLimited(Index + ShiftBy, 0, 12)).GetValue];
         }
     }

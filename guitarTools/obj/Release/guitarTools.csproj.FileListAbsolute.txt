@@ -14,3 +14,5 @@ C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\
 C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools.csproj.GenerateResource.Cache
 C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools.exe
 C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools.pdb
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\guitarTools.csprojResolveAssemblyReference.cache
+C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Release\App.baml

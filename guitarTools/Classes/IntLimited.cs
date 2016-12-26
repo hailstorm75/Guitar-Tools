@@ -12,7 +12,7 @@
         #region Properties
         private static int MinValue { get; set; }
         private static int MaxValue { get; set; }
-        public static int Value { get; set; }
+        public int Value { get; set; }
         #endregion
 
         public IntLimited(int value, int min, int max)

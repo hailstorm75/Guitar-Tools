@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -57,7 +58,8 @@ namespace guitarTools.Classes.Fretboard
         {
             // Passing selected tuning from database to array
             string[] data = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Id = " + 10)[0].Split(' ');
-
+            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = 'Ionian'")[0].Split(' ');
+            
             // Creating notes and adding them to the grid
             for (int numString = 0; numString < Strings; numString++)
             {
@@ -67,11 +69,15 @@ namespace guitarTools.Classes.Fretboard
                 for (int numFret = 0; numFret <= Frets; numFret++)
                 {
                     // Calculating note order based on tuning and root note
-                    IntLimited key = new IntLimited(numFret + Root, 0, 12);
+                    IntLimited key = new IntLimited(numFret + Root, 0, 12);                                       
                     key.GetValue = key + index;
 
+                    // Checking if note fits scale
+                    IntLimited a = new IntLimited(key.GetValue - Root, 0, 12);                    
+                    bool IsActive = scale.Contains((a.GetValue).ToString()) ? true : false;
+
                     // Creating the note
-                    FretNote note = new FretNote(key.GetValue, Size * 0.8, true, new Point(numFret, numString), NoteGrid);
+                    FretNote note = new FretNote(key.GetValue, Size * 0.8, IsActive, new Point(numFret, numString), NoteGrid);
                     tempNoteList.Add(note);
                 }
 
@@ -120,17 +126,18 @@ namespace guitarTools.Classes.Fretboard
         public void UpdateRoot(int newRoot)
         {
             IntLimited currentRoot = new IntLimited(Root, 0, 12);
+            Root = newRoot;
 
-            // Calculating difference between new and current value
-            currentRoot.GetValue = currentRoot - newRoot;  
+            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = 'Ionian'")[0].Split(' ');
 
-            // Passing calculated value to variable
-            int shiftIndex = currentRoot.GetValue;
-
-            // Updating each note to new root
             foreach (List<FretNote> String in NoteList)
+            {
                 foreach (FretNote Note in String)
-                    Note.NewRoot(shiftIndex);
+                {
+                    IntLimited a = new IntLimited(Note.Index - Root, 0, 12);
+                    Note.ChangeState(scale.Contains((a.GetValue).ToString()) ? true : false);
+                }
+            }
         }
 
         public void UpdateTuning(string newTuning)
