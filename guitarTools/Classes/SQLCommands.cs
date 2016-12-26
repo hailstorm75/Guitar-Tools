@@ -67,13 +67,16 @@ namespace guitarTools.Classes
             return data; // Returns fetched data
         }
 
-        public static T FetchData<T>(string command)
+        public static T FetchData<T>(string command) // Issues with method
         {
-            Connect(command); // Connects to database and sends command
+
+            Connect(command); // Connects to database and sends command            
+
+            var data = (T)Convert.ChangeType(SqlRead[0], typeof(T));
 
             SqlConn.Close(); // Closing SQL connection
 
-            return (T)Convert.ChangeType(SqlRead[0], typeof(T)); // Returns fetched  data
+            return data; // Returns fetched  data
         }
     }
 }

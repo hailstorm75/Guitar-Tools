@@ -87,8 +87,6 @@
     <Compile Include="Classes\Fretboard\FretNote.cs" />
     <Compile Include="Classes\IntLimited.cs" />
     <Compile Include="Classes\SQLCommands.cs" />
-    <Compile Include="Classes\Wheel Select\WheelButton.cs" />
-    <Compile Include="Classes\Wheel Select\WheelSelect.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

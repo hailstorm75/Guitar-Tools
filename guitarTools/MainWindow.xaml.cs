@@ -72,7 +72,8 @@ The application will now close.", "Guitar Tools");
 
         private void cbScale_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            if (fretboard.Scale != cbScale.SelectedValue.ToString())
+                fretboard.UpdateScale(cbScale.SelectedValue.ToString());
         }
         #endregion
 

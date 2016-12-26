@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -132,7 +131,23 @@ namespace guitarTools.Classes.Fretboard
             IntLimited currentRoot = new IntLimited(Root, 0, 12);
             Root = newRoot;
 
-            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = 'Ionian'")[0].Split(' ');
+            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
+
+            // Shifting scale to new root note
+            foreach (List<FretNote> String in NoteList)
+            {
+                foreach (FretNote Note in String)
+                {
+                    IntLimited a = new IntLimited(Note.Index - Root, 0, 12);
+                    Note.ChangeState(scale.Contains((a.GetValue).ToString()) ? true : false);
+                }
+            }
+        }
+
+        public void UpdateScale(string newScale)
+        {
+            Scale = newScale;
+            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
 
             // Shifting scale to new root note
             foreach (List<FretNote> String in NoteList)
@@ -148,8 +163,10 @@ namespace guitarTools.Classes.Fretboard
         public void UpdateTuning(string newTuning)
         {
             // TODO Fill method logic
+            Tuning = newTuning;
 
-            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = 'Ionian'")[0].Split(' ');
+            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
+            string[] tuning = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Name = '" + Tuning + "' AND Strings = " + Strings)[0].Split(' ');
 
             foreach (List<FretNote> String in NoteList)
             {
