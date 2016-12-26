@@ -35,7 +35,7 @@ namespace guitarTools
                 BorderBrush = Brushes.Black,
                 BorderThickness = new Thickness(1),
                 Background = Brushes.SlateBlue, 
-                Opacity = IsActive ? 1 : 0.5,                   //Inline IF ELSE operation
+                Opacity = IsActive ? 1 : 0.3,                   //Inline IF ELSE operation
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 Width = size,
@@ -71,7 +71,7 @@ namespace guitarTools
 
         public void ChangeState(bool IsActive)
         {
-            noteBody.Opacity = IsActive ? 1 : 0.5;
+            noteBody.Opacity = IsActive ? 1 : 0.3;
         }
 
         public void ShiftTuning(int ShiftBy)

@@ -17,7 +17,7 @@ namespace guitarTools.Classes
         public static SqlDataReader SqlRead;
         #endregion
 
-        public bool CheckConnection()
+        public static bool CheckConnection()
         {
             // Returns a boolean value based on connection success/failure
             try

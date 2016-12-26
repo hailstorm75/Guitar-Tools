@@ -24,9 +24,11 @@ namespace guitarTools.Classes.Fretboard
         private double Height { get; set; }
         private double Size { get; set; }
         public int Root { get; set; }
+        public string Tuning { get; set; }
+        public string Scale { get; set; }
         #endregion
 
-        public Fretboard(Grid mainGrid, Grid noteGrid, ushort strings, ushort frets, List<List<FretNote>> noteList, int tuning)
+        public Fretboard(Grid mainGrid, Grid noteGrid, ushort strings, ushort frets, List<List<FretNote>> noteList, int root, string tuning, string scale)
         {
             // Assigning values to properties
             MainGrid = mainGrid;
@@ -37,7 +39,9 @@ namespace guitarTools.Classes.Fretboard
             Height = mainGrid.Height / strings;
             Size = Width <= Height ? Width : Height;
             NoteList = noteList;
-            Root = tuning;
+            Root = root;
+            Tuning = tuning;
+            Scale = scale;
 
             // Creating the fretboard            
             CreateGrid();
@@ -57,14 +61,14 @@ namespace guitarTools.Classes.Fretboard
         private void CreateNotes()
         {
             // Passing selected tuning from database to array
-            string[] data = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Id = " + 10)[0].Split(' ');
-            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = 'Ionian'")[0].Split(' ');
+            string[] tuning = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Name = '" + Tuning + "' AND Strings = " + Strings)[0].Split(' ');
+            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
             
             // Creating notes and adding them to the grid
             for (int numString = 0; numString < Strings; numString++)
             {
                 List<FretNote> tempNoteList = new List<FretNote>();
-                int index = int.Parse(data[numString]);     // Getting individual string tunning
+                int index = int.Parse(tuning[numString]);     // Getting individual string tunning
 
                 for (int numFret = 0; numFret <= Frets; numFret++)
                 {
@@ -130,6 +134,7 @@ namespace guitarTools.Classes.Fretboard
 
             string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = 'Ionian'")[0].Split(' ');
 
+            // Shifting scale to new root note
             foreach (List<FretNote> String in NoteList)
             {
                 foreach (FretNote Note in String)
@@ -142,7 +147,18 @@ namespace guitarTools.Classes.Fretboard
 
         public void UpdateTuning(string newTuning)
         {
+            // TODO Fill method logic
 
+            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = 'Ionian'")[0].Split(' ');
+
+            foreach (List<FretNote> String in NoteList)
+            {
+                foreach (FretNote Note in String)
+                {
+                    IntLimited a = new IntLimited(Note.Index - Root, 0, 12);
+                    Note.ChangeState(scale.Contains((a.GetValue).ToString()) ? true : false);
+                }
+            }
         }
     }
 }

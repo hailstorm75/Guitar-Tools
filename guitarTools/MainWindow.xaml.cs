@@ -21,6 +21,15 @@ namespace guitarTools
         {
             InitializeComponent();
 
+            if (!SQLCommands.CheckConnection())
+            {
+                MessageBox.Show(@"ERROR: Missing data file: Data.mdf
+Make sure the application is in the same folder as the data file.
+
+The application will now close.", "Guitar Tools");
+                Close();
+            }
+
             #region Defining variables
             ushort frets = 12*2;
             ushort strings = 7;
@@ -28,7 +37,7 @@ namespace guitarTools
             #endregion
 
             // Creating default fretboard
-            fretboard = new Fretboard(mainGrid, noteGrid, strings, frets, NoteList, 4);
+            fretboard = new Fretboard(mainGrid, noteGrid, strings, frets, NoteList, 4, "Standard", "Ionian");
 
             #region Setting up Controls
             // The root notes are constant - no need to fetch from database
@@ -43,7 +52,9 @@ namespace guitarTools
             // Adding scales from database
             foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableScales"))
                 cbScale.Items.Add(item);
-            #endregion
+
+            cbScale.SelectedIndex = 0;
+            #endregion         
         }
 
         #region ComboBoxes
