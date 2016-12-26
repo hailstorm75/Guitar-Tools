@@ -15,9 +15,10 @@ To run the app, open guitarTools.exe
 
 Note: The files must be saved in the same location! Otherwise the application won't run.
 
-## Version 0.12.16
+## Version 0.1226.5
 ### Status
  - Scale root is selectable
+ - Scale is selectable
  - UI Controls are not complete
 
 ### Issues
