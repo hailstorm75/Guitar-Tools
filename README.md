@@ -22,4 +22,3 @@ Note: The files must be saved in the same location! Otherwise the application wo
 
 ### Issues
  - Window is not scalable
- - No error message if database is not present
