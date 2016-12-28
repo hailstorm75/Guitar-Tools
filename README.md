@@ -6,7 +6,7 @@ For more information go to https://github.com/hailstorm75/Guitar-Tools/project
 ## Progress
 You can track the project progress here: https://github.com/hailstorm75/Guitar-Tools/projects/1
 
-## Download
+## 👇 Download
 If you wish to see the application for yourself, please download these two files:
  - https://github.com/hailstorm75/Guitar-Tools/blob/master/guitarTools/bin/Debug/guitarTools.exe
  - https://github.com/hailstorm75/Guitar-Tools/blob/master/guitarTools/bin/Debug/Data.mdf
@@ -22,6 +22,6 @@ Note: The files must be saved in the same location! Otherwise the application wo
  - Tuning is selectable
  - UI Controls are not complete
 
-### Issues
+### 💢 Issues
  - Window is not scalable
  - Scales do not show properly with other tunings but the standard
