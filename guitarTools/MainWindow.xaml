@@ -84,10 +84,17 @@
                         <DockPanel Margin="0,10,0,0">
                             <Label Content="Tuning: " HorizontalAlignment="Center" Name="lbTuning" />
                             <ComboBox Name="cbTuning" MinWidth="100" SelectionChanged="cbTuning_SelectionChanged"/>
+                            <Button Width="{Binding ActualHeight, ElementName=cbTuning, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=cbTuning, Mode=OneWay}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Content="+">
+                            </Button>
                         </DockPanel>
                         <DockPanel Margin="0,10,0,0">
                             <Label Content="Scale: " HorizontalAlignment="Center" Name="lbScale"  Width="{Binding ActualWidth, ElementName=lbTuning, Mode=OneWay}" />
                             <ComboBox Name="cbScale" MinWidth="100" SelectionChanged="cbScale_SelectionChanged"/>
+                            <Button Width="{Binding ActualHeight, ElementName=cbScale, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=cbScale, Mode=OneWay}" HorizontalAlignment="Left" Margin="10,0,0,0" Content="+">
+                                
+                            </Button>
+                            <Button Name="btnSearchScale" Width="{Binding ActualHeight, ElementName=cbScale, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=cbScale, Mode=OneWay}" HorizontalAlignment="Left" Margin="10,0,0,0" Content="?" Click="btnSearchScale_Click">
+                            </Button>
                         </DockPanel>
                     </StackPanel>
                     <StackPanel Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}" HorizontalAlignment="Center" Margin="5,0,10,0" Grid.Column="2">

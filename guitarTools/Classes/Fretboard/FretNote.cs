@@ -13,6 +13,7 @@ namespace guitarTools
     {
         #region Properties
         public int Index { get; set; }
+        private int Root { get; set; }
         private bool IsActive { get; set; }
         private string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
@@ -21,10 +22,11 @@ namespace guitarTools
         private Viewbox box; 
         #endregion
 
-        public FretNote(int index, double size, bool isActive, Point xy, Grid grid)
+        public FretNote(int index, double size, bool isActive, int root, Point xy, Grid grid)
         {
             #region Defining variables
             Index = index;
+            Root = root;
             IsActive = isActive;
             #endregion
 
@@ -32,7 +34,8 @@ namespace guitarTools
             //Creating a Border
             noteBody = new Border()
             {
-                BorderBrush = Brushes.Black,
+                //BorderBrush = Brushes.Black,
+                BorderBrush = Root == Index ? Brushes.Gold : Brushes.Black,
                 BorderThickness = new Thickness(1),
                 Background = Brushes.SlateBlue, 
                 Opacity = IsActive ? 1 : 0.3,                   //Inline IF ELSE operation
@@ -74,8 +77,15 @@ namespace guitarTools
             noteBody.Opacity = IsActive ? 1 : 0.3;
         }
 
+        public void HighlightRoot(int root)
+        {
+            Root = root;
+            noteBody.BorderBrush = Root == Index ? Brushes.Gold : Brushes.Black;
+        }
+
         public void ShiftTuning(int ShiftBy)
         {
+            Index = ShiftBy;
             noteText.Content = MusicKeys[(new IntLimited(ShiftBy, 0, 12)).GetValue];
         }
     }

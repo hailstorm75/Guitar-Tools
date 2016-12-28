@@ -1,0 +1,35 @@
+﻿<Window x:Name="window" x:Class="guitarTools.ScaleSearchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:guitarTools"
+        mc:Ignorable="d"
+        Title="ScaleSearchWindow" Height="300" Width="300" AllowsTransparency="True" WindowStyle="None">
+    <Border BorderBrush="Black" BorderThickness="1">
+        <StackPanel x:Name="Search_Scale">
+            <Border x:Name="WindowTop" Background="#FF2B2424" Height="30" Width="auto" MouseDown="WindowTop_MouseDown">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0">
+                        <Label  HorizontalAlignment="Center" Content="Search scale" Foreground="White" Margin="5,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="{Binding ActualHeight, ElementName=WindowTop, Mode=OneWay}"/>
+                    </DockPanel>
+                    <DockPanel Grid.Column="2">
+                        <Button x:Name="btnClose"
+                            VerticalAlignment="Center"
+                            Content="x" ToolTip="Close"
+                            Foreground="White" 
+                            ClipToBounds="True" Style="{DynamicResource windowButtonControl}" Click="btnClose_Click"
+                            Width="{Binding Height, ElementName=WindowTop}"
+                            Height="{Binding Height, ElementName=WindowTop}"/>
+                    </DockPanel>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </Border>
+    
+</Window>

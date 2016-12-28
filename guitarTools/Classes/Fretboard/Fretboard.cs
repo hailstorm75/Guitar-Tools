@@ -79,7 +79,7 @@ namespace guitarTools.Classes.Fretboard
                     bool IsActive = scale.Contains(key.GetValue.ToString()) ? true : false;
 
                     // Creating the note
-                    FretNote note = new FretNote(key.GetValue, Size * 0.8, IsActive, new Point(numFret, numString), NoteGrid);
+                    FretNote note = new FretNote(key.GetValue, Size * 0.8, IsActive, Root, new Point(numFret, numString), NoteGrid);
                     tempNoteList.Add(note);
                 }
 
@@ -139,6 +139,7 @@ namespace guitarTools.Classes.Fretboard
                 {
                     IntLimited a = new IntLimited(Note.Index - Root, 0, 12);
                     Note.ChangeState(scale.Contains((a.GetValue).ToString()) ? true : false);
+                    Note.HighlightRoot(Root);
                 }
             }
         }
@@ -177,11 +178,11 @@ namespace guitarTools.Classes.Fretboard
                     IntLimited key = new IntLimited(numFret, 0, 12);                                       
                     key.GetValue = key + index;
 
-                    // Checking if note fits scale                  
-                    bool IsActive = scale.Contains(key.GetValue.ToString()) ? true : false;
-
                     // Creating the note
                     NoteList[numString][numFret].ShiftTuning(key.GetValue);
+
+                    // Checking if note fits scale                  
+                    bool IsActive = scale.Contains(key.GetValue.ToString()) ? true : false;
                 }
             }
         }

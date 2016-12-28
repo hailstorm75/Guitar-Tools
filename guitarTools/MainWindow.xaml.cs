@@ -31,13 +31,13 @@ The application will now close.", "Guitar Tools");
             }
 
             #region Defining variables
-            ushort frets = 12*2;
-            ushort strings = 7;
+            ushort frets = 12*1;
+            ushort strings = 6;
             List<List<FretNote>> NoteList = new List<List<FretNote>>(); // Row is a string, column is a fret
             #endregion
 
             // Creating default fretboard
-            fretboard = new Fretboard(mainGrid, noteGrid, strings, frets, NoteList, 4, "Drop A", "Ionian");
+            fretboard = new Fretboard(mainGrid, noteGrid, strings, frets, NoteList, 4, "Standard E", "Ionian");
 
             #region Setting up Controls
             // The root notes are constant - no need to fetch from database
@@ -47,7 +47,7 @@ The application will now close.", "Guitar Tools");
             foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableTuning WHERE Strings = " + strings))
                 cbTuning.Items.Add(item);
 
-            cbTuning.SelectedIndex = 1; // Setting default tuning to "Standard"
+            cbTuning.SelectedIndex = 0; // Setting default tuning to "Standard"
 
             // Adding scales from database
             foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableScales"))
@@ -120,7 +120,13 @@ The application will now close.", "Guitar Tools");
         {
             //change the WindowStyle back to None, but only after the Window has been activated
             Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action(() => WindowStyle = WindowStyle.None));
-        }       
+        }
         #endregion
+
+        private void btnSearchScale_Click(object sender, RoutedEventArgs e)
+        {
+            ScaleSearchWindow a = new ScaleSearchWindow();
+            a.ShowDialog();
+        }
     }
 }
