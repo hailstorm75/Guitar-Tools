@@ -13,5 +13,5 @@ It would be great to then create an application like TuxGuitar, Power TabEditor 
 # How did the project start?
 The project began with a need for a simple offline application which displayed music modes on a guitar scale with an ability to choose any tuning or string ammount. It all went well and the application was done in no time using the ancient WinForms and not so efficient C# coding.
 
-/play noooo Unfortunatly a few months later the hard drive containing both the projects' source code and the compiled executable died.
+Unfortunatly a few months later the hard drive containing both the projects' source code and the compiled executable died.
 Which is sad, but on the other hand it is a great reason to start fresh and to make something much better.
