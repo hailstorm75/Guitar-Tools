@@ -24,3 +24,4 @@ Note: The files must be saved in the same location! Otherwise the application wo
 
 ### Issues
  - Window is not scalable
+ - Scales do not show properly with other tunings but the standard
