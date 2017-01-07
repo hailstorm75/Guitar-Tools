@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:guitarTools"
         mc:Ignorable="d"
         Title="ScaleSearchWindow" Height="300" Width="300" AllowsTransparency="True" WindowStyle="None">
-    <Border BorderBrush="Black" BorderThickness="1">
+    <Border BorderBrush="#FF2B2424" BorderThickness="1">
         <StackPanel x:Name="Search_Scale">
             <Border x:Name="WindowTop" Background="#FF2B2424" Height="30" Width="auto" MouseDown="WindowTop_MouseDown">
                 <Grid>
@@ -29,6 +29,36 @@
                     </DockPanel>
                 </Grid>
             </Border>
+            <Grid Width="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <ComboBox Name="tbOne" KeyboardNavigation.TabIndex="1" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="True">
+                        <ComboBoxItem Content="- None -"/>
+                    </ComboBox>
+                    <ComboBox Name="tbTwo" KeyboardNavigation.TabIndex="3" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False">
+                        <ComboBoxItem Content="- None -"/>
+                    </ComboBox>
+                    <ComboBox Name="tbThree" KeyboardNavigation.TabIndex="5" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False">
+                        <ComboBoxItem Content="- None -"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <ComboBox Name="cbOne" KeyboardNavigation.TabIndex="2" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False">
+                        <ComboBoxItem Content="- None -"/>
+                    </ComboBox>
+                    <ComboBox Name="cbTwo" KeyboardNavigation.TabIndex="4" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False">
+                        <ComboBoxItem Content="- None -"/>
+                    </ComboBox>
+                    <ComboBox Name="cbThree" KeyboardNavigation.TabIndex="6" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False">
+                        <ComboBoxItem Content="- None -"/>
+                    </ComboBox>
+                </StackPanel>
+            </Grid>
+            <Button Content="Search" Margin="0, 10, 0,0" IsEnabled="False" Name="btnSearch" HorizontalAlignment="Center" Click="btnSearch_Click"/>
         </StackPanel>
     </Border>
     
