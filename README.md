@@ -14,7 +14,18 @@ If you wish to see the application for yourself, please download these two files
 To run the app, open guitarTools.exe
 
 Note: The files must be saved in the same location! Otherwise the application won't run.
+# Versions 
+(Release.Date.Upload)
 
+## Version 0.0801.2
+### :octocat: Status
+ - Scales can now be searched using chords
+ 
+### 💢 Issues
+ - Windows are not scalable
+ - Wrong scale is displayed upon startup
+ - Scale doesn't shift to different tuning
+ 
 ## Version 0.1226.6
 ### :octocat: Status
  - Scale root is selectable
