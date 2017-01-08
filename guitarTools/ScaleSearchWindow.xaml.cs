@@ -12,10 +12,12 @@ namespace guitarTools
     /// </summary>
     public partial class ScaleSearchWindow : Window
     {
+        #region 
         public bool init = false;
         public string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         public ComboBox[,] Menu;
         public int Active = 2;
+        #endregion
 
         public ScaleSearchWindow()
         {
@@ -146,6 +148,8 @@ namespace guitarTools
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
+            lbResults.Items.Clear();
+
             List<int> chordNotes = new List<int>();
 
             int pointA = Array.IndexOf(MusicKeys, tbOne.SelectedItem);
@@ -168,22 +172,38 @@ namespace guitarTools
 
             chordNotes.Sort();
 
-            string a = "";
+            string[] scales = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales").ToArray();
 
-            foreach (var item in chordNotes)
-            {
-                a += item;
-                a += " ";
-            }
-
-            a.TrimEnd();
-
-            string[] scales = SQLCommands.FetchList<string>("SELECT Name FROM tableScales WHERE Interval LIKE '0 2'").ToArray();
+            List<string> found = new List<string>();
 
             foreach (var item in scales)
             {
-                MessageBox.Show(item);
+                for (int note = 0; note < chordNotes.Count; note++)
+                {
+                    if (item.IndexOf(note.ToString()) != -1)
+                    { 
+                        if (note == chordNotes.Count - 1)
+                        {
+                            found.Add(item);
+                        }
+                    }      
+                    else break;
+                }
             }
+
+            if (found.Count > 0)
+                foreach (var item in found)
+                    lbResults.Items.Add(SQLCommands.FetchList<string>("SELECT Name FROM tableScales WHERE Interval = '" + item + "'")[0]);          
+            else lbResults.Items.Add("Unknown scale");
+        }
+
+        private void lbResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).cbScale.SelectedValue = lbResults.SelectedValue;
+            ((MainWindow)Application.Current.MainWindow).cbRoot.SelectedIndex = Array.IndexOf(MusicKeys, tbOne.SelectedValue);
+            ((MainWindow)Application.Current.MainWindow).cbRoot_SelectionChanged(((MainWindow)Application.Current.MainWindow).cbRoot, null);
+            ((MainWindow)Application.Current.MainWindow).cbScale_SelectionChanged(((MainWindow)Application.Current.MainWindow).cbScale, null);
+            Close();
         }
     }
 }

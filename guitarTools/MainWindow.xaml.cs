@@ -58,7 +58,7 @@ The application will now close.", "Guitar Tools");
         }
 
         #region ComboBoxes
-        private void cbRoot_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        public void cbRoot_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (fretboard.Root != cbRoot.SelectedIndex)
                 fretboard.UpdateRoot(cbRoot.SelectedIndex);
@@ -70,7 +70,7 @@ The application will now close.", "Guitar Tools");
                 fretboard.UpdateTuning(cbTuning.SelectedValue.ToString());
         }
 
-        private void cbScale_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        public void cbScale_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             if (fretboard.Scale != cbScale.SelectedValue.ToString())
                 fretboard.UpdateScale(cbScale.SelectedValue.ToString());
