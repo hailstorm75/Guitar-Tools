@@ -17,6 +17,13 @@ Note: The files must be saved in the same location! Otherwise the application wo
 # Versions 
 (Release.Date.Upload)
 
+## Version 0.2701.1
+### :octocat: Status
+ - Working alpha release
+ 
+### 💢 Issues
+ - No known issues
+
 ## Version 0.0801.2
 ### :octocat: Status
  - Scales can now be searched using chords
