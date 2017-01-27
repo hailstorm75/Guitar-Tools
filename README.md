@@ -33,7 +33,7 @@ Note: The files must be saved in the same location! Otherwise the application wo
  - Wrong scale is displayed upon startup
  - Scale doesn't shift to different tuning
  
-## Version 0.1226.6
+## Version 0.2612.6
 ### :octocat: Status
  - Scale root is selectable
  - Scale is selectable
