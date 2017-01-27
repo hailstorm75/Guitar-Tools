@@ -12,7 +12,7 @@ namespace guitarTools
     /// </summary>
     public partial class ScaleSearchWindow : Window
     {
-        #region 
+        #region Properties
         public bool init = false;
         public string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
         public ComboBox[,] Menu;

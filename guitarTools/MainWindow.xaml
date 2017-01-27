@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="Guitar tools" Height="386" Width="525"
         MinHeight="360" MinWidth="525"
-        Name="mainWindow" WindowStartupLocation="Manual" Icon="icon.png" Foreground="Black" StateChanged="mainWindow_StateChanged" Activated="MainWindow_OnActivated" WindowStyle="None" AllowsTransparency="True">
+        Name="mainWindow" WindowStartupLocation="Manual" Icon="Resources/icon.png" Foreground="Black" StateChanged="mainWindow_StateChanged" Activated="MainWindow_OnActivated" WindowStyle="None" AllowsTransparency="True">
     <Border BorderBrush="#FF2B2424" BorderThickness="1">
         <StackPanel>
-            <Border x:Name="WindowTop" Background="#FF2B2424" Height="31" Width="auto" MouseDown="WindowTop_MouseDown">
+            <Border x:Name="WindowTop" ClipToBounds="True" Background="#FF2B2424" Height="31" Width="auto" MouseDown="WindowTop_MouseDown">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -18,7 +18,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <DockPanel Grid.Column="0">
-                        <Image Source="icon.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0" Height="25" Width="25" />
+                        <Image Source="Resources/icon.png" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0" Height="25" Width="25" />
                         <Label  HorizontalAlignment="Center" Content="{Binding Title, ElementName=mainWindow}" Foreground="White" Margin="5,0,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" Height="{Binding ActualHeight, ElementName=WindowTop, Mode=OneWay}"/>
                     </DockPanel>
                     <DockPanel Grid.Column="2">
@@ -85,13 +85,13 @@
                             <DockPanel Margin="0,10,0,0">
                                 <Label Content="Tuning: " HorizontalAlignment="Center" Name="lbTuning" />
                                 <ComboBox Name="cbTuning" MinWidth="100" SelectionChanged="cbTuning_SelectionChanged"/>
-                                <Button Width="{Binding ActualHeight, ElementName=cbTuning, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=cbTuning, Mode=OneWay}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Content="+">
+                                <Button Width="{Binding ActualHeight, ElementName=cbTuning, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=cbTuning, Mode=OneWay}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Content="+" IsEnabled="False">
                                 </Button>
                             </DockPanel>
                             <DockPanel Margin="0,10,0,0">
                                 <Label Content="Scale: " HorizontalAlignment="Center" Name="lbScale"  Width="{Binding ActualWidth, ElementName=lbTuning, Mode=OneWay}" />
                                 <ComboBox Name="cbScale" MinWidth="100" SelectionChanged="cbScale_SelectionChanged"/>
-                                <Button Width="{Binding ActualHeight, ElementName=cbScale, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=cbScale, Mode=OneWay}" HorizontalAlignment="Left" Margin="10,0,0,0" Content="+">
+                                <Button Width="{Binding ActualHeight, ElementName=cbScale, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=cbScale, Mode=OneWay}" HorizontalAlignment="Left" Margin="10,0,0,0" Content="+" IsEnabled="False">
 
                                 </Button>
                                 <Button Name="btnSearchScale" Width="{Binding ActualHeight, ElementName=cbScale, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=cbScale, Mode=OneWay}" HorizontalAlignment="Left" Margin="10,0,0,0" Content="?" Click="btnSearchScale_Click">
@@ -106,7 +106,7 @@
                                     Cursor="SizeWE" 
                                     SmallChange="1" LargeChange="2"
                                     AutoToolTipPlacement="BottomRight"
-                                    IsSnapToTickEnabled="True" VerticalAlignment="Center"/>
+                                    IsSnapToTickEnabled="True" VerticalAlignment="Center" IsEnabled="False"/>
                             </DockPanel>
                             <DockPanel>
                                 <Label Name="lbStrings" Content="Strings: " Width="auto"/>
@@ -115,9 +115,9 @@
                                     Cursor="SizeWE" 
                                     SmallChange="1" LargeChange="2"
                                     AutoToolTipPlacement="BottomRight"
-                                    IsSnapToTickEnabled="True" Value="6" VerticalAlignment="Center" />
+                                    IsSnapToTickEnabled="True" Value="6" VerticalAlignment="Center" IsEnabled="False" />
                             </DockPanel>
-                            <Button Content="Apply" Margin="0,5,0,0"/>
+                            <Button Content="Apply" Margin="0,5,0,0" IsEnabled="False"/>
                         </StackPanel>
                     </Grid>
                 </Border>

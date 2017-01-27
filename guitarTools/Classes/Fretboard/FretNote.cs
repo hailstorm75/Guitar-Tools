@@ -64,6 +64,8 @@ namespace guitarTools
 
             noteBody.Child = box;
 
+            noteBody.ToolTip = Index.ToString();
+
             Grid.SetColumn(noteBody, (int)xy.X);
             Grid.SetRow(noteBody, (int)xy.Y);
 
@@ -86,6 +88,7 @@ namespace guitarTools
         public void ShiftTuning(int ShiftBy)
         {
             Index = ShiftBy;
+            noteBody.ToolTip = Index.ToString();
             noteText.Content = MusicKeys[(new IntLimited(ShiftBy, 0, 12)).GetValue];
         }
     }

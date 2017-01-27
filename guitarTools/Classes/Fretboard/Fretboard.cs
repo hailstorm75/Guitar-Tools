@@ -75,8 +75,12 @@ namespace guitarTools.Classes.Fretboard
                     IntLimited key = new IntLimited(numFret, 0, 12);                                       
                     key.GetValue = key + index;
 
+                    IntLimited a = new IntLimited(key.GetValue - Root, 0, 12);
+
+                    //MessageBox.Show(a.Value.ToString());
+
                     // Checking if note fits scale                  
-                    bool IsActive = scale.Contains(key.GetValue.ToString()) ? true : false;
+                    bool IsActive = scale.Contains(a.Value.ToString()) ? true : false;
 
                     // Creating the note
                     FretNote note = new FretNote(key.GetValue, Size * 0.8, IsActive, Root, new Point(numFret, numString), NoteGrid);
@@ -127,20 +131,22 @@ namespace guitarTools.Classes.Fretboard
 
         public void UpdateRoot(int newRoot)
         {
-            IntLimited currentRoot = new IntLimited(Root, 0, 12);
-            Root = newRoot;
-
-            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
-
-            // Shifting scale to new root note
-            foreach (List<FretNote> String in NoteList)
+            if (newRoot != Root)
             {
-                foreach (FretNote Note in String)
+                Root = newRoot;
+
+                string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
+
+                // Shifting scale to new root note
+                foreach (List<FretNote> String in NoteList)
                 {
-                    IntLimited a = new IntLimited(Note.Index - Root, 0, 12);
-                    Note.ChangeState(scale.Contains((a.GetValue).ToString()) ? true : false);
-                    Note.HighlightRoot(Root);
-                }
+                    foreach (FretNote Note in String)
+                    {
+                        IntLimited a = new IntLimited(Note.Index - Root, 0, 12);
+                        Note.ChangeState(scale.Contains((a.GetValue).ToString()) ? true : false);
+                        Note.HighlightRoot(Root);
+                    }
+                } 
             }
         }
 
@@ -162,7 +168,7 @@ namespace guitarTools.Classes.Fretboard
 
         public void UpdateTuning(string newTuning)
         {
-            // TODO Fill method logic
+            // TODO Clean up
             Tuning = newTuning;
 
             string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
@@ -175,14 +181,17 @@ namespace guitarTools.Classes.Fretboard
                 for (int numFret = 0; numFret < NoteList[numString].Count; numFret++)
                 {
                     // Calculating note order based on tuning and root note
-                    IntLimited key = new IntLimited(numFret, 0, 12);                                       
+                    IntLimited key = new IntLimited(numFret, 0, 12);
                     key.GetValue = key + index;
 
-                    // Creating the note
+                    // Shifting the note
                     NoteList[numString][numFret].ShiftTuning(key.GetValue);
 
-                    // Checking if note fits scale                  
-                    bool IsActive = scale.Contains(key.GetValue.ToString()) ? true : false;
+                    // Checking if note fits scale
+                    NoteList[numString][numFret].ChangeState(scale.Contains(new IntLimited(key.GetValue - Root, 0, 12).Value.ToString()) ? true : false);
+
+                    // Highlighting the root
+                    NoteList[numString][numFret].HighlightRoot(Root);
                 }
             }
         }
