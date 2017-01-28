@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
-using guitarTools.Classes;
 using System.Windows.Controls;
+using ServicesLibrary;
 
 namespace guitarTools
 {

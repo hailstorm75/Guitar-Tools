@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace guitarTools.Classes
+namespace ServicesLibrary
 {
     /// <summary>
     /// A set of instructions which fetch data from the 
     /// database and output them to a variable or list
     /// </summary>
 
-    class SQLCommands
+    public class SQLCommands
     {
         #region Property definition
         public static SqlConnection SqlConn { get; set; }

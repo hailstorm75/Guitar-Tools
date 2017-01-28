@@ -21,3 +21,10 @@ C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\guitarTools.exe.config
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools.exe
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools.pdb
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools.csprojResolveAssemblyReference.cache
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\MainWindow.g.cs
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\ScaleSearchWindow.g.cs
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\App.g.cs
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools_Content.g.cs
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools_MarkupCompile.cache
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools_MarkupCompile.lref

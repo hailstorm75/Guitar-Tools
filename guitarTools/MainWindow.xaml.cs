@@ -3,8 +3,8 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Collections.Generic;
-using guitarTools.Classes.Fretboard;
-using guitarTools.Classes;
+using FretboardLibrary;
+using ServicesLibrary;
 
 namespace guitarTools
 {

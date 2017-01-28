@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "guitarTools", "guitarTools\guitarTools.csproj", "{0ABC51EB-E37D-4FD1-B2A3-529ED3E61B12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FretboardLibrary", "FretboardLibrary\FretboardLibrary.csproj", "{92152F68-90DB-44E0-A440-44167201BDE5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BA985F1F-9D96-467A-9BF4-04819337B3BA} = {BA985F1F-9D96-467A-9BF4-04819337B3BA}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesLibrary", "ServicesLibrary\ServicesLibrary.csproj", "{BA985F1F-9D96-467A-9BF4-04819337B3BA}"
 EndProject

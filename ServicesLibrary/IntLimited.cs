@@ -1,4 +1,4 @@
-﻿namespace guitarTools
+﻿namespace ServicesLibrary
 {
     /// <summary>
     /// Limits value to a set range.
