@@ -150,6 +150,12 @@
     <None Include="Resources\searchIcon.png" />
     <Resource Include="Resources\icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FretboardLibrary\FretboardLibrary.csproj">
+      <Project>{92152f68-90db-44e0-a440-44167201bde5}</Project>
+      <Name>FretboardLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

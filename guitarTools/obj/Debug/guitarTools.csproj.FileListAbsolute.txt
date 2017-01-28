@@ -18,3 +18,6 @@ C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\bin\
 C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Debug\App.baml
 C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Debug\ScaleSearchWindow.g.cs
 C:\Users\hp\Documents\Projects\Visual Studio\C#\guitarToolsForm\guitarTools\obj\Debug\ScaleSearchWindow.baml
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\guitarTools.exe.config
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools.exe
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools.pdb

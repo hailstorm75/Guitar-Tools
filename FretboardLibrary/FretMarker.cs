@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace guitarTools
+namespace FretboardLibrary
 {
     /// <summary>
     /// Contains the definition of the Fret Marker object.
@@ -9,7 +9,7 @@ namespace guitarTools
     /// It is created and managed by the Fretboard object
     /// </summary>
 
-    class FretMarker
+    public class FretMarker
     {
         public FretMarker(Grid grid, Point xy, string content)
         {

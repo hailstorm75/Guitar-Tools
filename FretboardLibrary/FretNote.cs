@@ -2,14 +2,14 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace guitarTools
+namespace FretboardLibrary
 {
     /// <summary>
     /// FretNote is an object which represents a note on the fretboard
     /// It is created and managed by the Fretboard object
     /// </summary>
 
-    class FretNote
+    public class FretNote
     {
         #region Properties
         public int Index { get; set; }
@@ -89,7 +89,7 @@ namespace guitarTools
         {
             Index = ShiftBy;
             noteBody.ToolTip = Index.ToString();
-            noteText.Content = MusicKeys[(new IntLimited(ShiftBy, 0, 12)).GetValue];
+            noteText.Content = MusicKeys[(new IntLimited(ShiftBy, 0, 12)).Value];
         }
     }
 }

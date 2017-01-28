@@ -5,13 +5,13 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace guitarTools.Classes.Fretboard
+namespace FretboardLibrary
 {
     /// <summary>
     /// Fretboard creates and manages fret notes, markers and their grid
     /// </summary>
 
-    class Fretboard
+    public class Fretboard
     {
         #region Properties
         private List<List<FretNote>> NoteList { get; set; }
@@ -73,9 +73,9 @@ namespace guitarTools.Classes.Fretboard
                 {
                     // Calculating note order based on tuning and root note
                     IntLimited key = new IntLimited(numFret, 0, 12);                                       
-                    key.GetValue = key + index;
+                    key.Value = key + index;
 
-                    IntLimited a = new IntLimited(key.GetValue - Root, 0, 12);
+                    IntLimited a = new IntLimited(key.Value - Root, 0, 12);
 
                     //MessageBox.Show(a.Value.ToString());
 
@@ -83,7 +83,7 @@ namespace guitarTools.Classes.Fretboard
                     bool IsActive = scale.Contains(a.Value.ToString()) ? true : false;
 
                     // Creating the note
-                    FretNote note = new FretNote(key.GetValue, Size * 0.8, IsActive, Root, new Point(numFret, numString), NoteGrid);
+                    FretNote note = new FretNote(key.Value, Size * 0.8, IsActive, Root, new Point(numFret, numString), NoteGrid);
                     tempNoteList.Add(note);
                 }
 
@@ -143,7 +143,7 @@ namespace guitarTools.Classes.Fretboard
                     foreach (FretNote Note in String)
                     {
                         IntLimited a = new IntLimited(Note.Index - Root, 0, 12);
-                        Note.ChangeState(scale.Contains((a.GetValue).ToString()) ? true : false);
+                        Note.ChangeState(scale.Contains((a.Value).ToString()) ? true : false);
                         Note.HighlightRoot(Root);
                     }
                 } 
@@ -161,7 +161,7 @@ namespace guitarTools.Classes.Fretboard
                 foreach (FretNote Note in String)
                 {
                     IntLimited a = new IntLimited(Note.Index - Root, 0, 12);
-                    Note.ChangeState(scale.Contains((a.GetValue).ToString()) ? true : false);
+                    Note.ChangeState(scale.Contains((a.Value).ToString()) ? true : false);
                 }
             }
         }
@@ -182,13 +182,13 @@ namespace guitarTools.Classes.Fretboard
                 {
                     // Calculating note order based on tuning and root note
                     IntLimited key = new IntLimited(numFret, 0, 12);
-                    key.GetValue = key + index;
+                    key.Value = key + index;
 
                     // Shifting the note
-                    NoteList[numString][numFret].ShiftTuning(key.GetValue);
+                    NoteList[numString][numFret].ShiftTuning(key.Value);
 
                     // Checking if note fits scale
-                    NoteList[numString][numFret].ChangeState(scale.Contains(new IntLimited(key.GetValue - Root, 0, 12).Value.ToString()) ? true : false);
+                    NoteList[numString][numFret].ChangeState(scale.Contains(new IntLimited(key.Value - Root, 0, 12).Value.ToString()) ? true : false);
 
                     // Highlighting the root
                     NoteList[numString][numFret].HighlightRoot(Root);

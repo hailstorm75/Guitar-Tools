@@ -7,7 +7,7 @@
     /// Shrinks number to range when using mathematical operators: +, -
     /// </summary>
 
-    class IntLimited
+    public class IntLimited
     {
         #region Properties
         private static int MinValue { get; set; }
@@ -30,24 +30,12 @@
         #region Operator overrides
         public static int operator +(IntLimited a, int b)
         {
-            return (b + a.GetValue) % MaxValue - MinValue;
+            return (b + a.Value) % MaxValue - MinValue;
         }
         public static int operator -(IntLimited a, int b)
         {
-            return (b - a.GetValue) % MaxValue - MinValue;
+            return (b - a.Value) % MaxValue - MinValue;
         }
-        #endregion
-               
-        public int GetValue
-        {
-            get
-            {
-                return Value;
-            }
-            set
-            {
-                Value = value;
-            }
-        }
+        #endregion 
     }
 }
