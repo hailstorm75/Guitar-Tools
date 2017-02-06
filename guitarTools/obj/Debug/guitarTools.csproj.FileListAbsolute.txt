@@ -28,3 +28,17 @@ C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Deb
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools_Content.g.cs
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools_MarkupCompile.cache
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools_MarkupCompile.lref
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\Data.mdf
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\Data_log.ldf
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\guitarTools.exe
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\guitarTools.pdb
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\FretboardLibrary.dll
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\ServicesLibrary.dll
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\FretboardLibrary.pdb
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\ServicesLibrary.pdb
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\App.baml
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\MainWindow.baml
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\ScaleSearchWindow.baml
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools.g.resources
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools.Properties.Resources.resources
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\guitarTools.csproj.GenerateResource.Cache

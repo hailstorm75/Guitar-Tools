@@ -5,7 +5,7 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using ServicesLibrary;
 
-namespace guitarTools
+namespace GuitarScales
 {
     /// <summary>
     /// Interaction logic for ScaleSearchWindow.xaml

@@ -65,7 +65,7 @@ namespace FretboardLibrary
 
             noteBody.Child = box;
 
-            noteBody.ToolTip = Index.ToString();
+            noteBody.ToolTip = SQLCommands.FetchList<string>("SELECT Ratio + ' ' + Name AS Value FROM tableRatios WHERE Id =" + Root)[0];
 
             Grid.SetColumn(noteBody, (int)xy.X);
             Grid.SetRow(noteBody, (int)xy.Y);

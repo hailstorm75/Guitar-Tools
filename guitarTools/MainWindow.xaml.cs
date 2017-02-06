@@ -5,8 +5,10 @@ using System.Windows.Threading;
 using System.Collections.Generic;
 using FretboardLibrary;
 using ServicesLibrary;
+using System.Windows.Media.Animation;
+using System.Windows.Controls;
 
-namespace guitarTools
+namespace GuitarScales
 {
     /// <summary>
     /// Contains the window logic.
@@ -17,9 +19,17 @@ namespace guitarTools
     {
         Fretboard fretboard;
 
+        #region Properties
+        public bool Hidden { get; set; }
+        public StackPanel SettingsPanel { get; set; }
+        #endregion
+
         public MainWindow()
         {
             InitializeComponent();
+
+            Hidden = true;
+            SettingsPanel = null;
 
             if (!SQLCommands.CheckConnection())
             {
@@ -104,18 +114,6 @@ The application will now close.", "Guitar Tools");
             WindowState = WindowState.Minimized;
         }
 
-        private void mainWindow_StateChanged(object sender, System.EventArgs e)
-        {
-            //if (WindowState == WindowState.Normal)
-            //{
-            //    DoubleAnimation da = new DoubleAnimation();
-            //    da.From = 1;
-            //    da.To = 0;
-            //    da.Duration = new Duration(TimeSpan.FromSeconds(0.5));
-            //    MainWindow.OpacityProperty.Be
-            //}
-        }
-
         private void MainWindow_OnActivated(object sender, EventArgs e)
         {
             //change the WindowStyle back to None, but only after the Window has been activated
@@ -128,5 +126,42 @@ The application will now close.", "Guitar Tools");
             ScaleSearchWindow a = new ScaleSearchWindow();
             a.ShowDialog();
         }
+
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb;
+
+            if (Hidden)
+            {
+                sb = Resources["sbShowLeftMenu"] as Storyboard;
+            }
+            else
+            {
+                sb = Resources["sbHideLeftMenu"] as Storyboard;
+            }
+
+            sb.Begin(pnlLeftMenu);
+            Hidden = !Hidden;
+        }
+
+        #region Settings Panels
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb = Resources["sbShowSetting"] as Storyboard;
+            string panelName = (sender as Button).Name.Replace("btn", "");
+            SettingsPanel = (StackPanel)FindName(panelName);
+            sb.Begin(SettingsPanel);
+        }
+
+        private void Settings_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (SettingsPanel != null && !SettingsPanel.IsMouseOver)
+            {
+                Storyboard sb = Resources["sbHideSetting"] as Storyboard;
+                sb.Begin(SettingsPanel);
+                SettingsPanel = null;
+            }
+        }
+        #endregion
     }
 }
