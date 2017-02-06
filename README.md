@@ -17,6 +17,15 @@ Note: The files must be saved in the same location! Otherwise the application wo
 # Versions 
 (Release.Date.Upload)
 
+## Version 0.0602.1
+### :octocat: Status
+ - UI Updated with Hamburger menu
+ - Optimized code and project structure
+ - Fret notes have tooltips
+ 
+### 💢 Issues
+ - Fret note tooltips display incorrect information. Quick fix incoming
+ 
 ## Version 0.2701.1
 ### :octocat: Status
  - Working alpha release
