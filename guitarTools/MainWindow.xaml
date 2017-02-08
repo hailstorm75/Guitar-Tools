@@ -84,18 +84,17 @@
             </Border>
             <Grid VerticalAlignment="Stretch" Grid.Row="1">
                 <StackPanel Name="Settings1" Style="{StaticResource PanelStyle}">
-                    <Label Content="Panel 1"/>
-                    <StackPanel 
-                                x:Name="stackPanel" 
-                                HorizontalAlignment="Center" 
-                                Margin="20,0,5,0"
-                                Grid.Column="0">
-                        <StackPanel>
-                            <Label 
-                                        Content="Root: " 
-                                        HorizontalAlignment="Left" 
-                                        Name="lbRoot" 
-                                        Width="{Binding ActualWidth, ElementName=lbTuning, Mode=OneWay}" />
+                    <Label Content="Scale" 
+                           Background="#FFC5BBCB"
+                           FontSize="28"
+                           Width="250"/>
+                    <StackPanel HorizontalAlignment="Center" >
+                        <StackPanel Width="220">
+                            <TextBlock 
+                                Text="Root" 
+                                HorizontalAlignment="Left" 
+                                FontSize="24"        
+                                Width="{Binding ActualWidth, ElementName=lbTuning, Mode=OneWay}" />
                             <ComboBox 
                                         Name="cbRoot" 
                                         MinWidth="100" 
@@ -116,109 +115,147 @@
                             </ComboBox>
                         </StackPanel>
                         <StackPanel Margin="0,10,0,0">
-                            <Label 
-                                        Content="Tuning: " 
-                                        HorizontalAlignment="Left" 
-                                        Name="lbTuning" />
+                            <TextBlock
+                                Text="Tuning" 
+                                HorizontalAlignment="Left"
+                                FontSize="24"  
+                                Name="lbTuning" />
                             <ComboBox 
-                                        Name="cbTuning" 
-                                        MinWidth="100" 
-                                        SelectionChanged="cbTuning_SelectionChanged"
-                                        Style="{StaticResource ComboBoxFlatStyle}"/>
+                                Name="cbTuning" 
+                                SelectionChanged="cbTuning_SelectionChanged"
+                                Style="{StaticResource ComboBoxFlatStyle}"/>
                         </StackPanel>
                         <StackPanel Margin="0,10,0,0">
-                            <Label 
-                                        Content="Scale: " 
-                                        HorizontalAlignment="Left" 
-                                        Name="lbScale" 
-                                        Width="{Binding ActualWidth, ElementName=lbTuning, Mode=OneWay}" />
+                            <TextBlock 
+                                Text="Scale" 
+                                HorizontalAlignment="Left" 
+                                Name="lbScale" 
+                                FontSize="24"  
+                                Width="{Binding ActualWidth, ElementName=lbTuning, Mode=OneWay}" />
                             <ComboBox 
-                                        Name="cbScale" 
-                                        MinWidth="100" 
-                                        SelectionChanged="cbScale_SelectionChanged"
-                                        Style="{StaticResource ComboBoxFlatStyle}"/>
+                                Name="cbScale" 
+                                SelectionChanged="cbScale_SelectionChanged"
+                                Style="{StaticResource ComboBoxFlatStyle}"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Name="Settings2" Style="{StaticResource PanelStyle}">
-                    <Label Content="Panel 2"/>
+                    <Label Content="Scale search" 
+                           Background="#FFC5BBCB"
+                           FontSize="28"
+                           Width="250"/>
+                    <StackPanel>
+                        <Grid Name="MenuGrid" Width="200">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <ComboBox Name="tbOne" KeyboardNavigation.TabIndex="1" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="True" Style="{StaticResource ComboBoxFlatStyle}">
+                                    <ComboBoxItem Content="- None -"/>
+                                </ComboBox>
+                                <ComboBox Name="tbTwo" KeyboardNavigation.TabIndex="3" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
+                                    <ComboBoxItem Content="- None -"/>
+                                </ComboBox>
+                                <ComboBox Name="tbThree" KeyboardNavigation.TabIndex="5" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
+                                    <ComboBoxItem Content="- None -"/>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <ComboBox Name="cbOne" KeyboardNavigation.TabIndex="2" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
+                                    <ComboBoxItem Content="- None -"/>
+                                </ComboBox>
+                                <ComboBox Name="cbTwo" KeyboardNavigation.TabIndex="4" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
+                                    <ComboBoxItem Content="- None -"/>
+                                </ComboBox>
+                                <ComboBox Name="cbThree" KeyboardNavigation.TabIndex="6" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
+                                    <ComboBoxItem Content="- None -"/>
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+                        <Button Content="Search" Margin="0, 10, 0,15" IsEnabled="False" Name="btnSearch" HorizontalAlignment="Center" Click="btnSearch_Click"/>
+                        <ListBox Name="lbResults" Height="100" Width="{Binding ActualWidth, ElementName=MenuGrid, Mode=OneWay}" SelectionChanged="lbResults_SelectionChanged" />
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel Name="Settings3" Style="{StaticResource PanelStyle}">
-                    <Label Content="Panel 3"/>
-                    <StackPanel 
-                                Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}" 
+                    <Label Content="Fretboard"
+                           Background="#FFC5BBCB"
+                           FontSize="28"
+                           Width="250"/>
+                    <StackPanel Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}" 
                                 HorizontalAlignment="Center" 
                                 Margin="5,0,10,0" 
                                 Grid.Column="2">
                         <DockPanel 
-                                    Width="{Binding ActualWidth, ElementName=spUiC3, Mode=OneWay}" 
-                                    VerticalAlignment="Center">
+                                Width="{Binding ActualWidth, ElementName=spUiC3, Mode=OneWay}" 
+                                VerticalAlignment="Center">
                             <Label 
-                                        Name="lbFrets" 
-                                        Content="Frets: "
-                                        Width="{Binding ActualWidth, ElementName=lbStrings, Mode=OneWay}" />
+                                Name="lbFrets" 
+                                Content="Frets: "
+                                Width="{Binding ActualWidth, ElementName=lbStrings, Mode=OneWay}" />
                             <Slider 
-                                        MinWidth="70"
-                                        Maximum="24" Minimum="12" 
-                                        Cursor="SizeWE" 
-                                        SmallChange="1" LargeChange="2"
-                                        AutoToolTipPlacement="BottomRight"
-                                        IsSnapToTickEnabled="True" 
-                                        VerticalAlignment="Center" 
-                                        IsEnabled="False"/>
+                                MinWidth="70"
+                                Maximum="24" Minimum="12" 
+                                Cursor="SizeWE" 
+                                SmallChange="1" LargeChange="2"
+                                AutoToolTipPlacement="BottomRight"
+                                IsSnapToTickEnabled="True" 
+                                VerticalAlignment="Center" 
+                                IsEnabled="False"/>
                         </DockPanel>
                         <DockPanel>
                             <Label 
-                                        Name="lbStrings" 
-                                        Content="Strings: " 
-                                        Width="auto"/>
+                                Name="lbStrings" 
+                                Content="Strings: " 
+                                Width="auto"/>
                             <Slider 
-                                        MinWidth="70"
-                                        Maximum="8" Minimum="5"                                   
-                                        Cursor="SizeWE" 
-                                        SmallChange="1" LargeChange="2"
-                                        AutoToolTipPlacement="BottomRight"
-                                        IsSnapToTickEnabled="True" 
-                                        Value="6" 
-                                        VerticalAlignment="Center" 
-                                        IsEnabled="False" />
+                                MinWidth="70"
+                                Maximum="8" Minimum="5"                                   
+                                Cursor="SizeWE" 
+                                SmallChange="1" LargeChange="2"
+                                AutoToolTipPlacement="BottomRight"
+                                IsSnapToTickEnabled="True" 
+                                Value="6" 
+                                VerticalAlignment="Center" 
+                                IsEnabled="False" />
                         </DockPanel>
                         <Button 
-                                    Content="Apply"
-                                    Margin="0,5,0,0" 
-                                    IsEnabled="False"/>
+                            Content="Apply"
+                            Margin="0,5,0,0" 
+                            IsEnabled="False"/>
                     </StackPanel>
                 </StackPanel>
 
                 <StackPanel Background="WhiteSmoke" Width="50" Panel.ZIndex="1" Name="pnlLeftMenu" HorizontalAlignment="Left">
                     <Button 
-                            Background="#FFC5BBCB"
-                            Click="Menu_Click" 
-                            Style="{StaticResource PanelOptionStyle}">
+                        Background="#FFC5BBCB"
+                        Click="Menu_Click" 
+                        Style="{StaticResource PanelOptionStyle}">
                         <DockPanel Width="200">
                             <TextBlock Width="50" TextAlignment="Center" FontSize="38" Text="&#x2261;" FontFamily="Segoe MDL2 Assests"/>
                             <TextBlock Text="Menu" FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0" Width="140"/>
                         </DockPanel>
                     </Button>
                     <Button Name="btnSettings1"
-                                Click="Settings_Click"
-                                Style="{StaticResource PanelOptionStyle}">
+                            Click="Settings_Click"
+                            Style="{StaticResource PanelOptionStyle}">
                         <DockPanel Width="200">
                             <TextBlock FontSize="38" Width="50" TextAlignment="Center" Text="&#xE001;" FontFamily="Segoe MDL2 Assests"/>
                             <TextBlock Text="Scale" FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0" Width="140"/>
                         </DockPanel>
                     </Button>
                     <Button Name="btnSettings2"
-                                Click="Settings_Click"
-                                Style="{StaticResource PanelOptionStyle}">
+                            Click="Settings_Click"
+                            Style="{StaticResource PanelOptionStyle}">
                         <DockPanel Width="200">
                             <TextBlock FontSize="20" Width="50" TextAlignment="Center" Text="&#xE1A3;" FontFamily="Segoe UI Symbol"/>
                             <TextBlock Text="Search scale" FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0" Width="140"/>
                         </DockPanel>
                     </Button>
                     <Button Name="btnSettings3"
-                                Click="Settings_Click"
-                                Style="{StaticResource PanelOptionStyle}">
+                            Click="Settings_Click"
+                            Style="{StaticResource PanelOptionStyle}">
                         <DockPanel Width="200">
                             <TextBlock FontSize="20" Width="50" TextAlignment="Center" Text="&#xE1A3;" FontFamily="Segoe UI Symbol"/>
                             <TextBlock Text="Fretboard" FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0" Width="140"/>
