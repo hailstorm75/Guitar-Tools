@@ -17,6 +17,10 @@ Note: The files must be saved in the same location! Otherwise the application wo
 # Versions 
 (Release.Date.Upload)
 
+# Version 0.0802.2
+### :octocat: Status
+ - Working version with hamburger menu
+
 ## Version 0.0602.1
 ### :octocat: Status
  - UI Updated with Hamburger menu
