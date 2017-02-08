@@ -65,7 +65,7 @@ namespace FretboardLibrary
 
             noteBody.Child = box;
 
-            noteBody.ToolTip = SQLCommands.FetchList<string>("SELECT Ratio + ' ' + Name AS Value FROM tableRatios WHERE Id =" + Root)[0];
+            SetToolTip();
 
             Grid.SetColumn(noteBody, (int)xy.X);
             Grid.SetRow(noteBody, (int)xy.Y);
@@ -83,14 +83,21 @@ namespace FretboardLibrary
         public void HighlightRoot(int root)
         {
             Root = root;
+            SetToolTip();
             noteBody.BorderBrush = Root == Index ? Brushes.Gold : Brushes.Black;
         }
 
         public void ShiftTuning(int ShiftBy)
         {
             Index = ShiftBy;
-            noteBody.ToolTip = Index.ToString();
+            SetToolTip();
             noteText.Content = MusicKeys[(new IntLimited(ShiftBy, 0, 12)).Value];
+        }
+
+        private void SetToolTip()
+        {
+            IntLimited interval = new IntLimited(Index - Root, 0, 12);
+            noteBody.ToolTip = SQLCommands.FetchList<string>("SELECT Ratio + ' ' + Name AS Value FROM tableRatios WHERE Id =" + interval.Value)[0];
         }
     }
 }

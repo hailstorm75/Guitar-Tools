@@ -23,3 +23,4 @@ C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Deb
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.pdb
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\Assets\Animation.baml
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\Assets\Theme.baml
+C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\Assets\ComboBoxStyle.baml

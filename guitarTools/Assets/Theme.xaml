@@ -28,7 +28,7 @@
     </Style>
     <Style TargetType="StackPanel" x:Key="PanelStyle">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="Background" Value="#FFD8C8C8" />
+        <Setter Property="Background" Value="#FFF7F7F7" />
         <Setter Property="Width" Value="250"/>
         <Setter Property="Margin" Value="-250,0,0,0"/>
         <Setter Property="Panel.ZIndex" Value="2"/>
