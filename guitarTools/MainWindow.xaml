@@ -4,18 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:fa="http://schemas.fontawesome.io/icons/"
     xmlns:local="clr-namespace:guitarTools"
-    mc:Ignorable="d"
     Title="Guitar tools" 
     Height="386" Width="525"
-    MinHeight="360" MinWidth="525"
+    MinHeight="386" MinWidth="525"
     Name="mainWindow" 
-    WindowStartupLocation="Manual" 
+    WindowStartupLocation="CenterScreen" 
     Icon="Resources/icon.png" 
-    Foreground="Black" 
-    Activated="MainWindow_OnActivated" 
-    WindowStyle="None" 
-    AllowsTransparency="True"
+    Foreground="Black"
     MouseDown="Settings_MouseDown">
     <Window.Resources>
         <ResourceDictionary>
@@ -30,58 +27,8 @@
     <Border BorderBrush="#FF2B2424" BorderThickness="1">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="32"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border 
-                    x:Name="WindowTop" 
-                    ClipToBounds="True" 
-                    Background="#FF2B2424" 
-                    Height="32" 
-                    Width="auto" 
-                    MouseDown="WindowTop_MouseDown">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <DockPanel Grid.Column="0">
-                        <Image 
-                                Source="Resources/icon.png" 
-                                VerticalAlignment="Center" 
-                                HorizontalAlignment="Center" 
-                                Margin="5,0,0,0" 
-                                Height="25" 
-                                Width="25" />
-                        <Label 
-                                HorizontalAlignment="Center" 
-                                Content="{Binding Title, ElementName=mainWindow}" 
-                                Foreground="White" 
-                                Margin="5,0,0,0" 
-                                VerticalContentAlignment="Center" 
-                                HorizontalContentAlignment="Center" 
-                                VerticalAlignment="Center" 
-                                Height="{Binding ActualHeight, ElementName=WindowTop, Mode=OneWay}"/>
-                    </DockPanel>
-                    <DockPanel Grid.Column="2">
-                        <Button 
-                                x:Name="btnMinimize"
-                                Content="_" ToolTip="Minimize"
-                                Style="{StaticResource windowButtonControl}" 
-                                Click="btnMinimize_Click" 
-                                Width="{Binding Height, ElementName=WindowTop}"
-                                Height="{Binding Height, ElementName=WindowTop}"/>
-                        <Button 
-                                x:Name="btnClose"
-                                Content="x" ToolTip="Close"
-                                Style="{StaticResource windowButtonControl}" 
-                                Click="btnClose_Click"
-                                Width="{Binding Height, ElementName=WindowTop}"
-                                Height="{Binding Height, ElementName=WindowTop}"/>
-                    </DockPanel>
-                </Grid>
-            </Border>
             <Grid VerticalAlignment="Stretch" Grid.Row="1">
                 <StackPanel Name="Settings1" Style="{StaticResource PanelStyle}">
                     <Label Content="Scale" 
@@ -233,7 +180,12 @@
                         Click="Menu_Click" 
                         Style="{StaticResource PanelOptionStyle}">
                         <DockPanel Width="200">
-                            <TextBlock Width="50" TextAlignment="Center" FontSize="38" Text="&#x2261;" FontFamily="Segoe MDL2 Assests"/>
+                            <!--<TextBlock Width="50" TextAlignment="Center" FontSize="38" Text="&#x2261;" FontFamily="Segoe MDL2 Assests"/>-->
+                            <Label Width="50" HorizontalContentAlignment="Center">
+                                <Label.Content>
+                                    <fa:ImageAwesome Icon="Bars" Height="24"/>
+                                </Label.Content>
+                            </Label>
                             <TextBlock Text="Menu" FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0" Width="140"/>
                         </DockPanel>
                     </Button>
@@ -241,7 +193,11 @@
                             Click="Settings_Click"
                             Style="{StaticResource PanelOptionStyle}">
                         <DockPanel Width="200">
-                            <TextBlock FontSize="38" Width="50" TextAlignment="Center" Text="&#xE001;" FontFamily="Segoe MDL2 Assests"/>
+                            <Label Width="50" HorizontalContentAlignment="Center">
+                                <Label.Content>
+                                    <fa:ImageAwesome Icon="Braille" Height="20"/>
+                                </Label.Content>
+                            </Label>
                             <TextBlock Text="Scale" FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0" Width="140"/>
                         </DockPanel>
                     </Button>
@@ -249,7 +205,11 @@
                             Click="Settings_Click"
                             Style="{StaticResource PanelOptionStyle}">
                         <DockPanel Width="200">
-                            <TextBlock FontSize="20" Width="50" TextAlignment="Center" Text="&#xE1A3;" FontFamily="Segoe UI Symbol"/>
+                            <Label Width="50" HorizontalContentAlignment="Center">
+                                <Label.Content>
+                                    <fa:ImageAwesome Icon="Search" Height="26"/>
+                                </Label.Content>
+                            </Label>
                             <TextBlock Text="Search scale" FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0" Width="140"/>
                         </DockPanel>
                     </Button>
@@ -257,7 +217,11 @@
                             Click="Settings_Click"
                             Style="{StaticResource PanelOptionStyle}">
                         <DockPanel Width="200">
-                            <TextBlock FontSize="20" Width="50" TextAlignment="Center" Text="&#xE1A3;" FontFamily="Segoe UI Symbol"/>
+                            <Label Width="50" HorizontalContentAlignment="Center">
+                                <Label.Content>
+                                    <fa:ImageAwesome Icon="Sliders" Height="24"/>
+                                </Label.Content>
+                            </Label>
                             <TextBlock Text="Fretboard" FontSize="24" VerticalAlignment="Center" Margin="5,0,0,0" Width="140"/>
                         </DockPanel>
                     </Button>

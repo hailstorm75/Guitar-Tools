@@ -17,10 +17,10 @@ namespace GuitarScales
 
     public partial class MainWindow : Window
     {
+        #region Properties
         Fretboard fretboard;
 
-        #region Properties
-        public bool Hidden { get; set; }
+        public bool HiddenMenu { get; set; }
         public StackPanel SettingsPanel { get; set; }
 
         public bool init = false;
@@ -33,15 +33,9 @@ namespace GuitarScales
         {
             InitializeComponent();
 
-            Hidden = true;
-            SettingsPanel = null;
-
             if (!SQLCommands.CheckConnection())
             {
-                MessageBox.Show(@"ERROR: Missing data file: Data.mdf
-Make sure the application is in the same folder as the data file.
-
-The application will now close.", "Guitar Tools");
+                MessageBox.Show("ERROR: Missing data file: Data.mdf\nMake sure the application is in the same folder as the data file.\n\nThe application will now close.", "Guitar Tools");
                 Close();
             }
 
@@ -49,29 +43,40 @@ The application will now close.", "Guitar Tools");
             ushort frets = 12*1;
             ushort strings = 6;
             List<List<FretNote>> NoteList = new List<List<FretNote>>(); // Row is a string, column is a fret
+
+            HiddenMenu = true;
+            SettingsPanel = null;
             #endregion
 
             // Creating default fretboard
             fretboard = new Fretboard(mainGrid, noteGrid, strings, frets, NoteList, 4, "Standard E", "Ionian");
 
-            #region Setting up Controls
+            SetupControls(4, 0, 0, strings);
+
+            SetupSearchScale();
+        }
+
+        #region Setup
+        private void SetupControls(int root, int tuning, int scale, int strings)
+        {
             // The root notes are constant - no need to fetch from database
-            cbRoot.SelectedIndex = 4; // Setting default root note to "E"
+            cbRoot.SelectedIndex = root; // Setting default root note to "E"
 
             // Adding tunings from database
             foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableTuning WHERE Strings = " + strings))
                 cbTuning.Items.Add(item);
 
-            cbTuning.SelectedIndex = 0; // Setting default tuning to "Standard"
+            cbTuning.SelectedIndex = tuning; // Setting default tuning to "Standard"
 
             // Adding scales from database
             foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableScales"))
                 cbScale.Items.Add(item);
 
-            cbScale.SelectedIndex = 0;
-            #endregion
+            cbScale.SelectedIndex = scale;
+        }
 
-            #region Setting up Search scale
+        private void SetupSearchScale()
+        {
             foreach (var item in MusicKeys)
             {
                 tbOne.Items.Add(item);
@@ -91,8 +96,8 @@ The application will now close.", "Guitar Tools");
             Menu = new ComboBox[,] { { tbOne, tbTwo, tbThree }, { cbOne, cbTwo, cbThree } };
 
             init = true;
-            #endregion
-        }
+        } 
+        #endregion
 
         #region ComboBoxes
         public void cbRoot_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -114,45 +119,11 @@ The application will now close.", "Guitar Tools");
         }
         #endregion
 
-        #region WindowEvents
-        private void WindowTop_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-            {
-                if (WindowState == WindowState.Maximized)
-                {
-                    WindowState = WindowState.Normal;
-                    Top = 0;
-                    Left = Mouse.GetPosition(this).X - ActualWidth / 2;
-                }
-
-                DragMove();
-            }
-        }
-
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void btnMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            //WindowStyle = WindowStyle.SingleBorderWindow;
-            WindowState = WindowState.Minimized;
-        }
-
-        private void MainWindow_OnActivated(object sender, EventArgs e)
-        {
-            //change the WindowStyle back to None, but only after the Window has been activated
-            Dispatcher.BeginInvoke(DispatcherPriority.ApplicationIdle, new Action(() => WindowStyle = WindowStyle.None));
-        }
-        #endregion
-
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
             Storyboard sb;
 
-            if (Hidden)
+            if (HiddenMenu)
             {
                 sb = Resources["sbShowLeftMenu"] as Storyboard;
             }
@@ -162,8 +133,8 @@ The application will now close.", "Guitar Tools");
             }
 
             sb.Begin(pnlLeftMenu);
-            Hidden = !Hidden;
-        }
+            HiddenMenu = !HiddenMenu;
+        }     
 
         #region Settings Panels
         private void Settings_Click(object sender, RoutedEventArgs e)
