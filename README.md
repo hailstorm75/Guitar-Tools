@@ -22,8 +22,16 @@ To run the app, open guitarTools.exe
 ## Version 0.1202.1
 ### :octocat: Status
  - Beta release!
- - All basic features are now functional:fd
-   - fdf
+ - All basic features are now functional:
+   - Selecting scale root
+   - Selecting tuning
+   - Selecting scale
+   - Finding scale using chords
+   - Customising scale fret and string amount
+   
+### 💢 Issues
+ - Scale search: "Unknown scale" is unhandled, causes crash
+ - Only 6 and 7 strings are currently available
 
 ## Version 0.0902.1
 ### :octocat: Status
