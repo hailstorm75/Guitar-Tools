@@ -9,13 +9,15 @@ You can track the project progress here: https://github.com/hailstorm75/Guitar-T
 ## 📥 Download
 Download the latest release if you wish to try the application for yourself:
  - https://github.com/hailstorm75/Guitar-Tools/releases/tag/0.3
+ 
 or try a in-dev version:
  - https://github.com/hailstorm75/Guitar-Tools/blob/master/guitarTools/bin/Debug/
  
 To run the app, open guitarTools.exe
 
 # Screenshots
-## Version [0.0902.1](#version-009021-1)
+_Version [0.0902.1](#version-009021-1)_
+
 ![Screenshot](https://github.com/hailstorm75/Guitar-Tools/blob/master/docs/Screen01.PNG)
 
 # Versions 
