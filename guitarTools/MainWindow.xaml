@@ -34,7 +34,8 @@
                     <Label Content="Scale" 
                            Background="#FFC5BBCB"
                            FontSize="28"
-                           Width="250"/>
+                           Width="250"
+                           Height="50"/>
                     <StackPanel HorizontalAlignment="Center" >
                         <StackPanel Width="220">
                             <TextBlock 
@@ -90,7 +91,8 @@
                     <Label Content="Scale search" 
                            Background="#FFC5BBCB"
                            FontSize="28"
-                           Width="250"/>
+                           Width="250"
+                           Height="50"/>
                     <StackPanel>
                         <Grid Name="MenuGrid" Width="200">
                             <Grid.ColumnDefinitions>
@@ -129,48 +131,45 @@
                     <Label Content="Fretboard"
                            Background="#FFC5BBCB"
                            FontSize="28"
-                           Width="250"/>
-                    <StackPanel Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}" 
-                                HorizontalAlignment="Center" 
-                                Margin="5,0,10,0" 
-                                Grid.Column="2">
-                        <DockPanel 
-                                Width="{Binding ActualWidth, ElementName=spUiC3, Mode=OneWay}" 
-                                VerticalAlignment="Center">
-                            <Label 
-                                Name="lbFrets" 
-                                Content="Frets: "
-                                Width="{Binding ActualWidth, ElementName=lbStrings, Mode=OneWay}" />
-                            <Slider 
-                                MinWidth="70"
-                                Maximum="24" Minimum="12" 
-                                Cursor="SizeWE" 
-                                SmallChange="1" LargeChange="2"
-                                AutoToolTipPlacement="BottomRight"
-                                IsSnapToTickEnabled="True" 
-                                VerticalAlignment="Center" 
-                                IsEnabled="False"/>
-                        </DockPanel>
-                        <DockPanel>
-                            <Label 
-                                Name="lbStrings" 
-                                Content="Strings: " 
-                                Width="auto"/>
-                            <Slider 
-                                MinWidth="70"
-                                Maximum="8" Minimum="5"                                   
-                                Cursor="SizeWE" 
-                                SmallChange="1" LargeChange="2"
-                                AutoToolTipPlacement="BottomRight"
-                                IsSnapToTickEnabled="True" 
-                                Value="6" 
-                                VerticalAlignment="Center" 
-                                IsEnabled="False" />
+                           Width="250"
+                           Height="50"/>
+                    <StackPanel 
+                        Width="{Binding ActualWidth, ElementName=stackPanel, Mode=OneWay}" 
+                        HorizontalAlignment="Center" 
+                        Margin="5,0,10,0" 
+                        Grid.Column="2">
+                        <DockPanel
+                            Width="220" 
+                            VerticalAlignment="Center">
+                            <StackPanel>
+                                <TextBlock 
+                                    Text="Frets" 
+                                    HorizontalAlignment="Left" 
+                                    FontSize="24" />
+                                <Slider x:Name="SliderFrets" 
+                                    Maximum="24" Minimum="12" 
+                                    Cursor="SizeWE" 
+                                    SmallChange="1" LargeChange="2"
+                                    AutoToolTipPlacement="BottomRight"
+                                    IsSnapToTickEnabled="True" 
+                                    VerticalAlignment="Center" Margin="0,4.5"/>
+                                <TextBlock
+                                    Text="Strings" 
+                                    HorizontalAlignment="Left" 
+                                    FontSize="24"/>
+                                <Slider x:Name="SliderStrings"
+                                    Maximum="7" Minimum="6"                                   
+                                    Cursor="SizeWE" 
+                                    SmallChange="1" LargeChange="2"
+                                    AutoToolTipPlacement="BottomRight"
+                                    IsSnapToTickEnabled="True" 
+                                    Value="6" 
+                                    VerticalAlignment="Center" Margin="0,4.5" />
+                            </StackPanel>
                         </DockPanel>
                         <Button 
                             Content="Apply"
-                            Margin="0,5,0,0" 
-                            IsEnabled="False"/>
+                            Margin="0,5,0,0" Click="FretboardApply_Click"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -232,11 +231,6 @@
                             x:Name="mainGrid" 
                             Width="525" 
                             Height="170">
-                            <Grid 
-                                x:Name="noteGrid" 
-                                ShowGridLines="False" 
-                                VerticalAlignment="Top" 
-                                Grid.ColumnSpan="3"/>
                         </Grid>
                     </Viewbox>
                 </Grid>

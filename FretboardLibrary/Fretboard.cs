@@ -18,8 +18,8 @@ namespace FretboardLibrary
         private List<List<FretNote>> NoteList { get; set; }
         private Grid MainGrid { get; set; }
         private Grid NoteGrid { get; set; }
-        private ushort Strings { get; set; }
-        private ushort Frets { get; set; }
+        public ushort Strings { get; set; }
+        public ushort Frets { get; set; }
         private double Width { get; set; }
         private double Height { get; set; }
         private double Size { get; set; }
@@ -28,11 +28,16 @@ namespace FretboardLibrary
         public string Scale { get; set; }
         #endregion
 
-        public Fretboard(Grid mainGrid, Grid noteGrid, ushort strings, ushort frets, List<List<FretNote>> noteList, int root, string tuning, string scale)
+        public Fretboard(Grid mainGrid, ushort strings, ushort frets, List<List<FretNote>> noteList, int root, string tuning, string scale)
         {
             // Assigning values to properties
             MainGrid = mainGrid;
-            NoteGrid = noteGrid;
+
+            NoteGrid = new Grid();
+            NoteGrid.VerticalAlignment = VerticalAlignment.Top;
+            NoteGrid.ShowGridLines = false;
+            MainGrid.Children.Add(NoteGrid);
+
             Strings = strings;
             Frets = frets;
             Width = mainGrid.Width / frets;
@@ -46,7 +51,7 @@ namespace FretboardLibrary
             // Creating the fretboard            
             CreateGrid();
             CreateNotes();
-            CreateMarkers();         
+            CreateMarkers();
             DrawFretboard();
         }
 
@@ -61,9 +66,20 @@ namespace FretboardLibrary
         private void CreateNotes()
         {
             // Passing selected tuning from database to array
-            string[] tuning = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Name = '" + Tuning + "' AND Strings = " + Strings)[0].Split(' ');
-            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
+            string[] tuning;
+
+            try
+            {
+                tuning = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Name = '" + Tuning + "' AND Strings = " + Strings)[0].Split(' ');
+            }
+            catch
+            {
+                tuning = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Id = 1 AND Strings = " + Strings)[0].Split(' ');
+                Tuning = SQLCommands.FetchList<string>("SELECT Name FROM tableTuning WHERE Id = 1 AND Strings = " + Strings)[0];
+            }
             
+            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
+
             // Creating notes and adding them to the grid
             for (int numString = 0; numString < Strings; numString++)
             {
@@ -73,7 +89,7 @@ namespace FretboardLibrary
                 for (int numFret = 0; numFret <= Frets; numFret++)
                 {
                     // Calculating note order based on tuning and root note
-                    IntLimited key = new IntLimited(numFret, 0, 12);                                       
+                    IntLimited key = new IntLimited(numFret, 0, 12);
                     key.Value = key + index;
 
                     IntLimited a = new IntLimited(key.Value - Root, 0, 12);
@@ -89,7 +105,7 @@ namespace FretboardLibrary
                 }
 
                 NoteList.Add(tempNoteList); // Generating list of notes for future reference
-            }         
+            }
         }
 
         private void CreateMarkers()
@@ -116,7 +132,7 @@ namespace FretboardLibrary
 
             // Drawing the frets
             for (ushort i = 1; i <= Frets; i++)
-            {            
+            {
                 Line fret = new Line()
                 {
                     X1 = MainGrid.Width / (Frets + 1) * i,
@@ -147,7 +163,7 @@ namespace FretboardLibrary
                         Note.ChangeState(scale.Contains((a.Value).ToString()) ? true : false);
                         Note.HighlightRoot(Root);
                     }
-                } 
+                }
             }
         }
 
@@ -195,6 +211,13 @@ namespace FretboardLibrary
                     NoteList[numString][numFret].HighlightRoot(Root);
                 }
             }
+        }
+
+        public void ClearNotes()
+        {
+            NoteGrid.Children.Clear();
+            MainGrid.Children.Clear();
+            NoteList.Clear();
         }
     }
 }

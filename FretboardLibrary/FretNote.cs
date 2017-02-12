@@ -20,7 +20,7 @@ namespace FretboardLibrary
 
         private Label noteText;
         private Border noteBody;
-        private Viewbox box; 
+        private Viewbox box;
         #endregion
 
         public FretNote(int index, double size, bool isActive, int root, Point xy, Grid grid)
@@ -38,7 +38,7 @@ namespace FretboardLibrary
                 //BorderBrush = Brushes.Black,
                 BorderBrush = Root == Index ? Brushes.Gold : Brushes.Black,
                 BorderThickness = new Thickness(1),
-                Background = Brushes.SlateBlue, 
+                Background = Brushes.SlateBlue,
                 Opacity = IsActive ? 1 : 0.3,                   //Inline IF ELSE operation
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -71,7 +71,7 @@ namespace FretboardLibrary
             Grid.SetRow(noteBody, (int)xy.Y);
 
             //Adding the created object to the grid
-            grid.Children.Add(noteBody); 
+            grid.Children.Add(noteBody);
             #endregion
         }
 
