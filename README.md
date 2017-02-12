@@ -7,7 +7,9 @@ For more information go to https://github.com/hailstorm75/Guitar-Tools/project
 You can track the project progress here: https://github.com/hailstorm75/Guitar-Tools/projects/1
 
 ## 📥 Download
-If you wish to see the application for yourself, please download files from this folder:
+Download the latest release if you wish to try the application for yourself:
+ - https://github.com/hailstorm75/Guitar-Tools/releases/tag/0.3
+or try a in-dev version:
  - https://github.com/hailstorm75/Guitar-Tools/blob/master/guitarTools/bin/Debug/
  
 To run the app, open guitarTools.exe
@@ -19,7 +21,7 @@ To run the app, open guitarTools.exe
 # Versions 
 (Release.Date.Upload)
 
-## Version 0.1202.1
+## Version [0.1202.1](https://github.com/hailstorm75/Guitar-Tools/releases/tag/0.3)
 ### :octocat: Status
  - Beta release!
  - All basic features are now functional:
@@ -27,7 +29,7 @@ To run the app, open guitarTools.exe
    - Selecting tuning
    - Selecting scale
    - Finding scale using chords
-   - Customising scale fret and string amount
+   - Customizing fretboard string and fret amount
    
 ### 💢 Issues
  - Scale search: "Unknown scale" is unhandled, causes crash
