@@ -16,7 +16,7 @@ or try a in-dev version:
 To run the app, open guitarTools.exe
 
 # Screenshots
-_Version [0.0902.1](#version-009021-1)_
+_ Version [0.0902.1](#version-009021-1)
 
 ![Screenshot](https://github.com/hailstorm75/Guitar-Tools/blob/master/docs/Screen01.PNG)
 
