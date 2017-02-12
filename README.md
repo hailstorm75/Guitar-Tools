@@ -19,6 +19,12 @@ To run the app, open guitarTools.exe
 # Versions 
 (Release.Date.Upload)
 
+## Version 0.1202.1
+### :octocat: Status
+ - Beta release!
+ - All basic features are now functional:fd
+   - fdf
+
 ## Version 0.0902.1
 ### :octocat: Status
  - Removed custom window styles
