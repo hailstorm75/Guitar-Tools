@@ -129,8 +129,13 @@ namespace GuitarScales
 
         public void cbScale_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (fretboard.Scale != cbScale.SelectedValue.ToString())
-                fretboard.UpdateScale(cbScale.SelectedValue.ToString());
+            try
+            {
+                if (fretboard.Scale != cbScale.SelectedValue.ToString())
+                    fretboard.UpdateScale(cbScale.SelectedValue.ToString());
+            }
+            catch { }
+            
         }
         #endregion
 
@@ -188,26 +193,33 @@ namespace GuitarScales
                         chordNotes.Add(int.Parse(item));
             }
             chordNotes.Sort();
-            string[] scales = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales").ToArray();
-            List<string> found = new List<string>();
-            foreach (var item in scales)
+            try
             {
-                for (int note = 0; note < chordNotes.Count; note++)
+                string[] scales = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales").ToArray();
+                List<string> found = new List<string>();
+                foreach (var item in scales)
                 {
-                    if (item.IndexOf(note.ToString()) != -1)
+                    for (int note = 0; note < chordNotes.Count; note++)
                     {
-                        if (note == chordNotes.Count - 1)
+                        if (item.IndexOf(note.ToString()) != -1)
                         {
-                            found.Add(item);
+                            if (note == chordNotes.Count - 1)
+                            {
+                                found.Add(item);
+                            }
                         }
+                        else break;
                     }
-                    else break;
                 }
+                if (found.Count > 0)
+                    foreach (var item in found)
+                        lbResults.Items.Add(SQLCommands.FetchList<string>("SELECT Name FROM tableScales WHERE Interval = '" + item + "'")[0]);
+                else lbResults.Items.Add("Unknown scale");
             }
-            if (found.Count > 0)
-                foreach (var item in found)
-                    lbResults.Items.Add(SQLCommands.FetchList<string>("SELECT Name FROM tableScales WHERE Interval = '" + item + "'")[0]);
-            else lbResults.Items.Add("Unknown scale");
+            catch
+            {
+                MessageBox.Show("OOOPS");
+            }
         }
 
         private void SelectionChanged(object sender, SelectionChangedEventArgs e)

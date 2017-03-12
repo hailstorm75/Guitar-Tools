@@ -30,6 +30,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid VerticalAlignment="Stretch" Grid.Row="1">
+                <!-- Sliding panels -->
                 <StackPanel Name="Settings1" Style="{StaticResource PanelStyle}">
                     <Label Content="Scale" 
                            Background="#FFC5BBCB"
@@ -94,35 +95,46 @@
                            Width="250"
                            Height="50"/>
                     <StackPanel>
-                        <Grid Name="MenuGrid" Width="200">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
+                        <TabControl>
+                            <TabItem Header="Note">
+                                <StackPanel>
+                                    
+                                </StackPanel>
+                            </TabItem>
+                            <TabItem Header="Chord">
+                                <StackPanel>
+                                    <Grid Name="MenuGrid" Width="200">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0">
-                                <ComboBox Name="tbOne" KeyboardNavigation.TabIndex="1" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="True" Style="{StaticResource ComboBoxFlatStyle}">
-                                    <ComboBoxItem Content="- None -"/>
-                                </ComboBox>
-                                <ComboBox Name="tbTwo" KeyboardNavigation.TabIndex="3" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
-                                    <ComboBoxItem Content="- None -"/>
-                                </ComboBox>
-                                <ComboBox Name="tbThree" KeyboardNavigation.TabIndex="5" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
-                                    <ComboBoxItem Content="- None -"/>
-                                </ComboBox>
-                            </StackPanel>
-                            <StackPanel Grid.Column="1">
-                                <ComboBox Name="cbOne" KeyboardNavigation.TabIndex="2" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
-                                    <ComboBoxItem Content="- None -"/>
-                                </ComboBox>
-                                <ComboBox Name="cbTwo" KeyboardNavigation.TabIndex="4" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
-                                    <ComboBoxItem Content="- None -"/>
-                                </ComboBox>
-                                <ComboBox Name="cbThree" KeyboardNavigation.TabIndex="6" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
-                                    <ComboBoxItem Content="- None -"/>
-                                </ComboBox>
-                            </StackPanel>
-                        </Grid>
+                                        <StackPanel Grid.Column="0">
+                                            <ComboBox Name="tbOne" KeyboardNavigation.TabIndex="1" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="True" Style="{StaticResource ComboBoxFlatStyle}">
+                                                <ComboBoxItem Content="- None -"/>
+                                            </ComboBox>
+                                            <ComboBox Name="tbTwo" KeyboardNavigation.TabIndex="3" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
+                                                <ComboBoxItem Content="- None -"/>
+                                            </ComboBox>
+                                            <ComboBox Name="tbThree" KeyboardNavigation.TabIndex="5" Margin="0,10,2.5,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
+                                                <ComboBoxItem Content="- None -"/>
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1">
+                                            <ComboBox Name="cbOne" KeyboardNavigation.TabIndex="2" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
+                                                <ComboBoxItem Content="- None -"/>
+                                            </ComboBox>
+                                            <ComboBox Name="cbTwo" KeyboardNavigation.TabIndex="4" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
+                                                <ComboBoxItem Content="- None -"/>
+                                            </ComboBox>
+                                            <ComboBox Name="cbThree" KeyboardNavigation.TabIndex="6" Margin="2.5,10,0,0" SelectedIndex="0" SelectionChanged="SelectionChanged" IsEnabled="False" Style="{StaticResource ComboBoxFlatStyle}">
+                                                <ComboBoxItem Content="- None -"/>
+                                            </ComboBox>
+                                        </StackPanel>
+                                    </Grid>
+                                </StackPanel>
+                            </TabItem>
+                        </TabControl>
                         <Button Content="Search" Margin="0, 10, 0,15" IsEnabled="False" Name="btnSearch" HorizontalAlignment="Center" Click="btnSearch_Click"/>
                         <ListBox Name="lbResults" Height="100" Width="{Binding ActualWidth, ElementName=MenuGrid, Mode=OneWay}" SelectionChanged="lbResults_SelectionChanged" />
                     </StackPanel>
@@ -172,7 +184,8 @@
                             Margin="0,5,0,0" Click="FretboardApply_Click"/>
                     </StackPanel>
                 </StackPanel>
-
+                
+                <!-- Menu -->
                 <StackPanel Background="WhiteSmoke" Width="50" Panel.ZIndex="1" Name="pnlLeftMenu" HorizontalAlignment="Left">
                     <Button 
                         Background="#FFC5BBCB"
@@ -225,15 +238,15 @@
                         </DockPanel>
                     </Button>
                 </StackPanel>
-                <Grid Margin="50,0,0,0" VerticalAlignment="Center" >
-                    <Viewbox Stretch="Uniform">
-                        <Grid 
-                            x:Name="mainGrid" 
-                            Width="525" 
-                            Height="170">
-                        </Grid>
-                    </Viewbox>
-                </Grid>
+
+                <!-- Fretboard -->
+                <Viewbox Stretch="Uniform" Margin="50,0,0,0" VerticalAlignment="Center">
+                    <Grid 
+                        x:Name="mainGrid" 
+                        Width="525" 
+                        Height="170">
+                    </Grid>
+                </Viewbox>
             </Grid>
         </Grid>
     </Border>
