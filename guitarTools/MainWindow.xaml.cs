@@ -33,10 +33,9 @@ namespace GuitarScales
         public MainWindow()
         {
             InitializeComponent();
-
-            if (!SQLCommands.CheckConnection())
+            if (!XMLReader.CheckFile("file.xml"))
             {
-                MessageBox.Show("ERROR: Missing data file: Data.mdf\nMake sure the application is in the same folder as the data file.\n\nThe application will now close.", "Guitar Tools");
+                MessageBox.Show("ERROR: Missing data file: Data.xml\nMake sure the application is in the same folder as the data file.\n\nThe application will now close.", "Guitar Tools");
                 Close();
             }
 

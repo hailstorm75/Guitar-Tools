@@ -3,3 +3,8 @@ C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\ServicesLibrary\bin
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\ServicesLibrary\obj\Debug\ServicesLibrary.dll
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\ServicesLibrary\obj\Debug\ServicesLibrary.pdb
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\ServicesLibrary\obj\Debug\ServicesLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\bin\Debug\ServicesLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\bin\Debug\ServicesLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Debug\ServicesLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Debug\ServicesLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Debug\ServicesLibrary.pdb

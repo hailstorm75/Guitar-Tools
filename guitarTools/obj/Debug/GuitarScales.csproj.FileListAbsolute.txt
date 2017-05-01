@@ -24,3 +24,29 @@ C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Deb
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\obj\Debug\Assets\ComboBoxStyle.baml
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\FontAwesome.WPF.dll
 C:\Users\hp\Documents\Projects\Visual Studio\C#\Guitar-Tools\guitarTools\bin\Debug\FontAwesome.WPF.xml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\Data.mdf
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\Data_log.ldf
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\GuitarScales.exe.config
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\GuitarScales.exe
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\GuitarScales.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\FontAwesome.WPF.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\FretboardLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\ServicesLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\FretboardLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\ServicesLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\FontAwesome.WPF.xml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.csprojResolveAssemblyReference.cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\MainWindow.g.cs
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\App.g.cs
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales_Content.g.cs
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales_MarkupCompile.cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales_MarkupCompile.lref
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Assets\Animation.baml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Assets\ComboBoxStyle.baml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Assets\Theme.baml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\MainWindow.baml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.g.resources
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.Properties.Resources.resources
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.csproj.GenerateResource.Cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.exe
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.pdb

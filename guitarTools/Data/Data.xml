@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Data>
+	<Tunings>
+		<Tuning strings="6" category="Standard">
+			<Name>Standard E</Name>
+			<Interval>4 11 7 2 9 4</Interval>
+		</Tuning>
+		<Tuning strings="6" category="Drop">
+			<Name>Drop D</Name>
+			<Interval>4 11 7 2 9 2</Interval>
+		</Tuning>
+		<Tuning strings="6" category="Miscellaneous">
+			<Name>Dad-Gad</Name>
+			<Interval>2 9 7 2 9 2</Interval>
+		</Tuning>
+		<Tuning strings="6" category="Miscellaneous">
+			<Name>Dad-Dad</Name>
+			<Interval>2 9 2 2 9 2</Interval>
+		</Tuning>
+		<!--
+    <Tuning strings="6" category="Miscellaneous">
+			<Name>Cello</Name>
+			<Interval></Interval>
+		</Tuning>
+		<Tuning strings="6" category="Miscellaneous">
+			<Name>Karnivool</Name>
+			<Interval></Interval>
+		</Tuning>
+		<Tuning strings="6" category="Miscellaneous">
+			<Name>Mi-compose</Name>
+			<Interval></Interval>
+		</Tuning>
+		<Tuning strings="6" category="Open">
+			<Name>Standard Open</Name>
+			<Interval></Interval>
+		</Tuning>
+		<Tuning strings="6" category="Open">
+			<Name>Dobro Open</Name>
+			<Interval></Interval>
+		</Tuning>
+		<Tuning strings="6" category="Open">
+			<Name>Russian Open</Name>
+			<Interval></Interval>
+		</Tuning>
+    -->
+		<Tuning strings="7" category="Standard">
+			<Name>Standard B</Name>
+			<Interval>4 11 7 2 9 4 11</Interval>
+		</Tuning>
+		<Tuning strings="7" category="Drop">
+			<Name>Drop A</Name>
+			<Interval>4 11 7 2 9 4 9</Interval>
+		</Tuning>
+		<Tuning strings="8" category="Standard">
+			<Name>Standard F#</Name>
+			<Interval>4 11 7 2 9 4 11 6</Interval>
+		</Tuning>
+  <Tuning strings="8" category="Drop">
+			<Name>Drop E</Name>
+			<Interval>4 11 7 2 9 4 11 4</Interval>
+		</Tuning>
+	</Tunings>
+	<Scales>
+		<Scale>
+			<Name></Name>
+			<Interval></Interval>
+		</Scale>
+	</Scales>
+</Data>
