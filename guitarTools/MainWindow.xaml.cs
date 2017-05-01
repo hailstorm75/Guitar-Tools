@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Threading;
 using System.Collections.Generic;
 using FretboardLibrary;
 using ServicesLibrary;
 using System.Windows.Media.Animation;
 using System.Windows.Controls;
+using System.Xml.Linq;
+using System.Linq;
 
 namespace GuitarScales
 {
@@ -21,6 +21,8 @@ namespace GuitarScales
         Fretboard fretboard;
         List<List<FretNote>> NoteList;
 
+        private XDocument Doc { get; set; }
+
         public bool HiddenMenu { get; set; }
         public StackPanel SettingsPanel { get; set; }
 
@@ -33,16 +35,12 @@ namespace GuitarScales
         public MainWindow()
         {
             InitializeComponent();
-            if (!XMLReader.CheckFile("file.xml"))
-            {
-                MessageBox.Show("ERROR: Missing data file: Data.xml\nMake sure the application is in the same folder as the data file.\n\nThe application will now close.", "Guitar Tools");
-                Close();
-            }
 
             #region Defining variables
             ushort frets = 12 * 1;
             ushort strings = 6;
             NoteList = new List<List<FretNote>>(); // Row is a string, column is a fret
+            Doc = new XDocument(XDocument.Load(@"C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\Data\Data.xml"));
 
             HiddenMenu = true;
             SettingsPanel = null;
@@ -75,7 +73,11 @@ namespace GuitarScales
             }
 
             // Adding tunings from database
-            foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableTuning WHERE Strings = " + strings))
+            var tunings = from node in Doc.Descendants("Tunings").Elements("Tuning")
+                          where node.Attribute("strings").Value == strings.ToString()
+                          select node.Element("Name").Value;
+            
+            foreach (var item in tunings)
                 cbTuning.Items.Add(item);
             cbTuning.SelectedIndex = 0;
         }
@@ -83,7 +85,10 @@ namespace GuitarScales
         private void FillScales(int scale)
         {
             // Adding scales from database
-            foreach (var item in SQLCommands.FetchList<string>("SELECT Name FROM tableScales"))
+            var scales = from node in Doc.Descendants("Scales").Elements("Scale")
+                         select node.Element("Name").Value;
+
+            foreach (var item in scales)
                 cbScale.Items.Add(item);
             cbScale.SelectedIndex = scale;
         }
@@ -96,7 +101,9 @@ namespace GuitarScales
                 tbTwo.Items.Add(item);
                 tbThree.Items.Add(item);
             }
-            string[] chords = SQLCommands.FetchList<string>("SELECT Name FROM tableChords").ToArray();
+            
+            var chords = from node in Doc.Descendants("Chords").Elements("Chord")
+                         select node.Element("Name").Value;
 
             foreach (var item in chords)
             {
@@ -181,20 +188,25 @@ namespace GuitarScales
             int pointA = Array.IndexOf(MusicKeys, tbOne.SelectedItem);
             for (int row = 0; row < Menu.GetLength(1) - Active; row++)
             {
-                string[] Chord = SQLCommands.FetchList<string>("SELECT Interval FROM tableChords WHERE Name = '" + Menu[1, row].SelectedValue + "'")[0].Split(' ');
+                string[] chord = (from node in Doc.Descendants("Chords").Elements("Chord")
+                                  where node.Element("Name").Value == (string)Menu[1, row].SelectedValue
+                                  select node.Element("Interval").Value).Single().Split(' ');
+
                 int pointB = Array.IndexOf(MusicKeys, Menu[1, row]);
                 if (pointA - pointB != 0)
                 {
                     IntLimited shiftBy = new IntLimited(pointA + pointB, 0, 12);
                 }
-                foreach (var item in Chord)
+                foreach (var item in chord)
                     if (!chordNotes.Contains(int.Parse(item)))
                         chordNotes.Add(int.Parse(item));
             }
             chordNotes.Sort();
             try
             {
-                string[] scales = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales").ToArray();
+                var scales = from node in Doc.Descendants("Scales").Elements("Scale")
+                             select node.Element("Interval").Value;
+
                 List<string> found = new List<string>();
                 foreach (var item in scales)
                 {
@@ -212,7 +224,11 @@ namespace GuitarScales
                 }
                 if (found.Count > 0)
                     foreach (var item in found)
-                        lbResults.Items.Add(SQLCommands.FetchList<string>("SELECT Name FROM tableScales WHERE Interval = '" + item + "'")[0]);
+                        lbResults.Items.Add(
+                            (from node in Doc.Descendants("Scales").Elements("Scale")
+                            where node.Element("Interval").Value == item
+                            select node.Element("Name").Value).Single()
+                            );
                 else lbResults.Items.Add("Unknown scale");
             }
             catch
@@ -313,7 +329,15 @@ namespace GuitarScales
             {
                 int oldStrings = fretboard.Strings;
                 fretboard.ClearNotes();
-                fretboard = new Fretboard(mainGrid, (ushort)SliderStrings.Value, (ushort)SliderFrets.Value, NoteList, 4, cbTuning.SelectedValue.ToString(), "Ionian");
+                fretboard = new Fretboard(mainGrid, 
+                                          (ushort)SliderStrings.Value, 
+                                          (ushort)SliderFrets.Value, 
+                                          NoteList, 
+                                          4,
+                                          (from node in Doc.Descendants("Tunings").Elements("Tuning")
+                                           where node.Attribute("strings").Value == SliderStrings.Value.ToString()
+                                           select node.Element("Name").Value).First(), 
+                                          "Ionian");
 
                 if (SliderStrings.Value != oldStrings)
                 {

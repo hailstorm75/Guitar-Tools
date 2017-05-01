@@ -2,6 +2,9 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using ServicesLibrary;
+using System.Linq;
+using System.Xml.Linq;
+using System.Text;
 
 namespace FretboardLibrary
 {
@@ -97,7 +100,14 @@ namespace FretboardLibrary
         private void SetToolTip()
         {
             IntLimited interval = new IntLimited(Index - Root, 0, 12);
-            noteBody.ToolTip = SQLCommands.FetchList<string>("SELECT Ratio + ' ' + Name AS Value FROM tableRatios WHERE Id =" + interval.Value)[0];
+            noteBody.ToolTip = (from node in XDocument.Load(@"C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\Data\Data.xml")
+                                                      .Descendants("Ratios").Elements("Ratio")
+                                where node.Attribute("id").Value == interval.Value.ToString()
+                                select new StringBuilder(node.Element("Value").Value)
+                                                        .Append(" ")
+                                                        .Append(node.Element("Name").Value)
+                                                        .ToString()).Single();
+            
         }
     }
 }

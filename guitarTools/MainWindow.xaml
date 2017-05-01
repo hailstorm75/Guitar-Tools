@@ -170,7 +170,7 @@
                                     HorizontalAlignment="Left" 
                                     FontSize="24"/>
                                 <Slider x:Name="SliderStrings"
-                                    Maximum="7" Minimum="6"                                   
+                                    Maximum="8" Minimum="6"                                   
                                     Cursor="SizeWE" 
                                     SmallChange="1" LargeChange="2"
                                     AutoToolTipPlacement="BottomRight"

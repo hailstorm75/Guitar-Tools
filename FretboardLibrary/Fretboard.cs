@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using ServicesLibrary;
+using System.Xml.Linq;
 
 namespace FretboardLibrary
 {
@@ -15,6 +16,7 @@ namespace FretboardLibrary
     public class Fretboard
     {
         #region Properties
+        private XDocument Doc { get; set; }
         private List<List<FretNote>> NoteList { get; set; }
         private Grid MainGrid { get; set; }
         private Grid NoteGrid { get; set; }
@@ -38,6 +40,7 @@ namespace FretboardLibrary
             NoteGrid.ShowGridLines = false;
             MainGrid.Children.Add(NoteGrid);
 
+            Doc = new XDocument(XDocument.Load(@"C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\Data\Data.xml"));
             Strings = strings;
             Frets = frets;
             Width = mainGrid.Width / frets;
@@ -66,19 +69,14 @@ namespace FretboardLibrary
         private void CreateNotes()
         {
             // Passing selected tuning from database to array
-            string[] tuning;
+            string[] tuning = (from node in Doc.Descendants("Tunings").Elements("Tuning")
+                               where node.Element("Name").Value == Tuning && node.Attribute("strings").Value == Strings.ToString()
+                               select node.Element("Interval").Value).Single().Split(' ');
 
-            try
-            {
-                tuning = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Name = '" + Tuning + "' AND Strings = " + Strings)[0].Split(' ');
-            }
-            catch
-            {
-                tuning = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Id = 1 AND Strings = " + Strings)[0].Split(' ');
-                Tuning = SQLCommands.FetchList<string>("SELECT Name FROM tableTuning WHERE Id = 1 AND Strings = " + Strings)[0];
-            }
-            
-            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
+            string[] scale = (from node in Doc.Descendants("Scales").Elements("Scale")
+                              where node.Element("Name").Value == Scale
+                              select node.Element("Interval").Value).Single().Split(' ');
+
 
             // Creating notes and adding them to the grid
             for (int numString = 0; numString < Strings; numString++)
@@ -152,7 +150,9 @@ namespace FretboardLibrary
             {
                 Root = newRoot;
 
-                string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
+                string[] scale = (from node in Doc.Descendants("Scales").Elements("Scale")
+                                  where node.Element("Name").Value == Scale
+                                  select node.Element("Interval").Value).Single().Split(' ');
 
                 // Shifting scale to new root note
                 foreach (List<FretNote> String in NoteList)
@@ -170,7 +170,9 @@ namespace FretboardLibrary
         public void UpdateScale(string newScale)
         {
             Scale = newScale;
-            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
+            string[] scale = (from node in Doc.Descendants("Scales").Elements("Scale")
+                              where node.Element("Name").Value == Scale
+                              select node.Element("Interval").Value).Single().Split(' ');
 
             // Shifting scale to new root note
             foreach (List<FretNote> String in NoteList)
@@ -188,9 +190,13 @@ namespace FretboardLibrary
             // TODO Clean up
             Tuning = newTuning;
 
-            string[] scale = SQLCommands.FetchList<string>("SELECT Interval FROM tableScales WHERE Name = '" + Scale + "'")[0].Split(' ');
-            string[] tuning = SQLCommands.FetchList<string>("SELECT Interval FROM tableTuning WHERE Name = '" + Tuning + "' AND Strings = " + Strings)[0].Split(' ');
-
+            string[] scale = (from node in Doc.Descendants("Scales").Elements("Scale")
+                              where node.Element("Name").Value == Scale
+                              select node.Element("Interval").Value).Single().Split(' ');
+            string[] tuning = (from node in Doc.Descendants("Tunings").Elements("Tuning")
+                               where node.Element("Name").Value == Tuning && node.Attribute("strings").Value == Strings.ToString()
+                               select node.Element("Interval").Value).Single().Split(' ');
+        
             for (int numString = 0; numString < NoteList.Count; numString++)
             {
                 int index = int.Parse(tuning[numString]);     // Getting individual string tunning
