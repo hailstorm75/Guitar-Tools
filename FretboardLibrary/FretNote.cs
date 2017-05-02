@@ -5,6 +5,7 @@ using ServicesLibrary;
 using System.Linq;
 using System.Xml.Linq;
 using System.Text;
+using System;
 
 namespace FretboardLibrary
 {
@@ -25,6 +26,8 @@ namespace FretboardLibrary
         private Border noteBody;
         private Viewbox box;
         #endregion
+
+        private static readonly Object key = new Object();
 
         public FretNote(int index, double size, bool isActive, int root, Point xy, Grid grid)
         {
@@ -100,14 +103,13 @@ namespace FretboardLibrary
         private void SetToolTip()
         {
             IntLimited interval = new IntLimited(Index - Root, 0, 12);
-            noteBody.ToolTip = (from node in XDocument.Load(@"C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\Data\Data.xml")
+            noteBody.ToolTip = (from node in XDocument.Load(System.IO.Directory.GetCurrentDirectory() + @"\Data\Data.xml")
                                                       .Descendants("Ratios").Elements("Ratio")
                                 where node.Attribute("id").Value == interval.Value.ToString()
                                 select new StringBuilder(node.Element("Value").Value)
                                                         .Append(" ")
                                                         .Append(node.Element("Name").Value)
                                                         .ToString()).Single();
-            
         }
     }
 }

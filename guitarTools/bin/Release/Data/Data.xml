@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<Data>
+	<Tunings>
+		<Tuning strings="6" category="Standard">
+			<Name>Standard E</Name>
+			<Interval>4 11 7 2 9 4</Interval>
+		</Tuning>
+		<Tuning strings="6" category="Drop">
+			<Name>Drop D</Name>
+			<Interval>4 11 7 2 9 2</Interval>
+		</Tuning>
+		<Tuning strings="6" category="Miscellaneous">
+			<Name>Dad-Gad</Name>
+			<Interval>2 9 7 2 9 2</Interval>
+		</Tuning>
+		<Tuning strings="6" category="Miscellaneous">
+			<Name>Dad-Dad</Name>
+			<Interval>2 9 2 2 9 2</Interval>
+		</Tuning>
+    <Tuning strings="6" category="Miscellaneous">
+			<Name>Cello</Name>
+			<Interval>11 4 9 2 7 0</Interval>
+		</Tuning>
+    <!--
+		<Tuning strings="6" category="Miscellaneous">
+			<Name>Karnivool</Name>
+			<Interval></Interval>
+		</Tuning>
+		<Tuning strings="6" category="Miscellaneous">
+			<Name>Mi-compose</Name>
+			<Interval></Interval>
+		</Tuning>
+		<Tuning strings="6" category="Open">
+			<Name>Standard Open</Name>
+			<Interval></Interval>
+		</Tuning>
+		<Tuning strings="6" category="Open">
+			<Name>Dobro Open</Name>
+			<Interval></Interval>
+		</Tuning>
+		<Tuning strings="6" category="Open">
+			<Name>Russian Open</Name>
+			<Interval></Interval>
+		</Tuning>
+    -->
+		<Tuning strings="7" category="Standard">
+			<Name>Standard B</Name>
+			<Interval>4 11 7 2 9 4 11</Interval>
+		</Tuning>
+		<Tuning strings="7" category="Drop">
+			<Name>Drop A</Name>
+			<Interval>4 11 7 2 9 4 9</Interval>
+		</Tuning>
+		<Tuning strings="8" category="Standard">
+			<Name>Standard F#</Name>
+			<Interval>4 11 7 2 9 4 11 6</Interval>
+		</Tuning>
+  <Tuning strings="8" category="Drop">
+			<Name>Drop E</Name>
+			<Interval>4 11 7 2 9 4 11 4</Interval>
+		</Tuning>
+	</Tunings>
+	<Scales>
+		<Scale>
+			<Name>Ionian</Name>
+			<Interval>0 2 4 5 7 9 11</Interval>
+		</Scale>
+    <Scale>
+      <Name>Dorian</Name>
+      <Interval>0 2 3 5 7 9 10</Interval>
+    </Scale>
+    <Scale>
+      <Name>Frygian</Name>
+      <Interval>0 1 3 5 7 8 10</Interval>
+    </Scale>
+    <Scale>
+      <Name>Lydian</Name>
+      <Interval>0 2 4 6 7 9 11</Interval>
+    </Scale>
+    <Scale>
+      <Name>Mixolydian</Name>
+      <Interval>0 2 4 5 7 8 10</Interval>
+    </Scale>
+    <Scale>
+      <Name>Aiolian</Name>
+      <Interval>0 2 3 5 7 8 10</Interval>
+    </Scale>
+    <Scale>
+      <Name>Locrian</Name>
+      <Interval>0 1 3 5 6 8 10</Interval>
+    </Scale>
+    <Scale>
+      <Name>Pentatonic Min</Name>
+      <Interval>0 3 5 7 10</Interval>
+    </Scale>
+    <Scale>
+      <Name>Pentatonic Maj</Name>
+      <Interval>0 2 4 7 9</Interval>
+    </Scale>
+    <Scale>
+      <Name>Harmonic Min</Name>
+      <Interval>0 2 3 5 7 8 11</Interval>
+    </Scale>
+    <Scale>
+      <Name>Harmonic Maj</Name>
+      <Interval>0 2 4 5 7 8 11</Interval>
+    </Scale>
+    <Scale>
+      <Name>Blues</Name>
+      <Interval>0 3 4 5 6 7 10</Interval>
+    </Scale>
+	</Scales>
+  <Ratios>
+    <Ratio id="0">
+      <Name>Perfect unison</Name>
+      <Value>1</Value>
+    </Ratio>
+    <Ratio id="1">
+      <Name>Minor second</Name>
+      <Value>-2</Value>
+    </Ratio>
+    <Ratio id="2">
+      <Name>Major second</Name>
+      <Value>2</Value>
+    </Ratio>
+    <Ratio id="3">
+      <Name>Minor third</Name>
+      <Value>-3</Value>
+    </Ratio>
+    <Ratio id="4">
+      <Name>Major third</Name>
+      <Value>3/-4</Value>
+    </Ratio>
+    <Ratio id="5">
+      <Name>Perfect fourth</Name>
+      <Value>4</Value>
+    </Ratio>
+    <Ratio id="6">
+      <Name>Tritone</Name>
+      <Value>+4/-5</Value>
+    </Ratio>
+    <Ratio id="7">
+      <Name>Perfect fifth</Name>
+      <Value>5</Value>
+    </Ratio>
+    <Ratio id="8">
+      <Name>Minor sixth</Name>
+      <Value>+5/-6</Value>
+    </Ratio>
+    <Ratio id="9">
+      <Name>Major sixth</Name>
+      <Value>6</Value>
+    </Ratio>
+    <Ratio id="10">
+      <Name>Minor seventh</Name>
+      <Value>-7</Value>
+    </Ratio>
+    <Ratio id="11">
+      <Name>Major seventh</Name>
+      <Value>7</Value>
+    </Ratio>
+  </Ratios>
+  <Chords>
+    <Chord>
+      <Name>maj</Name>
+      <Interval>0 4 7</Interval>
+    </Chord>
+    <Chord>
+      <Name>6</Name>
+      <Interval>0 4 7 9</Interval>
+    </Chord>
+    <Chord>
+      <Name>maj7</Name>
+      <Interval>0 4 7 11</Interval>
+    </Chord>
+    <Chord>
+      <Name>sus4</Name>
+      <Interval>0 5 7</Interval>
+    </Chord>
+    <Chord>
+      <Name>sus2</Name>
+      <Interval>0 2 7</Interval>
+    </Chord>
+    <Chord>
+      <Name>min</Name>
+      <Interval>0 3 7</Interval>
+    </Chord>
+    <Chord>
+      <Name>min6</Name>
+      <Interval>0 3 7 9</Interval>
+    </Chord>
+    <Chord>
+      <Name>min7</Name>
+      <Interval>0 3 7 10</Interval>
+    </Chord>
+    <Chord>
+      <Name>7</Name>
+      <Interval>0 4 7 10</Interval>
+    </Chord>
+    <Chord>
+      <Name>7+</Name>
+      <Interval>0 4 8 10</Interval>
+    </Chord>
+    <Chord>
+      <Name>7sus</Name>
+      <Interval>0 5 7 10</Interval>
+    </Chord>
+    <Chord>
+      <Name>9</Name>
+      <Interval>0 2 4 7 10</Interval>
+    </Chord>
+    <Chord>
+      <Name>7#9</Name>
+      <Interval>0 3 4 7 10</Interval>
+    </Chord>
+    <Chord>
+      <Name>7b9</Name>
+      <Interval>0 1 4 7 10</Interval>
+    </Chord>
+    <Chord>
+      <Name>13</Name>
+      <Interval>0 2 4 7 9 10</Interval>
+    </Chord>
+  </Chords>
+</Data>

@@ -1,0 +1,7 @@
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\bin\Release\FretboardLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\bin\Release\FretboardLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\bin\Release\ServicesLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\bin\Release\ServicesLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\obj\Release\FretboardLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\obj\Release\FretboardLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\obj\Release\FretboardLibrary.pdb

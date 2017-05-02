@@ -1,12 +1,14 @@
-﻿using System;
-using System.Windows;
-using System.Collections.Generic;
-using FretboardLibrary;
+﻿using FretboardLibrary;
 using ServicesLibrary;
-using System.Windows.Media.Animation;
-using System.Windows.Controls;
-using System.Xml.Linq;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
+using System.Windows.Threading;
+using System.Xml.Linq;
 
 namespace GuitarScales
 {
@@ -40,7 +42,7 @@ namespace GuitarScales
             ushort frets = 12 * 1;
             ushort strings = 6;
             NoteList = new List<List<FretNote>>(); // Row is a string, column is a fret
-            Doc = new XDocument(XDocument.Load(@"C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\Data\Data.xml"));
+            Doc = new XDocument(XDocument.Load(System.IO.Directory.GetCurrentDirectory() + @"\Data\Data.xml"));
 
             HiddenMenu = true;
             SettingsPanel = null;
@@ -50,7 +52,6 @@ namespace GuitarScales
             fretboard = new Fretboard(mainGrid, strings, frets, NoteList, 4, "Standard E", "Ionian");
 
             SetupControls(4, 0, strings);
-
             SetupSearchScale();
         }
 
@@ -60,9 +61,8 @@ namespace GuitarScales
             // The root notes are constant - no need to fetch from database
             cbRoot.SelectedIndex = root; // Setting default root note to "E"
 
-            FillTunings(strings);
-
-            FillScales(scale);
+            Dispatcher.Invoke(() => { FillTunings(strings); });
+            Dispatcher.Invoke(() => { FillScales(scale); });
         }
 
         private void FillTunings(int strings)
@@ -95,22 +95,29 @@ namespace GuitarScales
 
         private void SetupSearchScale()
         {
-            foreach (var item in MusicKeys)
-            {
-                tbOne.Items.Add(item);
-                tbTwo.Items.Add(item);
-                tbThree.Items.Add(item);
-            }
-            
             var chords = from node in Doc.Descendants("Chords").Elements("Chord")
                          select node.Element("Name").Value;
 
-            foreach (var item in chords)
+            Dispatcher.Invoke(() =>
             {
-                cbOne.Items.Add(item);
-                cbTwo.Items.Add(item);
-                cbThree.Items.Add(item);
-            }
+                foreach (var item in MusicKeys)
+                {
+                    tbOne.Items.Add(item);
+                    tbTwo.Items.Add(item);
+                    tbThree.Items.Add(item);
+                }
+            }, DispatcherPriority.ContextIdle);
+
+            Dispatcher.Invoke(() =>
+            {
+                foreach (var item in chords)
+                {
+                    cbOne.Items.Add(item);
+                    cbTwo.Items.Add(item);
+                    cbThree.Items.Add(item);
+                }
+            }, DispatcherPriority.ContextIdle);
+
             Menu = new ComboBox[,] { { tbOne, tbTwo, tbThree }, { cbOne, cbTwo, cbThree } };
             init = true;
         }
@@ -147,15 +154,9 @@ namespace GuitarScales
 
         private void Menu_Click(object sender, RoutedEventArgs e)
         {
-            Storyboard sb;
-            if (HiddenMenu)
-            {
-                sb = Resources["sbShowLeftMenu"] as Storyboard;
-            }
-            else
-            {
-                sb = Resources["sbHideLeftMenu"] as Storyboard;
-            }
+            Storyboard sb = HiddenMenu ? Resources["sbShowLeftMenu"] as Storyboard :
+                                         Resources["sbHideLeftMenu"] as Storyboard;
+
             sb.Begin(pnlLeftMenu);
             HiddenMenu = !HiddenMenu;
         }
@@ -186,30 +187,38 @@ namespace GuitarScales
             lbResults.Items.Clear();
             List<int> chordNotes = new List<int>();
             int pointA = Array.IndexOf(MusicKeys, tbOne.SelectedItem);
+            Semaphore sem = new Semaphore(1, Environment.ProcessorCount);
+            
             for (int row = 0; row < Menu.GetLength(1) - Active; row++)
             {
-                string[] chord = (from node in Doc.Descendants("Chords").Elements("Chord")
-                                  where node.Element("Name").Value == (string)Menu[1, row].SelectedValue
-                                  select node.Element("Interval").Value).Single().Split(' ');
+                Dispatcher.Invoke(() => {
+                    sem.WaitOne();
+                    string[] chord = (from node in Doc.Descendants("Chords").Elements("Chord")
+                                      where node.Element("Name").Value == (string)Menu[1, row].SelectedValue
+                                      select node.Element("Interval").Value).Single().Split(' ');
 
-                int pointB = Array.IndexOf(MusicKeys, Menu[1, row]);
-                if (pointA - pointB != 0)
-                {
-                    IntLimited shiftBy = new IntLimited(pointA + pointB, 0, 12);
-                }
-                foreach (var item in chord)
-                    if (!chordNotes.Contains(int.Parse(item)))
-                        chordNotes.Add(int.Parse(item));
+                    int pointB = Array.IndexOf(MusicKeys, Menu[1, row]);
+                    if (pointA - pointB != 0)
+                    {
+                        IntLimited shiftBy = new IntLimited(pointA + pointB, 0, 12);
+                    }
+                    foreach (var item in chord)
+                        if (!chordNotes.Contains(int.Parse(item)))
+                            chordNotes.Add(int.Parse(item));
+                    sem.Release();
+                }, DispatcherPriority.ContextIdle);
             }
+            
             chordNotes.Sort();
-            try
-            {
-                var scales = from node in Doc.Descendants("Scales").Elements("Scale")
-                             select node.Element("Interval").Value;
 
-                List<string> found = new List<string>();
-                foreach (var item in scales)
-                {
+            var scales = from node in Doc.Descendants("Scales").Elements("Scale")
+                            select node.Element("Interval").Value;
+
+            List<string> found = new List<string>();
+            foreach (var item in scales)
+            {
+                (new Thread(() => {
+                    sem.WaitOne();
                     for (int note = 0; note < chordNotes.Count; note++)
                     {
                         if (item.IndexOf(note.ToString()) != -1)
@@ -221,20 +230,18 @@ namespace GuitarScales
                         }
                         else break;
                     }
-                }
-                if (found.Count > 0)
-                    foreach (var item in found)
-                        lbResults.Items.Add(
-                            (from node in Doc.Descendants("Scales").Elements("Scale")
-                            where node.Element("Interval").Value == item
-                            select node.Element("Name").Value).Single()
-                            );
-                else lbResults.Items.Add("Unknown scale");
+                    sem.Release();
+                })).Start();    
             }
-            catch
-            {
-                MessageBox.Show("OOOPS");
-            }
+
+            if (found.Count > 0)
+                foreach (var item in found)
+                    lbResults.Items.Add(
+                        (from node in Doc.Descendants("Scales").Elements("Scale")
+                        where node.Element("Interval").Value == item
+                        select node.Element("Name").Value).Single()
+                        );
+            else lbResults.Items.Add("Unknown scale");
         }
 
         private void SelectionChanged(object sender, SelectionChangedEventArgs e)

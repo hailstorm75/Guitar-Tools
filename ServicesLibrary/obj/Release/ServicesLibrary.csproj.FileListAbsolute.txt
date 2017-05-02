@@ -1,0 +1,4 @@
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\bin\Release\ServicesLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\bin\Release\ServicesLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Release\ServicesLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Release\ServicesLibrary.pdb

@@ -6,6 +6,9 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using ServicesLibrary;
 using System.Xml.Linq;
+using System.IO;
+using System.Threading;
+using System;
 
 namespace FretboardLibrary
 {
@@ -40,7 +43,7 @@ namespace FretboardLibrary
             NoteGrid.ShowGridLines = false;
             MainGrid.Children.Add(NoteGrid);
 
-            Doc = new XDocument(XDocument.Load(@"C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\Data\Data.xml"));
+            Doc = new XDocument(XDocument.Load(Directory.GetCurrentDirectory() + @"\Data\Data.xml"));
             Strings = strings;
             Frets = frets;
             Width = mainGrid.Width / frets;
@@ -91,8 +94,6 @@ namespace FretboardLibrary
                     key.Value = key + index;
 
                     IntLimited a = new IntLimited(key.Value - Root, 0, 12);
-
-                    //MessageBox.Show(a.Value.ToString());
 
                     // Checking if note fits scale                  
                     bool IsActive = scale.Contains(a.Value.ToString()) ? true : false;
