@@ -8,7 +8,7 @@ You can track the project progress here: https://github.com/hailstorm75/Guitar-T
 
 ## 📥 Download
 Download the latest release if you wish to try the application for yourself:
- - https://github.com/hailstorm75/Guitar-Tools/releases/tag/0.3
+ - https://github.com/hailstorm75/Guitar-Tools/releases/tag/0.4
  
 or try a in-dev version:
  - https://github.com/hailstorm75/Guitar-Tools/blob/master/guitarTools/bin/Debug/
@@ -22,10 +22,19 @@ To run the app, open guitarTools.exe
 
 # Versions 
 (Release.Date.Upload)
-
+## Version [0.0205.2](https://github.com/hailstorm75/Guitar-Tools/releases/tag/0.4)
+### :octocat: Status
+ - New release
+ - Fixed issue #7
+ - Up to 8 strings are selectable
+ 
+### 💢 Issues
+ - #6 still not fixed
+ - Small selection of tunings and scales
+ 
 ## Version [0.1202.1](https://github.com/hailstorm75/Guitar-Tools/releases/tag/0.3)
 ### :octocat: Status
- - Beta release!
+ - Beta release
  - All basic features are now functional:
    - Selecting scale root
    - Selecting tuning
