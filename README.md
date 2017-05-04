@@ -17,7 +17,7 @@ or try a in-dev version:
 To run the app, open guitarTools.exe
 
 # Screenshots
-[*Version 0.0405*](#version-004051)
+[*Version 0.0405.2*](#version-004052)
 
 ![Screenshow](https://github.com/hailstorm75/Guitar-Tools/blob/master/docs/Screen02.PNG)
 
@@ -27,12 +27,9 @@ To run the app, open guitarTools.exe
 
 # Versions 
 (Release.Date.Upload)
-## Version 0.0405.1
+## Version 0.0405.2
 ### :octocat: Status
  - Created and applied RadialMenu
-
-### 💢 Issues
- - RadialMenu causes issue [#8](https://github.com/hailstorm75/Guitar-Tools/issues/8)
  
 ## Version [0.0205.2](https://github.com/hailstorm75/Guitar-Tools/releases/tag/0.4)
 ### :octocat: Status
