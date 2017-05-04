@@ -16,16 +16,26 @@ or try a in-dev version:
 To run the app, open guitarTools.exe
 
 # Screenshots
-[*Version 0.0902.1*](#version-009021-1)
+[*Version 0.0405*](#version-004051)
+![Screenshow](https://github.com/hailstorm75/Guitar-Tools/blob/master/docs/Screen02.PNG)
+
+[*Version 0.0902.1*](#version-009021)
 
 ![Screenshot](https://github.com/hailstorm75/Guitar-Tools/blob/master/docs/Screen01.PNG)
 
 # Versions 
 (Release.Date.Upload)
+## Version 0.0405.1
+### :octocat: Status
+ - Created and applied RadialMenu
+
+### 💢 Issues
+ - RadialMenu causes issue [#8](https://github.com/hailstorm75/Guitar-Tools/issues/8)
+ 
 ## Version [0.0205.2](https://github.com/hailstorm75/Guitar-Tools/releases/tag/0.4)
 ### :octocat: Status
  - New release
- - Fixed issue #7
+ - Fixed issue [#7](https://github.com/hailstorm75/Guitar-Tools/issues/7)
  - Up to 8 strings are selectable
  
 ### 💢 Issues
