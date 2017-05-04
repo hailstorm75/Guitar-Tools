@@ -135,8 +135,7 @@ namespace GuitarScales
         #region ComboBoxes
         public void Root_SelectionChanged(object sender, EventArgs e)
         {
-            if (fretboard.Root != cbRoot.SelectedIndex)
-                fretboard.UpdateRoot(cbRoot.SelectedIndex);
+            fretboard.UpdateRoot(cbRoot.SelectedIndex);
         }
 
         private void cbTuning_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -255,6 +254,7 @@ namespace GuitarScales
 
         private void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             if (init)
             {
                 btnSearch.IsEnabled = false;

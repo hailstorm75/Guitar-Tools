@@ -6,9 +6,11 @@ namespace RadialMenuLibrary
 {
     public class RadialButton : Control
     {
+        #region Properties
         private Viewbox Box { get; set; }
         private Point Position { get; set; }
-        private int Size = 18;
+        private int Size = 18; 
+        #endregion
 
         public RadialButton(string content, Point position, double angle, Canvas grid)
         {

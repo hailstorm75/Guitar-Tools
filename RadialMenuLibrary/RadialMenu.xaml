@@ -29,6 +29,6 @@
             </Canvas.LayoutTransform>
         </Canvas>
         <Polygon Panel.ZIndex="1" Points="0,10 10,10, 5,0" Fill="#FF3657E8" Margin="45,0,45,25" Height="10" VerticalAlignment="Bottom" />
-        <Label Name="SelectedItem" Margin="36,27,36,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16"/> 
+        <Label Name="SelectedItem" Margin="36,27,36,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/> 
     </Grid>
 </UserControl>

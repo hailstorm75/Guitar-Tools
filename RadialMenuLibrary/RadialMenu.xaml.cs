@@ -12,9 +12,11 @@ namespace RadialMenuLibrary
     /// </summary>
     public partial class RadialMenu : UserControl
     {
+        #region Properties
         private Canvas Container { get; set; }
         private string[] Items { get; set; }
-        public int SelectedIndex { get; set; }
+        public int SelectedIndex { get; set; } 
+        #endregion
 
         public event EventHandler SelectionChanged;
 
@@ -53,14 +55,14 @@ namespace RadialMenuLibrary
 
         private void MenuMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            RaiseSelectionChanged();
-
             IntLimited i = new IntLimited(SelectedIndex + e.Delta / 120, 0, Items.Length);
             SelectedIndex = i.Value;
+            RaiseSelectionChanged();
 
             SelectedItem.Content = Items[SelectedIndex];
             Container.RenderTransformOrigin = new Point(0.5, 0.5);
-            Container.RenderTransform = new RotateTransform(SelectedIndex * -e.Delta * 3 / Items.Length);
+
+            Container.RenderTransform = new RotateTransform(-SelectedIndex * 360 / Items.Length);
         }
     }
 }
