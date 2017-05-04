@@ -1,3 +1,4 @@
+
 ## ❔ Description
 Displays guitar scales on a fretboard with extended string and fret support.
 Allows the user to select tuning, string amount, fret amount, scale type.
@@ -17,6 +18,7 @@ To run the app, open guitarTools.exe
 
 # Screenshots
 [*Version 0.0405*](#version-004051)
+
 ![Screenshow](https://github.com/hailstorm75/Guitar-Tools/blob/master/docs/Screen02.PNG)
 
 [*Version 0.0902.1*](#version-009021)
@@ -39,7 +41,7 @@ To run the app, open guitarTools.exe
  - Up to 8 strings are selectable
  
 ### 💢 Issues
- - #6 still not fixed
+ - [#6](https://github.com/hailstorm75/Guitar-Tools/issues/6) still not fixed
  - Small selection of tunings and scales
  
 ## Version [0.1202.1](https://github.com/hailstorm75/Guitar-Tools/releases/tag/0.3)
