@@ -1,0 +1,12 @@
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenuLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenu.g.cs
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenuLibrary_MarkupCompile.cache
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenuLibrary_MarkupCompile.lref
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\bin\Debug\RadialMenuLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\bin\Debug\RadialMenuLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\bin\Debug\ServicesLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\bin\Debug\ServicesLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenu.baml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenuLibrary.g.resources
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenuLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenuLibrary.pdb

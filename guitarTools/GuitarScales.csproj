@@ -158,6 +158,10 @@
       <Project>{92152f68-90db-44e0-a440-44167201bde5}</Project>
       <Name>FretboardLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RadialMenuLibrary\RadialMenuLibrary.csproj">
+      <Project>{0058B98D-CEBC-4B25-8A7F-D7C02B9FD66A}</Project>
+      <Name>RadialMenuLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServicesLibrary\ServicesLibrary.csproj">
       <Project>{ba985f1f-9d96-467a-9bf4-04819337b3ba}</Project>
       <Name>ServicesLibrary</Name>

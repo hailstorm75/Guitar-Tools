@@ -47,3 +47,5 @@ C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\ob
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.csproj.GenerateResource.Cache
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.exe
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\RadialMenuLibrary.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\RadialMenuLibrary.pdb

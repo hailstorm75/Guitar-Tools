@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarScales", "guitarTools\GuitarScales.csproj", "{0ABC51EB-E37D-4FD1-B2A3-529ED3E61B12}"
 EndProject
@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FretboardLibrary", "Fretboa
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesLibrary", "ServicesLibrary\ServicesLibrary.csproj", "{BA985F1F-9D96-467A-9BF4-04819337B3BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadialMenuLibrary", "RadialMenuLibrary\RadialMenuLibrary.csproj", "{0058B98D-CEBC-4B25-8A7F-D7C02B9FD66A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 		{BA985F1F-9D96-467A-9BF4-04819337B3BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA985F1F-9D96-467A-9BF4-04819337B3BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA985F1F-9D96-467A-9BF4-04819337B3BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0058B98D-CEBC-4B25-8A7F-D7C02B9FD66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0058B98D-CEBC-4B25-8A7F-D7C02B9FD66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0058B98D-CEBC-4B25-8A7F-D7C02B9FD66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0058B98D-CEBC-4B25-8A7F-D7C02B9FD66A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

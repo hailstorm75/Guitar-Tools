@@ -1,4 +1,5 @@
 ﻿using FretboardLibrary;
+using RadialMenuLibrary;
 using ServicesLibrary;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace GuitarScales
     {
         #region Properties
         Fretboard fretboard;
+        RadialMenu cbRoot;
         List<List<FretNote>> NoteList;
 
         private XDocument Doc { get; set; }
@@ -47,6 +49,13 @@ namespace GuitarScales
             HiddenMenu = true;
             SettingsPanel = null;
             #endregion
+
+            string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+
+            cbRoot = new RadialMenu(MusicKeys, 4);
+            cbRoot.SelectionChanged += new EventHandler(Root_SelectionChanged);
+
+            ViewRoot.Child = cbRoot;
 
             // Creating default fretboard
             fretboard = new Fretboard(mainGrid, strings, frets, NoteList, 4, "Standard E", "Ionian");
@@ -124,7 +133,7 @@ namespace GuitarScales
         #endregion
 
         #region ComboBoxes
-        public void cbRoot_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        public void Root_SelectionChanged(object sender, EventArgs e)
         {
             if (fretboard.Root != cbRoot.SelectedIndex)
                 fretboard.UpdateRoot(cbRoot.SelectedIndex);
@@ -325,7 +334,7 @@ namespace GuitarScales
         {
             cbScale.SelectedValue = lbResults.SelectedValue;
             cbRoot.SelectedIndex = Array.IndexOf(MusicKeys, tbOne.SelectedValue);
-            cbRoot_SelectionChanged(cbRoot, null);
+            Root_SelectionChanged(cbRoot, null);
             cbScale_SelectionChanged(cbScale, null);
         }
         #endregion

@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:fa="http://schemas.fontawesome.io/icons/"
-    xmlns:local="clr-namespace:guitarTools"
+    xmlns:controls="clr-namespace:GuitarScales"
     Title="Guitar tools" 
     Height="386" Width="525"
     MinHeight="386" MinWidth="525"
@@ -44,24 +44,7 @@
                                 HorizontalAlignment="Left" 
                                 FontSize="24"        
                                 Width="{Binding ActualWidth, ElementName=lbTuning, Mode=OneWay}" />
-                            <ComboBox 
-                                        Name="cbRoot" 
-                                        MinWidth="100" 
-                                        SelectionChanged="cbRoot_SelectionChanged"
-                                        Style="{StaticResource ComboBoxFlatStyle}">
-                                <ComboBoxItem Content="C"/>
-                                <ComboBoxItem Content="C#"/>
-                                <ComboBoxItem Content="D"/>
-                                <ComboBoxItem Content="D#"/>
-                                <ComboBoxItem Content="E"/>
-                                <ComboBoxItem Content="F"/>
-                                <ComboBoxItem Content="F#"/>
-                                <ComboBoxItem Content="G"/>
-                                <ComboBoxItem Content="G#"/>
-                                <ComboBoxItem Content="A"/>
-                                <ComboBoxItem Content="A#"/>
-                                <ComboBoxItem Content="B"/>
-                            </ComboBox>
+                            <Viewbox Width="150" Height="75" Name="ViewRoot"/>
                         </StackPanel>
                         <StackPanel Margin="0,10,0,0">
                             <TextBlock
@@ -98,7 +81,7 @@
                         <TabControl>
                             <TabItem Header="Note">
                                 <StackPanel>
-                                    
+
                                 </StackPanel>
                             </TabItem>
                             <TabItem Header="Chord">
@@ -184,7 +167,7 @@
                             Margin="0,5,0,0" Click="FretboardApply_Click"/>
                     </StackPanel>
                 </StackPanel>
-                
+
                 <!-- Menu -->
                 <StackPanel Background="WhiteSmoke" Width="50" Panel.ZIndex="1" Name="pnlLeftMenu" HorizontalAlignment="Left">
                     <Button 

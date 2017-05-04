@@ -21,3 +21,6 @@ C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\ob
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Release\GuitarScales.csproj.GenerateResource.Cache
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Release\GuitarScales.exe
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Release\GuitarScales.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Release\RadialMenu.baml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Release\RadialMenu.g.cs
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Release\GeneratedInternalTypeHelper.g.cs
