@@ -17,25 +17,51 @@ namespace GuitarScales
     /// Contains the window logic.
     /// Creates UI elements with default settings upon initiation.
     /// </summary>
-
     public partial class MainWindow : Window
     {
         #region Properties
         Fretboard fretboard;
         RadialMenu cbRoot;
-        List<List<FretNote>> NoteList;
 
         private XDocument Doc { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool HiddenMenu { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public StackPanel SettingsPanel { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool init = false;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ComboBox[,] Menu;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public int Active = 2;
+
+        private string scale = "Ionian";
+        private string tuning = "Standard E";
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -43,7 +69,6 @@ namespace GuitarScales
             #region Defining variables
             ushort frets = 12 * 1;
             ushort strings = 6;
-            NoteList = new List<List<FretNote>>(); // Row is a string, column is a fret
             Doc = new XDocument(XDocument.Load(System.IO.Directory.GetCurrentDirectory() + @"\Data\Data.xml"));
 
             HiddenMenu = true;
@@ -58,13 +83,22 @@ namespace GuitarScales
             ViewRoot.Child = cbRoot;
 
             // Creating default fretboard
-            fretboard = new Fretboard(mainGrid, strings, frets, NoteList, 4, "Standard E", "Ionian");
+            fretboard = new Fretboard(mainGrid, strings, frets, 4, tuning, scale);
+
+            LabelTuning.Content = tuning;
+            LabelScale.Content = scale;
 
             SetupControls(4, 0, strings);
             SetupSearchScale();
         }
 
         #region Setup Settings
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="scale"></param>
+        /// <param name="strings"></param>
         private void SetupControls(int root, int scale, int strings)
         {
             // The root notes are constant - no need to fetch from database
@@ -74,23 +108,27 @@ namespace GuitarScales
             Dispatcher.Invoke(() => { FillScales(scale); });
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strings"></param>
         private void FillTunings(int strings)
         {
-            if (cbTuning.HasItems)
-            {
-                cbTuning.Items.Clear();
-            }
+            if (cbTuning.HasItems) cbTuning.Items.Clear();
 
             // Adding tunings from database
             var tunings = from node in Doc.Descendants("Tunings").Elements("Tuning")
                           where node.Attribute("strings").Value == strings.ToString()
                           select node.Element("Name").Value;
             
-            foreach (var item in tunings)
-                cbTuning.Items.Add(item);
+            foreach (var item in tunings) cbTuning.Items.Add(item);
             cbTuning.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scale"></param>
         private void FillScales(int scale)
         {
             // Adding scales from database
@@ -102,6 +140,9 @@ namespace GuitarScales
             cbScale.SelectedIndex = scale;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void SetupSearchScale()
         {
             var chords = from node in Doc.Descendants("Chords").Elements("Chord")
@@ -133,43 +174,51 @@ namespace GuitarScales
         #endregion
 
         #region ComboBoxes
+        /// <summary>
+        /// 
+        /// </summary>
         public void Root_SelectionChanged(object sender, EventArgs e)
         {
             fretboard.UpdateRoot(cbRoot.SelectedIndex);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void cbTuning_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             try
             {
                 if (fretboard.Tuning != cbTuning.SelectedValue.ToString())
+                {
+                    LabelTuning.Content = cbTuning.SelectedValue.ToString();
                     fretboard.UpdateTuning(cbTuning.SelectedValue.ToString());
+                }
             }
-            catch { }        
+            catch
+            {
+
+            }
+            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void cbScale_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            try
+            if (fretboard.Scale != cbScale.SelectedValue.ToString())
             {
-                if (fretboard.Scale != cbScale.SelectedValue.ToString())
-                    fretboard.UpdateScale(cbScale.SelectedValue.ToString());
+                LabelScale.Content = cbScale.SelectedValue.ToString();
+                fretboard.UpdateScale(cbScale.SelectedValue.ToString());
             }
-            catch { }
-            
         }
         #endregion
 
-        private void Menu_Click(object sender, RoutedEventArgs e)
-        {
-            Storyboard sb = HiddenMenu ? Resources["sbShowLeftMenu"] as Storyboard :
-                                         Resources["sbHideLeftMenu"] as Storyboard;
-
-            sb.Begin(pnlLeftMenu);
-            HiddenMenu = !HiddenMenu;
-        }
-
         #region Settings Panels
+        /// <summary>
+        /// 
+        /// </summary>
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             Storyboard sb = Resources["sbShowSetting"] as Storyboard;
@@ -178,6 +227,9 @@ namespace GuitarScales
             sb.Begin(SettingsPanel);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Settings_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (SettingsPanel != null && !SettingsPanel.IsMouseOver)
@@ -190,6 +242,11 @@ namespace GuitarScales
         #endregion
 
         #region Search Scale
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             lbResults.Items.Clear();
@@ -252,6 +309,11 @@ namespace GuitarScales
             else lbResults.Items.Add("Unknown scale");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
@@ -330,6 +392,11 @@ namespace GuitarScales
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lbResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cbScale.SelectedValue = lbResults.SelectedValue;
@@ -339,27 +406,59 @@ namespace GuitarScales
         }
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void FretboardApply_Click(object sender, RoutedEventArgs e)
         {
             if (SliderFrets.Value != fretboard.Frets || SliderStrings.Value != fretboard.Strings)
             {
                 int oldStrings = fretboard.Strings;
                 fretboard.ClearNotes();
-                fretboard = new Fretboard(mainGrid, 
-                                          (ushort)SliderStrings.Value, 
-                                          (ushort)SliderFrets.Value, 
-                                          NoteList, 
-                                          4,
-                                          (from node in Doc.Descendants("Tunings").Elements("Tuning")
-                                           where node.Attribute("strings").Value == SliderStrings.Value.ToString()
-                                           select node.Element("Name").Value).First(), 
-                                          "Ionian");
 
                 if (SliderStrings.Value != oldStrings)
                 {
-                    FillTunings((int)SliderStrings.Value);
+                    string t = (from node in Doc.Descendants("Tunings").Elements("Tuning")
+                                where node.Attribute("strings").Value == SliderStrings.Value.ToString()
+                                select node.Element("Name").Value).First();
+
+                    fretboard = new Fretboard(mainGrid,
+                                             (ushort)SliderStrings.Value,
+                                             (ushort)SliderFrets.Value,
+                                             4,
+                                             t,
+                                             cbScale.SelectedValue.ToString());
+
+                    LabelTuning.Content = t;
+                    LabelScale.Content = cbScale.SelectedValue.ToString();
+
+                    FillTunings((int)SliderStrings.Value); // Causes error
+                }
+                else
+                {
+                    fretboard = new Fretboard(mainGrid,
+                                             (ushort)SliderStrings.Value,
+                                             (ushort)SliderFrets.Value,
+                                             cbRoot.SelectedIndex,
+                                             (from node in Doc.Descendants("Tunings").Elements("Tuning")
+                                              where node.Attribute("strings").Value == SliderStrings.Value.ToString() &&
+                                                    node.Element("Name").Value == cbTuning.SelectedValue.ToString()
+                                              select node.Element("Name").Value).Single(),
+                                             cbScale.SelectedValue.ToString());
                 }
             }           
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void Menu_Click(object sender, RoutedEventArgs e)
+        {
+            Storyboard sb = HiddenMenu ? Resources["sbShowLeftMenu"] as Storyboard :
+                                         Resources["sbHideLeftMenu"] as Storyboard;
+
+            sb.Begin(pnlLeftMenu);
+            HiddenMenu = !HiddenMenu;
         }
     }
 }

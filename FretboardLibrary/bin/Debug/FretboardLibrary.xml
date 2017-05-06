@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FretboardLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:FretboardLibrary.Fretboard">
+            <summary>
+            Fretboard creates and manages fret notes, markers and their grid.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.Doc">
+            <summary>
+            Used to access ../Data/Data.xml
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.NoteList">
+            <summary>
+            2D list of fret notes and fret markers.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.MainGrid">
+            <summary>
+            Parent grid.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.NoteGrid">
+            <summary>
+            Grid containing all fretboard elements.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.Strings">
+            <summary>
+            Number of fretboard strings.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.Frets">
+            <summary>
+            Number of fretboard frets.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.Width">
+            <summary>
+            Width of the fretboard.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.Height">
+            <summary>
+            Height of the fretboard.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.Size">
+            <summary>
+            Size of fret notes. Property value is passed to FretNote constructor.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.Root">
+            <summary>
+            Index of the root note.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.Tuning">
+            <summary>
+            Name of the tuning.
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.Fretboard.Scale">
+            <summary>
+            Name of the scale.
+            </summary>
+        </member>
+        <member name="M:FretboardLibrary.Fretboard.#ctor(System.Windows.Controls.Grid,System.UInt16,System.UInt16,System.Int32,System.String,System.String)">
+            <summary>
+            Assigns values to properties
+            </summary>
+            <param name="mainGrid">Passes its value to MainGrid property</param>
+            <param name="strings">Passes its value to Strings property</param>
+            <param name="frets">Passes its value to Frets property</param>
+            <param name="root">Passes its value to Root property</param>
+            <param name="tuning">Passes its value to Tuning property</param>
+            <param name="scale">Passes its value to Scale property</param>
+        </member>
+        <member name="M:FretboardLibrary.Fretboard.UpdateRoot(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="newRoot"></param>
+        </member>
+        <member name="M:FretboardLibrary.Fretboard.UpdateScale(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="newScale"></param>
+        </member>
+        <member name="M:FretboardLibrary.Fretboard.UpdateTuning(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="newTuning"></param>
+        </member>
+        <member name="M:FretboardLibrary.Fretboard.ClearNotes">
+            <summary>
+            Clears the Fretboard and parent Control children.
+            Clears the NoteList list.
+            </summary>
+        </member>
+        <member name="T:FretboardLibrary.FretMarker">
+            <summary>
+            Contains the definition of the Fret Marker class.
+            Creates the UI elementes, binds them and places into grid cell.
+            It is created and managed by the Fretboard class
+            </summary>
+        </member>
+        <member name="M:FretboardLibrary.FretMarker.#ctor(System.Windows.Controls.Grid,System.Windows.Point,System.String)">
+            <summary>
+            Instantiates controls which represent the FretMarker and after grouping them appends them to the <paramref name="grid"/>.
+            </summary>
+            <param name="grid">The instantiated fret marker is appended to the children of given Grid</param>
+            <param name="xy">Defines the position (row, column) on the <paramref name="grid"/></param>
+            <param name="content">Defines the content of the fret marker label</param>
+        </member>
+        <member name="T:FretboardLibrary.FretNote">
+            <summary>
+            FretNote is a class which represents a note on the fretboard
+            It is instantiated and managed by the Fretboard object
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.FretNote.Index">
+            <summary>
+            ID of the FretNote
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.FretNote.Root">
+            <summary>
+            Index of the Root
+            </summary>
+        </member>
+        <member name="P:FretboardLibrary.FretNote.IsActive">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:FretboardLibrary.FretNote.MusicKeys">
+            <summary>
+            Set of music keys
+            </summary>
+        </member>
+        <member name="M:FretboardLibrary.FretNote.#ctor(System.Int32,System.Double,System.Boolean,System.Int32,System.Windows.Point,System.Windows.Controls.Grid)">
+            <summary>
+            Instantiates Controls which represent the FretNote and after grouping them all together appends them to the <paramref name="grid"/>.
+            </summary>
+            <param name="index">Passes its value to Index property</param>
+            <param name="size">Defines the Width and Height of the FretNote</param>
+            <param name="isActive">Passes its value to IsActive property</param>
+            <param name="root">Passes its value to Root property</param>
+            <param name="xy">Defines the position (row, column) on the <paramref name="grid"/></param>
+            <param name="grid">The instantiated note is appended to the children of given Grid</param>
+        </member>
+        <member name="M:FretboardLibrary.FretNote.ChangeState(System.Boolean)">
+            <summary>
+            Changes opacity based on the <paramref name="IsActive"/> value.
+            </summary>
+            <param name="IsActive">Defines if the FretNote is active or not</param>
+        </member>
+        <member name="M:FretboardLibrary.FretNote.HighlightRoot(System.Int32)">
+            <summary>
+            Changes border color based on the <paramref name="root"/> value.
+            Resets the tooltip.
+            </summary>
+            <param name="root">Passes its value to the Root property</param>
+        </member>
+        <member name="M:FretboardLibrary.FretNote.ShiftTuning(System.Int32)">
+            <summary>
+            Changes label content to new value based on the <paramref name="shiftTo"/> value.
+            Resets the tooltip.
+            </summary>
+            <param name="shiftTo">Passes its value to the Index property</param>
+        </member>
+        <member name="M:FretboardLibrary.FretNote.SetToolTip">
+            <summary>
+            Sets the tooltip based on the Index and Root properties values.
+            </summary>
+        </member>
+    </members>
+</doc>

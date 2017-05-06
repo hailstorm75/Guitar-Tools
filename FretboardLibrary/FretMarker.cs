@@ -4,13 +4,19 @@ using System.Windows.Controls;
 namespace FretboardLibrary
 {
     /// <summary>
-    /// Contains the definition of the Fret Marker object.
+    /// Contains the definition of the Fret Marker class.
     /// Creates the UI elementes, binds them and places into grid cell.
-    /// It is created and managed by the Fretboard object
+    /// It is created and managed by the Fretboard class
     /// </summary>
 
     public class FretMarker
     {
+        /// <summary>
+        /// Instantiates controls which represent the FretMarker and after grouping them appends them to the <paramref name="grid"/>.
+        /// </summary>
+        /// <param name="grid">The instantiated fret marker is appended to the children of given Grid</param>
+        /// <param name="xy">Defines the position (row, column) on the <paramref name="grid"/></param>
+        /// <param name="content">Defines the content of the fret marker label</param>
         public FretMarker(Grid grid, Point xy, string content)
         {
             // Creates a label which displays the fret number

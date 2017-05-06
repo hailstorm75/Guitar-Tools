@@ -8,23 +8,37 @@ using System.Windows.Media;
 namespace RadialMenuLibrary
 {
     /// <summary>
-    /// Interaction logic for RadialMenu.xaml
-    /// </summary>
+    /// RadialMenu contains logic for the custom UserControl.
+    /// </summary> 
     public partial class RadialMenu : UserControl
     {
         #region Properties
+        /// <summary>
+        /// 
+        /// </summary>
         private Canvas Container { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private string[] Items { get; set; }
-        public int SelectedIndex { get; set; } 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int SelectedIndex { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public event EventHandler SelectionChanged;
         #endregion
 
-        public event EventHandler SelectionChanged;
-
-        private void RaiseSelectionChanged()
-        {
-            SelectionChanged?.Invoke(this, new EventArgs());
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="selectedIndex"></param>
         public RadialMenu(string[] items, int selectedIndex = 0)
         {
             InitializeComponent();
@@ -53,6 +67,17 @@ namespace RadialMenuLibrary
             ControlRing.Children.Add(Container);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void RaiseSelectionChanged()
+        {
+            SelectionChanged?.Invoke(this, new EventArgs());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void MenuMouseWheel(object sender, MouseWheelEventArgs e)
         {
             IntLimited i = new IntLimited(SelectedIndex + e.Delta / 120, 0, Items.Length);

@@ -4,14 +4,35 @@ using System.Windows.Media;
 
 namespace RadialMenuLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class RadialButton : Control
     {
         #region Properties
+        /// <summary>
+        /// 
+        /// </summary>
         private Viewbox Box { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private Point Position { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         private int Size = 18; 
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        /// <param name="position"></param>
+        /// <param name="angle"></param>
+        /// <param name="grid"></param>
         public RadialButton(string content, Point position, double angle, Canvas grid)
         {
             Position = position;

@@ -7,40 +7,92 @@ using System.Windows.Shapes;
 using ServicesLibrary;
 using System.Xml.Linq;
 using System.IO;
-using System.Threading;
-using System;
 
 namespace FretboardLibrary
 {
     /// <summary>
-    /// Fretboard creates and manages fret notes, markers and their grid
+    /// Fretboard creates and manages fret notes, markers and their grid.
     /// </summary>
-
     public class Fretboard
     {
         #region Properties
+        /// <summary>
+        /// Used to access ../Data/Data.xml
+        /// </summary>
         private XDocument Doc { get; set; }
+
+        /// <summary>
+        /// 2D list of fret notes and fret markers.
+        /// </summary>
         private List<List<FretNote>> NoteList { get; set; }
+
+        /// <summary>
+        /// Parent grid.
+        /// </summary>
         private Grid MainGrid { get; set; }
+
+        /// <summary>
+        /// Grid containing all fretboard elements.
+        /// </summary>
         private Grid NoteGrid { get; set; }
+        
+        /// <summary>
+        /// Number of fretboard strings.
+        /// </summary>
         public ushort Strings { get; set; }
+
+        /// <summary>
+        /// Number of fretboard frets.
+        /// </summary>
         public ushort Frets { get; set; }
+
+        /// <summary>
+        /// Width of the fretboard.
+        /// </summary>
         private double Width { get; set; }
+
+        /// <summary>
+        /// Height of the fretboard.
+        /// </summary>
         private double Height { get; set; }
+
+        /// <summary>
+        /// Size of fret notes. Property value is passed to FretNote constructor.
+        /// </summary>
         private double Size { get; set; }
+
+        /// <summary>
+        /// Index of the root note.
+        /// </summary>
         public int Root { get; set; }
+
+        /// <summary>
+        /// Name of the tuning.
+        /// </summary>
         public string Tuning { get; set; }
+
+        /// <summary>
+        /// Name of the scale.
+        /// </summary>
         public string Scale { get; set; }
         #endregion
 
-        public Fretboard(Grid mainGrid, ushort strings, ushort frets, List<List<FretNote>> noteList, int root, string tuning, string scale)
+        /// <summary>
+        /// Assigns values to properties and calls methods which create the fretboard.
+        /// </summary>
+        /// <param name="mainGrid">Passes its value to MainGrid property</param>
+        /// <param name="strings">Passes its value to Strings property</param>
+        /// <param name="frets">Passes its value to Frets property</param>
+        /// <param name="root">Passes its value to Root property</param>
+        /// <param name="tuning">Passes its value to Tuning property</param>
+        /// <param name="scale">Passes its value to Scale property</param>
+        public Fretboard(Grid mainGrid, ushort strings, ushort frets, int root, string tuning, string scale)
         {
             // Assigning values to properties
             MainGrid = mainGrid;
+            NoteList = new List<List<FretNote>>();
 
-            NoteGrid = new Grid();
-            NoteGrid.VerticalAlignment = VerticalAlignment.Top;
-            NoteGrid.ShowGridLines = false;
+            NoteGrid = new Grid() { VerticalAlignment = VerticalAlignment.Top, ShowGridLines = false };
             MainGrid.Children.Add(NoteGrid);
 
             Doc = new XDocument(XDocument.Load(Directory.GetCurrentDirectory() + @"\Data\Data.xml"));
@@ -49,7 +101,6 @@ namespace FretboardLibrary
             Width = mainGrid.Width / frets;
             Height = mainGrid.Height / strings;
             Size = Width <= Height ? Width : Height;
-            NoteList = noteList;
             Root = root;
             Tuning = tuning;
             Scale = scale;
@@ -61,14 +112,20 @@ namespace FretboardLibrary
             DrawFretboard();
         }
 
+        /// <summary>
+        /// Adds columns and rows to the NoteGrid
+        /// </summary>
         private void CreateGrid()
         {
-            // Adding columns and rows to grid
             for (ushort i = 0; i <= Frets; i++) NoteGrid.ColumnDefinitions.Add(new ColumnDefinition());
 
             for (ushort i = 0; i <= Strings; i++) NoteGrid.RowDefinitions.Add(new RowDefinition());
         }
 
+        /// <summary>
+        /// Fetches tuning and scale intervals from the data file.
+        /// Creates notes and fills the note list.
+        /// </summary>
         private void CreateNotes()
         {
             // Passing selected tuning from database to array
@@ -107,6 +164,9 @@ namespace FretboardLibrary
             }
         }
 
+        /// <summary>
+        /// Creates fret markers.
+        /// </summary>
         private void CreateMarkers()
         {
             // Creating fret markers and adding them to the grid
@@ -125,6 +185,9 @@ namespace FretboardLibrary
             }
         }
 
+        /// <summary>
+        /// Draws fretboard nut and frets.
+        /// </summary>
         private void DrawFretboard()
         {
             NoteGrid.Height = Size * Strings;
@@ -145,6 +208,11 @@ namespace FretboardLibrary
             }
         }
 
+        /// <summary>
+        /// Updates fret note's from the NoteList.
+        /// Updates their state and highlight properties.
+        /// </summary>
+        /// <param name="newRoot">Passes its value to Root property</param>
         public void UpdateRoot(int newRoot)
         {
             if (newRoot != Root)
@@ -168,6 +236,11 @@ namespace FretboardLibrary
             }
         }
 
+        /// <summary>
+        /// Updates fret note's from the NoteList.
+        /// Updates their state property.
+        /// </summary>
+        /// <param name="newScale">Passes its values to Scale property</param>
         public void UpdateScale(string newScale)
         {
             Scale = newScale;
@@ -186,9 +259,14 @@ namespace FretboardLibrary
             }
         }
 
+        /// <summary>
+        /// Updates fret note's from the NoteList.
+        /// Updates their state and hightlight properties.
+        /// Shifts their tunings.
+        /// </summary>
+        /// <param name="newTuning">Passes its value to Tuning property</param>
         public void UpdateTuning(string newTuning)
         {
-            // TODO Clean up
             Tuning = newTuning;
 
             string[] scale = (from node in Doc.Descendants("Scales").Elements("Scale")
@@ -220,9 +298,13 @@ namespace FretboardLibrary
             }
         }
 
+        /// <summary>
+        /// Clears the Fretboard and parent Control children.
+        /// Clears the NoteList list.
+        /// </summary>
         public void ClearNotes()
         {
-            NoteGrid.Children.Clear();
+            // NoteGrid.Children.Clear();
             MainGrid.Children.Clear();
             NoteList.Clear();
         }

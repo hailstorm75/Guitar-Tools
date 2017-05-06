@@ -140,7 +140,7 @@
                                 <TextBlock 
                                     Text="Frets" 
                                     HorizontalAlignment="Left" 
-                                    FontSize="24" />
+                                    FontSize="24" Width="72" />
                                 <Slider x:Name="SliderFrets" 
                                     Maximum="24" Minimum="12" 
                                     Cursor="SizeWE" 
@@ -224,11 +224,14 @@
 
                 <!-- Fretboard -->
                 <Viewbox Stretch="Uniform" Margin="50,0,0,0" VerticalAlignment="Center">
-                    <Grid 
-                        x:Name="mainGrid" 
-                        Width="525" 
-                        Height="170">
-                    </Grid>
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,0,30">
+                        <DockPanel HorizontalAlignment="Center">
+                            <Label Name="LabelScale" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,10" HorizontalContentAlignment="Center"/>
+                            <Label Content=" - " FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,10" HorizontalContentAlignment="Center"/>
+                            <Label Name="LabelTuning" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,10" HorizontalContentAlignment="Center"/>
+                        </DockPanel>
+                        <Grid  x:Name="mainGrid"  Width="525" Height="170"/>
+                    </StackPanel>
                 </Viewbox>
             </Grid>
         </Grid>
