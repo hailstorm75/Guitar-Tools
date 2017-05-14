@@ -170,6 +170,13 @@ namespace GuitarScales
 
             Menu = new ComboBox[,] { { tbOne, tbTwo, tbThree }, { cbOne, cbTwo, cbThree } };
             init = true;
+
+            SearchScaleNoteMenu.Children.Add(new Label { Content = "Note 1", FontSize = 18 });
+            SearchScaleNoteMenu.Children.Add(new Viewbox { Child = new RadialMenu(MusicKeys, 0), Width = 180 });
+            SearchScaleNoteMenu.Children.Add(new Label { Content = "Note 2", FontSize = 18 });
+            SearchScaleNoteMenu.Children.Add(new Viewbox { Child = new RadialMenu(MusicKeys, 0), Width = 180 });
+            SearchScaleNoteMenu.Children.Add(new Label { Content = "Note 3", FontSize=18 });
+            SearchScaleNoteMenu.Children.Add(new Viewbox { Child = new RadialMenu(MusicKeys, 0), Width = 180 });
         }
         #endregion
 

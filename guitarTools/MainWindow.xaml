@@ -80,8 +80,8 @@
                     <StackPanel>
                         <TabControl>
                             <TabItem Header="Note">
-                                <StackPanel>
-
+                                <StackPanel Name="SearchScaleNoteMenu">
+                                    
                                 </StackPanel>
                             </TabItem>
                             <TabItem Header="Chord">

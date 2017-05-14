@@ -10,3 +10,4 @@ C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibr
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenuLibrary.g.resources
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenuLibrary.dll
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\obj\Debug\RadialMenuLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\RadialMenuLibrary\bin\Debug\RadialMenuLibrary.xml

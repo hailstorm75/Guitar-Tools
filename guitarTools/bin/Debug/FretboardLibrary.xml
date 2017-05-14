@@ -71,7 +71,7 @@
         </member>
         <member name="M:FretboardLibrary.Fretboard.#ctor(System.Windows.Controls.Grid,System.UInt16,System.UInt16,System.Int32,System.String,System.String)">
             <summary>
-            Assigns values to properties
+            Assigns values to properties and calls methods which create the fretboard.
             </summary>
             <param name="mainGrid">Passes its value to MainGrid property</param>
             <param name="strings">Passes its value to Strings property</param>
@@ -80,23 +80,48 @@
             <param name="tuning">Passes its value to Tuning property</param>
             <param name="scale">Passes its value to Scale property</param>
         </member>
+        <member name="M:FretboardLibrary.Fretboard.CreateGrid">
+            <summary>
+            Adds columns and rows to the NoteGrid
+            </summary>
+        </member>
+        <member name="M:FretboardLibrary.Fretboard.CreateNotes">
+            <summary>
+            Fetches tuning and scale intervals from the data file.
+            Creates notes and fills the note list.
+            </summary>
+        </member>
+        <member name="M:FretboardLibrary.Fretboard.CreateMarkers">
+            <summary>
+            Creates fret markers.
+            </summary>
+        </member>
+        <member name="M:FretboardLibrary.Fretboard.DrawFretboard">
+            <summary>
+            Draws fretboard nut and frets.
+            </summary>
+        </member>
         <member name="M:FretboardLibrary.Fretboard.UpdateRoot(System.Int32)">
             <summary>
-            
+            Updates fret note's from the NoteList.
+            Updates their state and highlight properties.
             </summary>
-            <param name="newRoot"></param>
+            <param name="newRoot">Passes its value to Root property</param>
         </member>
         <member name="M:FretboardLibrary.Fretboard.UpdateScale(System.String)">
             <summary>
-            
+            Updates fret note's from the NoteList.
+            Updates their state property.
             </summary>
-            <param name="newScale"></param>
+            <param name="newScale">Passes its values to Scale property</param>
         </member>
         <member name="M:FretboardLibrary.Fretboard.UpdateTuning(System.String)">
             <summary>
-            
+            Updates fret note's from the NoteList.
+            Updates their state and hightlight properties.
+            Shifts their tunings.
             </summary>
-            <param name="newTuning"></param>
+            <param name="newTuning">Passes its value to Tuning property</param>
         </member>
         <member name="M:FretboardLibrary.Fretboard.ClearNotes">
             <summary>
@@ -121,8 +146,8 @@
         </member>
         <member name="T:FretboardLibrary.FretNote">
             <summary>
-            FretNote is a class which represents a note on the fretboard
-            It is instantiated and managed by the Fretboard object
+            FretNote is a class which represents a note on the fretboard.
+            It is instantiated and managed by the Fretboard object.
             </summary>
         </member>
         <member name="P:FretboardLibrary.FretNote.Index">
