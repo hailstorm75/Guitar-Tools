@@ -170,16 +170,14 @@
             Set of music keys
             </summary>
         </member>
-        <member name="M:FretboardLibrary.FretNote.#ctor(System.Int32,System.Double,System.Boolean,System.Int32,System.Windows.Point,System.Windows.Controls.Grid)">
+        <member name="M:FretboardLibrary.FretNote.#ctor(System.Int32,System.Double,System.Boolean,System.Int32)">
             <summary>
-            Instantiates Controls which represent the FretNote and after grouping them all together appends them to the <paramref name="grid"/>.
+            
             </summary>
             <param name="index">Passes its value to Index property</param>
             <param name="size">Defines the Width and Height of the FretNote</param>
             <param name="isActive">Passes its value to IsActive property</param>
             <param name="root">Passes its value to Root property</param>
-            <param name="xy">Defines the position (row, column) on the <paramref name="grid"/></param>
-            <param name="grid">The instantiated note is appended to the children of given Grid</param>
         </member>
         <member name="M:FretboardLibrary.FretNote.ChangeState(System.Boolean)">
             <summary>

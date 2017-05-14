@@ -13,3 +13,6 @@ C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibra
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\obj\Debug\FretboardLibrary.dll
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\obj\Debug\FretboardLibrary.pdb
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\bin\Debug\FretboardLibrary.xml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\bin\Debug\Controls.dll
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\bin\Debug\Controls.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\bin\Debug\ServicesLibrary.xml

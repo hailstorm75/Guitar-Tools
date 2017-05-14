@@ -1,5 +1,5 @@
 ﻿using FretboardLibrary;
-using RadialMenuLibrary;
+using Controls;
 using ServicesLibrary;
 using System;
 using System.Collections.Generic;
@@ -20,6 +20,7 @@ namespace GuitarScales
     public partial class MainWindow : Window
     {
         #region Properties
+
         Fretboard fretboard;
         RadialMenu cbRoot;
 
@@ -57,7 +58,10 @@ namespace GuitarScales
 
         private string scale = "Ionian";
         private string tuning = "Standard E";
+
         #endregion
+
+        #region Constructor
 
         /// <summary>
         /// 
@@ -90,9 +94,12 @@ namespace GuitarScales
 
             SetupControls(4, 0, strings);
             SetupSearchScale();
-        }
+        } 
+
+        #endregion
 
         #region Setup Settings
+
         /// <summary>
         /// 
         /// </summary>
@@ -178,9 +185,11 @@ namespace GuitarScales
             SearchScaleNoteMenu.Children.Add(new Label { Content = "Note 3", FontSize=18 });
             SearchScaleNoteMenu.Children.Add(new Viewbox { Child = new RadialMenu(MusicKeys, 0), Width = 180 });
         }
+
         #endregion
 
         #region ComboBoxes
+
         /// <summary>
         /// 
         /// </summary>
@@ -220,9 +229,11 @@ namespace GuitarScales
                 fretboard.UpdateScale(cbScale.SelectedValue.ToString());
             }
         }
+        
         #endregion
 
         #region Settings Panels
+
         /// <summary>
         /// 
         /// </summary>
@@ -246,9 +257,11 @@ namespace GuitarScales
                 SettingsPanel = null;
             }
         }
+        
         #endregion
 
         #region Search Scale
+
         /// <summary>
         /// 
         /// </summary>
@@ -411,6 +424,7 @@ namespace GuitarScales
             Root_SelectionChanged(cbRoot, null);
             cbScale_SelectionChanged(cbScale, null);
         }
+
         #endregion
 
         /// <summary>

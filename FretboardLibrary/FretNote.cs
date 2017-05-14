@@ -1,11 +1,10 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Media;
 using ServicesLibrary;
 using System.Linq;
 using System.Xml.Linq;
 using System.Text;
-using System;
+using Controls;
 
 namespace FretboardLibrary
 {
@@ -13,9 +12,10 @@ namespace FretboardLibrary
     /// FretNote is a class which represents a note on the fretboard.
     /// It is instantiated and managed by the Fretboard object.
     /// </summary>
-    public class FretNote
+    public class FretNote : Control
     {
         #region Properties
+
         /// <summary>
         /// ID of the FretNote
         /// </summary>
@@ -31,26 +31,27 @@ namespace FretboardLibrary
         /// </summary>
         private bool IsActive { get; set; }
 
+        #endregion
+
+        #region Variables
+
+        CircularLabel note;
+
         /// <summary>
         /// Set of music keys
         /// </summary>
         private static string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
-        private Label noteText;
-        private Border noteBody;
-        private Viewbox box;
         #endregion
 
         /// <summary>
-        /// Instantiates Controls which represent the FretNote and after grouping them all together appends them to the <paramref name="grid"/>.
+        /// 
         /// </summary>
         /// <param name="index">Passes its value to Index property</param>
         /// <param name="size">Defines the Width and Height of the FretNote</param>
         /// <param name="isActive">Passes its value to IsActive property</param>
         /// <param name="root">Passes its value to Root property</param>
-        /// <param name="xy">Defines the position (row, column) on the <paramref name="grid"/></param>
-        /// <param name="grid">The instantiated note is appended to the children of given Grid</param>
-        public FretNote(int index, double size, bool isActive, int root, Point xy, Grid grid)
+        public FretNote(int index, double size, bool isActive, int root)
         {
             #region Defining variables
             Index = index;
@@ -58,48 +59,14 @@ namespace FretboardLibrary
             IsActive = isActive;
             #endregion
 
-            #region Creating objects visual representation
-
-            //Creating a Border
-            noteBody = new Border()
+            note = new CircularLabel()
             {
-                BorderBrush = Root == Index ? Brushes.Gold : Brushes.Black,
-                BorderThickness = new Thickness(1),
-                Background = Brushes.SlateBlue,
-                Opacity = IsActive ? 1 : 0.3,                   //Inline IF ELSE operation
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Width = size,
-                Height = size,
-                CornerRadius = new CornerRadius((size * 2) / 4) //Calculating radius based on the Width and Height of the border
+                Text = MusicKeys[Index],
+                BorderOpacity = IsActive ? 1 : 0.3,
+                BorderOutline = Root == Index ? Brushes.Gold : Brushes.Black
             };
-
-            // Creating a Label
-            noteText = new Label()
-            {
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-                Foreground = Brushes.White,
-                Content = MusicKeys[Index]
-            };
-
-            // Creating a Viewbox
-            box = new Viewbox()
-            {
-                //Parenting the elements accordingly: Label -> Viewbox -> Border
-                Child = noteText
-            };
-
-            noteBody.Child = box;
 
             SetToolTip();
-
-            Grid.SetColumn(noteBody, (int)xy.X);
-            Grid.SetRow(noteBody, (int)xy.Y);
-
-            // Adding the created object to the grid
-            grid.Children.Add(noteBody);
-            #endregion
         }
 
         /// <summary>
@@ -108,7 +75,7 @@ namespace FretboardLibrary
         /// <param name="IsActive">Defines if the FretNote is active or not</param>
         public void ChangeState(bool IsActive)
         {
-            noteBody.Opacity = IsActive ? 1 : 0.3;
+            note.BorderOpacity = IsActive ? 1 : 0.3;
         }
 
         /// <summary>
@@ -119,8 +86,10 @@ namespace FretboardLibrary
         public void HighlightRoot(int root)
         {
             Root = root;
+
             SetToolTip();
-            noteBody.BorderBrush = Root == Index ? Brushes.Gold : Brushes.Black;
+
+            note.BorderOutline = Root == Index ? Brushes.Gold : Brushes.Black;
         }
 
         /// <summary>
@@ -131,8 +100,10 @@ namespace FretboardLibrary
         public void ShiftTuning(int shiftTo)
         {
             Index = shiftTo;
+
             SetToolTip();
-            noteText.Content = MusicKeys[(new IntLimited(shiftTo, 0, 12)).Value];
+
+            note.Text = MusicKeys[(new IntLimited(shiftTo, 0, 12)).Value];
         }
 
         /// <summary>
@@ -141,7 +112,8 @@ namespace FretboardLibrary
         private void SetToolTip()
         {
             IntLimited interval = new IntLimited(Index - Root, 0, 12);
-            noteBody.ToolTip = (from node in XDocument.Load(System.IO.Directory.GetCurrentDirectory() + @"\Data\Data.xml")
+
+            note.Alt = (from node in XDocument.Load(System.IO.Directory.GetCurrentDirectory() + @"\Data\Data.xml")
                                                       .Descendants("Ratios").Elements("Ratio")
                                 where node.Attribute("id").Value == interval.Value.ToString()
                                 select new StringBuilder(node.Element("Value").Value)

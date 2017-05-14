@@ -156,7 +156,11 @@ namespace FretboardLibrary
                     bool IsActive = scale.Contains(a.Value.ToString()) ? true : false;
 
                     // Creating the note
-                    FretNote note = new FretNote(key.Value, Size * 0.8, IsActive, Root, new Point(numFret, numString), NoteGrid);
+                    FretNote note = new FretNote(key.Value, Size * 0.8, IsActive, Root);
+                    NoteGrid.Children.Add(note);
+                    Grid.SetColumn(note, numFret);
+                    Grid.SetRow(note, numString);
+
                     tempNoteList.Add(note);
                 }
 
