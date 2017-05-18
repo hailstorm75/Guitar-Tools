@@ -2,3 +2,4 @@ C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrar
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\bin\Release\ServicesLibrary.pdb
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Release\ServicesLibrary.dll
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Release\ServicesLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Release\ServicesLibrary.csprojResolveAssemblyReference.cache
