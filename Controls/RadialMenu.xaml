@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+             d:DesignHeight="50" d:DesignWidth="100">
+    <Grid Height="50" VerticalAlignment="Top">
         <Canvas x:Name="ControlRing" Panel.ZIndex="0" Width="100" Height="50" Background="#FFBDB6B6">
             <Canvas.Clip>
                 <PathGeometry>
@@ -29,6 +29,7 @@
             </Canvas.LayoutTransform>
         </Canvas>
         <Polygon Panel.ZIndex="1" Points="0,10 10,10, 5,0" Fill="#FF3657E8" Margin="45,0,45,25" Height="10" VerticalAlignment="Bottom" />
-        <Label Name="SelectedItem" Margin="36,27,36,1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
+        <Label Name="SelectedItem" Content="A" Margin="36,24,36,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Border Name="MouseOver" Panel.ZIndex="2" Background="#00000000" />
     </Grid>
 </UserControl>

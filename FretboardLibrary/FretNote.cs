@@ -9,10 +9,10 @@ using Controls;
 namespace FretboardLibrary
 {
     /// <summary>
-    /// FretNote is a class which represents a note on the fretboard.
+    /// Represents a note on the fretboard.
     /// It is instantiated and managed by the Fretboard object.
     /// </summary>
-    public class FretNote : Control
+    public class FretNote : UserControl
     {
         #region Properties
 
@@ -44,6 +44,8 @@ namespace FretboardLibrary
 
         #endregion
 
+        #region Constructor
+
         /// <summary>
         /// 
         /// </summary>
@@ -67,7 +69,13 @@ namespace FretboardLibrary
             };
 
             SetToolTip();
+
+            AddChild(note);
         }
+
+        #endregion
+
+        #region Property Updators
 
         /// <summary>
         /// Changes opacity based on the <paramref name="IsActive"/> value.
@@ -115,11 +123,13 @@ namespace FretboardLibrary
 
             note.Alt = (from node in XDocument.Load(System.IO.Directory.GetCurrentDirectory() + @"\Data\Data.xml")
                                                       .Descendants("Ratios").Elements("Ratio")
-                                where node.Attribute("id").Value == interval.Value.ToString()
-                                select new StringBuilder(node.Element("Value").Value)
-                                                        .Append(" ")
-                                                        .Append(node.Element("Name").Value)
-                                                        .ToString()).Single();
+                        where node.Attribute("id").Value == interval.Value.ToString()
+                        select new StringBuilder(node.Element("Value").Value)
+                                                .Append(" ")
+                                                .Append(node.Element("Name").Value)
+                                                .ToString()).Single();
         }
+
+        #endregion
     }
 }

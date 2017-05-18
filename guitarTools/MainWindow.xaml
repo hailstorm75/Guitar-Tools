@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:fa="http://schemas.fontawesome.io/icons/"
-    xmlns:controls="clr-namespace:GuitarScales"
+    xmlns:c="clr-namespace:Controls;assembly=Controls"
     Title="Guitar tools" 
     Height="386" Width="525"
     MinHeight="386" MinWidth="525"
@@ -81,7 +81,7 @@
                         <TabControl>
                             <TabItem Header="Note">
                                 <StackPanel Name="SearchScaleNoteMenu">
-                                    
+
                                 </StackPanel>
                             </TabItem>
                             <TabItem Header="Chord">

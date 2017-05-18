@@ -157,9 +157,14 @@ namespace FretboardLibrary
 
                     // Creating the note
                     FretNote note = new FretNote(key.Value, Size * 0.8, IsActive, Root);
-                    NoteGrid.Children.Add(note);
                     Grid.SetColumn(note, numFret);
                     Grid.SetRow(note, numString);
+                    NoteGrid.Children.Add(note);
+
+                    //Label b = new Label() { Content = "A" };
+                    //Grid.SetColumn(b, numFret);
+                    //Grid.SetRow(b, numString);
+                    //NoteGrid.Children.Add(b);
 
                     tempNoteList.Add(note);
                 }

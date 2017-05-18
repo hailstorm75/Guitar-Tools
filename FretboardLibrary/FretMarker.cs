@@ -8,7 +8,6 @@ namespace FretboardLibrary
     /// Creates the UI elementes, binds them and places into grid cell.
     /// It is created and managed by the Fretboard class
     /// </summary>
-
     public class FretMarker
     {
         /// <summary>

@@ -25,6 +25,8 @@
         public int Value { get; set; }
         #endregion
 
+        #region Constructor
+
         /// <summary>
         /// 
         /// </summary>
@@ -42,6 +44,8 @@
                     value < min ? (value + max) :       // ELSE IF value is less than max,
                     value == max? 0 : value;            // ELSE
         }
+
+        #endregion
 
         #region Operator overrides
         /// <summary>

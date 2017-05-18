@@ -52,4 +52,3 @@ C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bi
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\Controls.dll
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\Controls.pdb
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\bin\Debug\ServicesLibrary.xml
-C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Pages\PageGuitarScales.g.cs

@@ -146,7 +146,7 @@
         </member>
         <member name="T:FretboardLibrary.FretNote">
             <summary>
-            FretNote is a class which represents a note on the fretboard.
+            Represents a note on the fretboard.
             It is instantiated and managed by the Fretboard object.
             </summary>
         </member>

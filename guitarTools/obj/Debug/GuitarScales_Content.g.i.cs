@@ -8,7 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/icon.ico")]
 
 

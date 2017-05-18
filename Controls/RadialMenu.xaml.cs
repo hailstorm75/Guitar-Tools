@@ -50,7 +50,7 @@ namespace Controls
             SelectedItem.Content = Items[SelectedIndex];
 
             Container = new Canvas() { Width = 100, Height = 100 };
-            Container.MouseWheel += new MouseWheelEventHandler(MenuMouseWheel);
+            MouseOver.MouseWheel += new MouseWheelEventHandler(MenuMouseWheel);
 
             for (int i = 0; i < items.Length; i++)
             {
