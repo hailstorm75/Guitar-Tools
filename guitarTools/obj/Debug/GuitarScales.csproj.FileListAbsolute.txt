@@ -57,3 +57,5 @@ C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\ob
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.pdb
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Pages\Welcome.g.cs
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Pages\Welcome.baml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Pages\Piano.g.cs
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Pages\Piano.baml

@@ -27,7 +27,7 @@ namespace FretboardLibrary
         private int Root { get; set; }
 
         /// <summary>
-        /// 
+        /// Defines FretNote visual state
         /// </summary>
         private bool IsActive { get; set; }
 
@@ -40,14 +40,14 @@ namespace FretboardLibrary
         /// <summary>
         /// Set of music keys
         /// </summary>
-        private static string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+        private static string[] MusicKeys = { "C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B" };
 
         #endregion
 
         #region Constructor
 
         /// <summary>
-        /// 
+        /// Default constructor
         /// </summary>
         /// <param name="index">Passes its value to Index property</param>
         /// <param name="size">Defines the Width and Height of the FretNote</param>

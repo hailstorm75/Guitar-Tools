@@ -6,7 +6,7 @@
     public enum PageAnimation
     {
         /// <summary>
-        /// 
+        /// Default no animation
         /// </summary>
         None = 0,
 
@@ -18,7 +18,7 @@
         /// <summary>
         /// 
         /// </summary>
-        SlideAndFadeOutFromLeft = 2,
+        SlideAndFadeOutToLeft = 2,
 
         /// <summary>
         /// 
@@ -28,6 +28,6 @@
         /// <summary>
         /// 
         /// </summary>
-        SlideAndFadeOutFromRight = 4,
+        SlideAndFadeOutToRight = 4,
     }
 }

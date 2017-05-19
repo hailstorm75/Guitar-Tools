@@ -125,6 +125,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Piano.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Welcome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -134,6 +138,9 @@
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\Guitar.xaml.cs">
       <DependentUpon>Guitar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Piano.xaml.cs">
+      <DependentUpon>Piano.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>

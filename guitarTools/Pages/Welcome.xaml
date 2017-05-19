@@ -1,4 +1,4 @@
-﻿<Page x:Class="GuitarScales.Pages.Welcome"
+﻿<local:BasePage x:Class="GuitarScales.Pages.Welcome"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,16 +8,17 @@
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Welcome">
 
-    <StackPanel Background="White">
-        <Label Content="Welcome" HorizontalAlignment="Center" FontSize="20"/>
-        <Grid VerticalAlignment="Center">
+    <DockPanel Background="White">
+        <Label DockPanel.Dock="Top" Content="Welcome" HorizontalAlignment="Center" FontSize="20"/>
+        <Grid VerticalAlignment="Stretch">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Guitar"/>
-            <Button Grid.Column="1"  Content="Piano" IsEnabled="False"/>
+            <Button x:Name="ButtonOptionA" Grid.Column="0" Content="Guitar" Click="ButtonOptionA_Click"/>
+            <Button x:Name="ButtonOptionB" Grid.Column="1"  Content="Piano" IsEnabled="False" Click="ButtonOptionB_Click" ToolTip="Coming soon"/>
         </Grid>
-    </StackPanel>
-</Page>
+
+    </DockPanel>
+</local:BasePage>

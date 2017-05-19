@@ -15,17 +15,17 @@ namespace Controls
         #region Properties
 
         /// <summary>
-        /// 
+        /// Item container control
         /// </summary>
         private Canvas Container { get; set; }
 
         /// <summary>
-        /// 
+        /// Array of items
         /// </summary>
         private string[] Items { get; set; }
 
         /// <summary>
-        /// 
+        /// Selected item index
         /// </summary>
         public int SelectedIndex { get; set; }
 
@@ -36,11 +36,13 @@ namespace Controls
 
         #endregion
 
+        #region Constructor
+
         /// <summary>
-        /// 
+        /// Default constructor
         /// </summary>
-        /// <param name="items"></param>
-        /// <param name="selectedIndex"></param>
+        /// <param name="items">Items to display</param>
+        /// <param name="selectedIndex">Initially selected item index</param>
         public RadialMenu(string[] items, int selectedIndex = 0)
         {
             InitializeComponent();
@@ -72,6 +74,8 @@ namespace Controls
 
             ControlRing.Children.Add(Container);
         }
+
+        #endregion
 
         /// <summary>
         /// 

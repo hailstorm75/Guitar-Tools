@@ -6,7 +6,7 @@
 			<Interval>4 11 7 2 9 4</Interval>
 		</Tuning>
 		<Tuning strings="6" category="Standard">
-			<Name>Standard D#/Eb</Name>
+			<Name>Standard D♯/E♭</Name>
 			<Interval>3 10 6 1 8 3</Interval>
 		</Tuning>
 		<Tuning strings="6" category="Standard">
@@ -18,7 +18,7 @@
 			<Interval>4 11 7 2 9 2</Interval>
 		</Tuning>
 		<Tuning strings="6" category="Drop">
-			<Name>Drop C#/Db</Name>
+			<Name>Drop C♯/Db</Name>
 			<Interval>3 10 6 1 8 1</Interval>
 		</Tuning>
 		<Tuning strings="6" category="Drop">
@@ -66,7 +66,7 @@
 			<Interval>4 11 7 2 9 4 9</Interval>
 		</Tuning>
 		<Tuning strings="8" category="Standard">
-			<Name>Standard F#</Name>
+			<Name>Standard F♯</Name>
 			<Interval>4 11 7 2 9 4 11 6</Interval>
 		</Tuning>
 			<Tuning strings="8" category="Drop">
@@ -249,11 +249,11 @@
 			<Interval>0 2 4 7 10</Interval>
 		</Chord>
 		<Chord>
-			<Name>7#9</Name>
+			<Name>7♯9</Name>
 			<Interval>0 3 4 7 10</Interval>
 		</Chord>
 		<Chord>
-			<Name>7b9</Name>
+			<Name>7♭9</Name>
 			<Interval>0 1 4 7 10</Interval>
 		</Chord>
 		<Chord>

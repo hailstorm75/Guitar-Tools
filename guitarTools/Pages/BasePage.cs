@@ -1,27 +1,28 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace GuitarScales.Pages
 {
     /// <summary>
-    /// 
+    /// Base class for pages
     /// </summary>
     public class BasePage : Page
     {
         #region Properties
 
         /// <summary>
-        /// 
+        /// Defines animation type which is played when the page is loaded
         /// </summary>
         public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromRight;
 
         /// <summary>
-        /// 
+        /// Defines animation type which is played when the page is unloaded
         /// </summary>
-        public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutFromLeft;
+        public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutToLeft;
 
         /// <summary>
-        /// 
+        /// Defines the animation duration
         /// </summary>
         protected float SlideSeconds { get; set; } = 1;
 
@@ -30,16 +31,15 @@ namespace GuitarScales.Pages
         #region Constructor
 
         /// <summary>
-        /// 
+        /// Default constructor
         /// </summary>
         public BasePage()
         {
             if (PageLoadAnimation != PageAnimation.None)
-            {
                 Visibility = System.Windows.Visibility.Collapsed;
-            }
 
             Loaded += BasePage_Loaded;
+            //Unloaded += BasePage_Unloaded;
         }
 
         #endregion
@@ -49,7 +49,7 @@ namespace GuitarScales.Pages
         /// <summary>
         /// 
         /// </summary>
-        private async void BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        protected async void BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             await AnimateIn();
         }
@@ -57,7 +57,17 @@ namespace GuitarScales.Pages
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
+        protected async void BasePage_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            await AnimateOut();
+        }
+
+
+        #endregion
+
+        /// <summary>
+        /// Executes selected animation
+        /// </summary>
         public async Task AnimateIn()
         {
             if (PageLoadAnimation == PageAnimation.None) return;
@@ -67,14 +77,29 @@ namespace GuitarScales.Pages
                 case PageAnimation.SlideAndFadeInFromRight:
                     await PageAnimations.SlideAndFadeInFromRight(this, SlideSeconds);
                     break;
-                case PageAnimation.SlideAndFadeOutFromLeft:
-                    break;
                 case PageAnimation.SlideAndFadeInFromLeft:
                     await PageAnimations.SlideAndFadeInFromLeft(this, SlideSeconds);
                     break;
             }
         }
 
-        #endregion
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public async Task AnimateOut()
+        {
+            if (PageUnloadAnimation == PageAnimation.None) return;
+
+            switch (PageUnloadAnimation)
+            {
+                case PageAnimation.SlideAndFadeOutToLeft:
+                    await PageAnimations.SlideAndFadeOutToLeft(this, SlideSeconds);
+                    break;
+                case PageAnimation.SlideAndFadeOutToRight:
+                    await PageAnimations.SlideAndFadeOutToRight(this, SlideSeconds);
+                    break;
+            }
+        }
     }
 }

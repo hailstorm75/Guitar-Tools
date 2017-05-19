@@ -10,17 +10,17 @@
     {
         #region Properties
         /// <summary>
-        /// 
+        /// Defines minimum cap value
         /// </summary>
         private static int MinValue { get; set; }
 
         /// <summary>
-        /// 
+        /// Defines maximum cap value
         /// </summary>
         private static int MaxValue { get; set; }
 
         /// <summary>
-        /// 
+        /// Defines value to cap
         /// </summary>
         public int Value { get; set; }
         #endregion

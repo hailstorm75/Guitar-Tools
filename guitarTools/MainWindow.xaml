@@ -10,7 +10,7 @@
     Icon="Resources/icon.png" 
     Foreground="Black">
     <Grid>
-
-        <Frame Name="Main"/>
+        <Frame Name="Main" Source="{Binding}" NavigationUIVisibility="Hidden"/>
+        <Label IsHitTestVisible="False" Panel.ZIndex="2" Content="Beta" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom" FontSize="20" Foreground="#FF5F5F5F"/>
     </Grid>
 </Window>

@@ -72,8 +72,8 @@
                            Width="250"
                            Height="50"/>
                 <StackPanel>
-                    <TabControl>
-                        <TabItem Header="Note">
+                    <TabControl SelectedIndex="1">
+                        <TabItem Header="Note" IsEnabled="False">
                             <StackPanel Name="SearchScaleNoteMenu">
 
                             </StackPanel>

@@ -1,16 +1,6 @@
-﻿using FretboardLibrary;
-using Controls;
-using ServicesLibrary;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media.Animation;
-using System.Windows.Threading;
-using System.Xml.Linq;
+﻿using System.Windows;
 using GuitarScales.Pages;
+using System;
 
 namespace GuitarScales
 {
@@ -23,13 +13,13 @@ namespace GuitarScales
         #region Constructor
 
         /// <summary>
-        /// 
+        /// Default constructor
         /// </summary>
         public MainWindow()
         {
             InitializeComponent();
 
-            Main.Content = new Guitar();
+            Main.Source = new Uri("Pages/Welcome.xaml", UriKind.Relative);
         }
 
         #endregion

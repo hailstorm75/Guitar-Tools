@@ -41,12 +41,12 @@ namespace GuitarScales.Pages
         public bool init = false;
 
         /// <summary>
-        /// 
+        /// Array of music keys
         /// </summary>
-        public string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+        public string[] MusicKeys = { "C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B" };
 
         /// <summary>
-        /// 
+        /// Array of comboboxes
         /// </summary>
         public ComboBox[,] Menu;
 
@@ -79,8 +79,6 @@ namespace GuitarScales.Pages
             HiddenMenu = true;
             SettingsPanel = null;
             #endregion
-
-            string[] MusicKeys = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 
             cbRoot = new RadialMenu(MusicKeys, 4);
             cbRoot.SelectionChanged += new EventHandler(Root_SelectionChanged);
@@ -323,8 +321,6 @@ namespace GuitarScales.Pages
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             lbResults.Items.Clear();
@@ -390,11 +386,8 @@ namespace GuitarScales.Pages
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             if (init)
             {
                 btnSearch.IsEnabled = false;
@@ -473,8 +466,6 @@ namespace GuitarScales.Pages
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lbResults_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cbScale.SelectedValue = lbResults.SelectedValue;

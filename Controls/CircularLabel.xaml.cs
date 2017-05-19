@@ -23,7 +23,7 @@ namespace Controls
         #region Public Properties
 
         /// <summary>
-        /// 
+        /// TextBox content
         /// </summary>
         public string Text
         {
@@ -40,7 +40,7 @@ namespace Controls
         }
 
         /// <summary>
-        /// 
+        /// ToolTip content
         /// </summary>
         public string Alt
         {
@@ -57,7 +57,7 @@ namespace Controls
         }
 
         /// <summary>
-        /// 
+        /// TextBox rotation angle
         /// </summary>
         public double RotationAngle
         {
@@ -74,7 +74,7 @@ namespace Controls
         }
 
         /// <summary>
-        /// 
+        /// Border opacity
         /// </summary>
         public double BorderOpacity
         {
@@ -91,7 +91,7 @@ namespace Controls
         }
 
         /// <summary>
-        /// 
+        /// Border background
         /// </summary>
         public Brush BorderBackground
         {
@@ -108,7 +108,7 @@ namespace Controls
         }
 
         /// <summary>
-        /// 
+        /// Border brush
         /// </summary>
         public Brush BorderOutline
         {
@@ -125,7 +125,7 @@ namespace Controls
         }
 
         /// <summary>
-        /// 
+        /// ViewBox width and height
         /// </summary>
         public int Size
         {
@@ -147,7 +147,7 @@ namespace Controls
         #region Contructor
 
         /// <summary>
-        /// 
+        /// Default constructor
         /// </summary>
         public CircularLabel()
         {
