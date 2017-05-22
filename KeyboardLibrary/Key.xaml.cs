@@ -13,17 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GuitarScales.Pages
+namespace KeyboardLibrary
 {
     /// <summary>
-    /// Interaction logic for Piano.xaml
+    /// Interaction logic for Key.xaml
     /// </summary>
-    public partial class Piano : Page
+    public partial class Key : UserControl
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public Piano()
+        public Key()
         {
             InitializeComponent();
         }

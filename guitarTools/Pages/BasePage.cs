@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace GuitarScales.Pages
@@ -39,7 +38,7 @@ namespace GuitarScales.Pages
                 Visibility = System.Windows.Visibility.Collapsed;
 
             Loaded += BasePage_Loaded;
-            //Unloaded += BasePage_Unloaded;
+            Unloaded += BasePage_Unloaded;
         }
 
         #endregion
@@ -86,7 +85,6 @@ namespace GuitarScales.Pages
         /// <summary>
         /// 
         /// </summary>
-        /// <returns></returns>
         public async Task AnimateOut()
         {
             if (PageUnloadAnimation == PageAnimation.None) return;

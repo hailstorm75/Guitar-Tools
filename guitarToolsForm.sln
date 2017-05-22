@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuitarScales", "guitarTools\GuitarScales.csproj", "{0ABC51EB-E37D-4FD1-B2A3-529ED3E61B12}"
 EndProject
@@ -13,6 +13,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesLibrary", "ServicesLibrary\ServicesLibrary.csproj", "{BA985F1F-9D96-467A-9BF4-04819337B3BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{33FE4032-C3F3-496E-AB38-F805059DE1C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyboardLibrary", "KeyboardLibrary\KeyboardLibrary.csproj", "{FE8D9EA6-2421-4978-9D37-6DC9A072F0F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 		{33FE4032-C3F3-496E-AB38-F805059DE1C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33FE4032-C3F3-496E-AB38-F805059DE1C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33FE4032-C3F3-496E-AB38-F805059DE1C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE8D9EA6-2421-4978-9D37-6DC9A072F0F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE8D9EA6-2421-4978-9D37-6DC9A072F0F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE8D9EA6-2421-4978-9D37-6DC9A072F0F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE8D9EA6-2421-4978-9D37-6DC9A072F0F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -160,6 +160,11 @@
             Index of the Root
             </summary>
         </member>
+        <member name="P:FretboardLibrary.FretNote.Tone">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:FretboardLibrary.FretNote.IsActive">
             <summary>
             Defines FretNote visual state
@@ -170,7 +175,7 @@
             Set of music keys
             </summary>
         </member>
-        <member name="M:FretboardLibrary.FretNote.#ctor(System.Int32,System.Double,System.Boolean,System.Int32)">
+        <member name="M:FretboardLibrary.FretNote.#ctor(System.Int32,System.Double,System.Boolean,System.Int32,System.Int32)">
             <summary>
             Default constructor
             </summary>
@@ -178,6 +183,7 @@
             <param name="size">Defines the Width and Height of the FretNote</param>
             <param name="isActive">Passes its value to IsActive property</param>
             <param name="root">Passes its value to Root property</param>
+            <param name="key"></param>
         </member>
         <member name="M:FretboardLibrary.FretNote.ChangeState(System.Boolean)">
             <summary>
@@ -202,6 +208,11 @@
         <member name="M:FretboardLibrary.FretNote.SetToolTip">
             <summary>
             Sets the tooltip based on the Index and Root properties values.
+            </summary>
+        </member>
+        <member name="M:FretboardLibrary.FretNote.FretNote_MouseLeftButtonDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            
             </summary>
         </member>
     </members>

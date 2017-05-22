@@ -5,6 +5,8 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Text;
 using Controls;
+using System.Windows.Input;
+using System;
 
 namespace FretboardLibrary
 {
@@ -27,6 +29,11 @@ namespace FretboardLibrary
         private int Root { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public double Tone { get { return tone; } set { tone = GetHertz(value); } }
+
+        /// <summary>
         /// Defines FretNote visual state
         /// </summary>
         private bool IsActive { get; set; }
@@ -34,6 +41,8 @@ namespace FretboardLibrary
         #endregion
 
         #region Variables
+
+        private double tone;
 
         CircularLabel note;
 
@@ -53,11 +62,13 @@ namespace FretboardLibrary
         /// <param name="size">Defines the Width and Height of the FretNote</param>
         /// <param name="isActive">Passes its value to IsActive property</param>
         /// <param name="root">Passes its value to Root property</param>
-        public FretNote(int index, double size, bool isActive, int root)
+        /// <param name="key"></param>
+        public FretNote(int index, double size, bool isActive, int root, int key)
         {
             #region Defining variables
             Index = index;
             Root = root;
+            Tone = key;
             IsActive = isActive;
             #endregion
 
@@ -68,14 +79,17 @@ namespace FretboardLibrary
                 BorderOutline = Root == Index ? Brushes.Gold : Brushes.Black
             };
 
+            MouseLeftButtonDown += FretNote_MouseLeftButtonDown;
+
             SetToolTip();
+            Cursor = Cursors.Hand;
 
             AddChild(note);
         }
 
         #endregion
 
-        #region Property Updators
+        #region Updators
 
         /// <summary>
         /// Changes opacity based on the <paramref name="IsActive"/> value.
@@ -111,6 +125,7 @@ namespace FretboardLibrary
 
             SetToolTip();
 
+            Tone = GetHertz(shiftTo);
             note.Text = MusicKeys[(new IntLimited(shiftTo, 0, 12)).Value];
         }
 
@@ -131,5 +146,18 @@ namespace FretboardLibrary
         }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void FretNote_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Console.Beep((int)Math.Round(Tone), 500);
+        }
+
+        private double GetHertz(double key)
+        {
+            return 440 * Math.Pow(2.0, (key - 49.0) / 12.0);
+        }
     }
 }

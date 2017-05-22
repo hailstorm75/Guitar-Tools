@@ -7,6 +7,7 @@ using System.Windows.Shapes;
 using ServicesLibrary;
 using System.Xml.Linq;
 using System.IO;
+using System.Diagnostics;
 
 namespace FretboardLibrary
 {
@@ -132,17 +133,20 @@ namespace FretboardLibrary
             string[] tuning = (from node in Doc.Descendants("Tunings").Elements("Tuning")
                                where node.Element("Name").Value == Tuning && node.Attribute("strings").Value == Strings.ToString()
                                select node.Element("Interval").Value).Single().Split(' ');
-
+            string[] tones = (from node in Doc.Descendants("Tunings").Elements("Tuning")
+                              where node.Element("Name").Value == Tuning && node.Attribute("strings").Value == Strings.ToString()
+                              select node.Element("Tone").Value).Single().Split(' ');
             string[] scale = (from node in Doc.Descendants("Scales").Elements("Scale")
                               where node.Element("Name").Value == Scale
                               select node.Element("Interval").Value).Single().Split(' ');
-
 
             // Creating notes and adding them to the grid
             for (int numString = 0; numString < Strings; numString++)
             {
                 List<FretNote> tempNoteList = new List<FretNote>();
+                
                 int index = int.Parse(tuning[numString]);     // Getting individual string tunning
+                int tone = int.Parse(tones[numString]);
 
                 for (int numFret = 0; numFret <= Frets; numFret++)
                 {
@@ -156,15 +160,10 @@ namespace FretboardLibrary
                     bool IsActive = scale.Contains(a.Value.ToString()) ? true : false;
 
                     // Creating the note
-                    FretNote note = new FretNote(key.Value, Size * 0.8, IsActive, Root);
+                    FretNote note = new FretNote(key.Value, Size * 0.8, IsActive, Root, tone + numFret);
                     Grid.SetColumn(note, numFret);
                     Grid.SetRow(note, numString);
                     NoteGrid.Children.Add(note);
-
-                    //Label b = new Label() { Content = "A" };
-                    //Grid.SetColumn(b, numFret);
-                    //Grid.SetRow(b, numString);
-                    //NoteGrid.Children.Add(b);
 
                     tempNoteList.Add(note);
                 }
@@ -284,7 +283,10 @@ namespace FretboardLibrary
             string[] tuning = (from node in Doc.Descendants("Tunings").Elements("Tuning")
                                where node.Element("Name").Value == Tuning && node.Attribute("strings").Value == Strings.ToString()
                                select node.Element("Interval").Value).Single().Split(' ');
-        
+            string[] tones = (from node in Doc.Descendants("Tunings").Elements("Tuning")
+                              where node.Element("Name").Value == Tuning && node.Attribute("strings").Value == Strings.ToString()
+                              select node.Element("Tone").Value).Single().Split(' ');
+
             for (int numString = 0; numString < NoteList.Count; numString++)
             {
                 int index = int.Parse(tuning[numString]);     // Getting individual string tunning
@@ -297,6 +299,9 @@ namespace FretboardLibrary
 
                     // Shifting the note
                     NoteList[numString][numFret].ShiftTuning(key.Value);
+
+                    // Change tone
+                    NoteList[numString][numFret].Tone = int.Parse(tones[numString]) + numFret;
 
                     // Checking if note fits scale
                     NoteList[numString][numFret].ChangeState(scale.Contains(new IntLimited(key.Value - Root, 0, 12).Value.ToString()) ? true : false);

@@ -10,11 +10,12 @@ namespace GuitarScales.Pages
     public partial class Welcome : BasePage
     {
         /// <summary>
-        /// 
+        /// Default constructor
         /// </summary>
         public Welcome()
         {
             PageLoadAnimation = PageAnimation.SlideAndFadeInFromLeft;
+            PageUnloadAnimation = PageAnimation.None;
             InitializeComponent();
         }
 
