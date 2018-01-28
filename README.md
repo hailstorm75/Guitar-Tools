@@ -7,7 +7,7 @@ For more information go to https://github.com/hailstorm75/Guitar-Tools/project
 Something you would like to see implemented into this project? Describe it here: [Link](https://goo.gl/forms/9fYGiEhcBH2LUBd43)!
 
 ## 🚬 Progress
-Currently the project development is on hold due to lack of time. With this in mind, anyone who would like to contribute and improve the project is very welcome.
+> **Currently the project development is on hold due to lack of time. With this in mind, anyone who would like to contribute and improve the project is very welcome.**
 
 You can track the project progress here: https://github.com/hailstorm75/Guitar-Tools/projects/1
 
