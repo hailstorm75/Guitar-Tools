@@ -16,3 +16,4 @@ C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibra
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\obj\Debug\FretboardLibrary.csprojResolveAssemblyReference.cache
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\obj\Debug\FretboardLibrary.dll
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\obj\Debug\FretboardLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\FretboardLibrary\obj\Debug\FretboardLibrary.csproj.CoreCompileInputs.cache

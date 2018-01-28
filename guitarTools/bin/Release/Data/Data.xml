@@ -4,112 +4,112 @@
 		<Tuning strings="6" category="Standard">
 			<Name>Standard E</Name>
 			<Interval>4 11 7 2 9 4</Interval>
-      <Tone>44 39 35 30 25 20</Tone>
+			<Tone>44 39 35 30 25 20</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Standard">
 			<Name>Standard D♯/E♭</Name>
 			<Interval>3 10 6 1 8 3</Interval>
-      <Tone>43 38 34 29 24 19</Tone>
+			<Tone>43 38 34 29 24 19</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Standard">
 			<Name>Standard D</Name>
 			<Interval>2 9 5 0 7 2</Interval>
-      <Tone>42 37 33 28 23 18</Tone>
+			<Tone>42 37 33 28 23 18</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Standard">
 			<Name>Standard B</Name>
 			<Interval>11 7 2 9 4 11</Interval>
-      <Tone></Tone>
+			<Tone>0 0 0 0 0 0</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Drop">
 			<Name>Drop D</Name>
 			<Interval>4 11 7 2 9 2</Interval>
-      <Tone>44 39 35 30 25 18</Tone>
+			<Tone>44 39 35 30 25 18</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Drop">
 			<Name>Drop C♯/D♭</Name>
 			<Interval>3 10 6 1 8 1</Interval>
-      <Tone></Tone>
+			<Tone>43 38 34 29 24 17</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Drop">
 			<Name>Drop C</Name>
 			<Interval>2 9 5 0 7 0</Interval>
-      <Tone></Tone>
+			<Tone>42 37 33 28 23 16</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Drop">
 			<Name>Drop A</Name>
 			<Interval>4 11 7 2 9 4 9</Interval>
-      <Tone></Tone>
+			<Tone>0 0 0 0 0 0</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Miscellaneous">
 			<Name>Dad-Gad</Name>
 			<Interval>2 9 7 2 9 2</Interval>
-      <Tone></Tone>
+			<Tone>0 0 0 0 0 0</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Miscellaneous">
 			<Name>Dad-Dad</Name>
 			<Interval>2 9 2 2 9 2</Interval>
-      <Tone></Tone>    
+			<Tone>0 0 0 0 0 0</Tone>    
 		</Tuning>
-			<Tuning strings="6" category="Miscellaneous">
+		<Tuning strings="6" category="Miscellaneous">
 			<Name>Cello</Name>
 			<Interval>11 4 9 2 7 0</Interval>
-      <Tone></Tone>
+			<Tone>0 0 0 0 0 0</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Open">
 			<Name>Open D</Name>
 			<Interval>2 9 6 2 9 2</Interval>
-      <Tone></Tone>
+			<Tone>0 0 0 0 0 0</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Open">
 			<Name>Open D minor</Name>
 			<Interval>2 9 5 2 9 2</Interval>
-      <Tone></Tone>
+			<Tone>0 0 0 0 0 0</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Open">
 			<Name>Open G</Name>
 			<Interval>2 11 7 2 7 2</Interval>
-      <Tone></Tone>
+			<Tone>0 0 0 0 0 0</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Open">
 			<Name>Open G minor</Name>
 			<Interval>2 10 7 2 7 2</Interval>
-      <Tone></Tone>
+			<Tone>0 0 0 0 0 0</Tone>
 		</Tuning>
 		<Tuning strings="6" category="Open">
 			<Name>Dobro Open</Name>
 			<Interval>2 11 7 2 11 7</Interval>
-      <Tone></Tone>
+			<Tone>0 0 0 0 0 0</Tone>
 		</Tuning>
 		<Tuning strings="7" category="Standard">
 			<Name>Standard B</Name>
 			<Interval>4 11 7 2 9 4 11</Interval>
-      <Tone></Tone>
+			<Tone>44 39 35 30 25 20 15</Tone>
 		</Tuning>
 		<Tuning strings="7" category="Standard">
 			<Name>Standard A♯/B♭</Name>
 			<Interval>3 10 6 1 8 3 10</Interval>
-      <Tone></Tone>
+			<Tone>43 38 34 29 24 19 14</Tone>
 		</Tuning>
 		<Tuning strings="7" category="Drop">
 			<Name>Drop A</Name>
 			<Interval>4 11 7 2 9 4 9</Interval>
-      <Tone></Tone>
+			<Tone>44 39 35 30 25 20 13</Tone>
 		</Tuning>
 		<Tuning strings="8" category="Standard">
 			<Name>Standard F♯/G♭</Name>
 			<Interval>4 11 7 2 9 4 11 6</Interval>
-      <Tone></Tone>
+			<Tone>44 39 35 30 25 20 15 10</Tone>
 		</Tuning>
 		<Tuning strings="8" category="Standard">
 			<Name>Standard F</Name>
 			<Interval>3 10 6 1 8 3 10 5</Interval>
-      <Tone></Tone>
+			<Tone>43 38 34 29 24 19 14 9</Tone>
 		</Tuning>
 		<Tuning strings="8" category="Drop">
 			<Name>Drop E</Name>
 			<Interval>4 11 7 2 9 4 11 4</Interval>
-      <Tone></Tone>
+			<Tone>44 39 35 30 25 20 15 8</Tone>
 		</Tuning>
 	</Tunings>
 	<Scales>

@@ -9,3 +9,4 @@ C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrar
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Debug\ServicesLibrary.csprojResolveAssemblyReference.cache
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Debug\ServicesLibrary.dll
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Debug\ServicesLibrary.pdb
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\ServicesLibrary\obj\Debug\ServicesLibrary.csproj.CoreCompileInputs.cache

@@ -1,27 +1,26 @@
-﻿using System.Windows;
-using GuitarScales.Pages;
-using System;
+﻿using System;
+using System.Windows;
 
 namespace GuitarScales
 {
+  /// <summary>
+  /// Contains the window logic.
+  /// Creates UI elements with default settings upon initiation.
+  /// </summary>
+  public partial class MainWindow : Window
+  {
+    #region Constructor
+
     /// <summary>
-    /// Contains the window logic.
-    /// Creates UI elements with default settings upon initiation.
+    /// Default constructor
     /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        #region Constructor
+      InitializeComponent();
 
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public MainWindow()
-        {
-            InitializeComponent();
-
-            Main.Source = new Uri("Pages/Welcome.xaml", UriKind.Relative);
-        }
-
-        #endregion
+      Main.Source = new Uri("Pages/Welcome.xaml", UriKind.Relative);
     }
+
+    #endregion
+  }
 }

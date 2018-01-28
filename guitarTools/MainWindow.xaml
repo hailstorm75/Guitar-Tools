@@ -1,16 +1,18 @@
-﻿<Window 
+﻿<Window
     x:Class="GuitarScales.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Guitar tools" 
+    Title="Guitar tools"
     Height="386" Width="525"
     MinHeight="386" MinWidth="525"
-    Name="mainWindow" 
-    WindowStartupLocation="CenterScreen" 
-    Icon="Resources/icon.png" 
+    Name="mainWindow"
+    WindowStartupLocation="CenterScreen"
+    Icon="Resources/icon.png"
     Foreground="Black">
     <Grid>
-        <Frame Name="Main" Source="{Binding}" NavigationUIVisibility="Hidden"/>
-        <Label IsHitTestVisible="False" Panel.ZIndex="2" Content="Beta" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom" FontSize="20" Foreground="#FF5F5F5F"/>
+        <Frame Name="Main" Source="{Binding}" NavigationUIVisibility="Hidden" />
+        <Label IsHitTestVisible="False" Panel.ZIndex="2" Content="Beta" HorizontalContentAlignment="Center"
+               HorizontalAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Bottom" FontSize="20"
+               Foreground="#FF5F5F5F" />
     </Grid>
 </Window>

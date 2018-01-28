@@ -59,3 +59,4 @@ C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\ob
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Pages\Welcome.baml
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Pages\Piano.g.cs
 C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\Pages\Piano.baml
+C:\Users\Denis\Documents\Visual Studio 2017\Projects\Guitar-Tools\guitarTools\obj\Debug\GuitarScales.csproj.CoreCompileInputs.cache

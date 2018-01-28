@@ -1,16 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:GuitarScales.Assets">
-    <Storyboard x:Key="sbShowLeftMenu" >
-        <DoubleAnimation Storyboard.TargetProperty="Width" From="50" To="200" DecelerationRatio=".9" Duration="0:0:0.5" />
-    </Storyboard>
-    <Storyboard x:Key="sbHideLeftMenu">
-        <DoubleAnimation Storyboard.TargetProperty="Width" From="200" To="50" AccelerationRatio=".9" Duration="0:0:0.5" />
-    </Storyboard>
-    <Storyboard x:Key="sbShowSetting" >
-        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-250,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:0.5" />
-    </Storyboard>
-    <Storyboard x:Key="sbHideSetting">
-        <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-250,0,0,0" AccelerationRatio=".9" Duration="0:0:0.5" />
-    </Storyboard>
+  <Storyboard x:Key="sbShowLeftMenu">
+    <DoubleAnimation Storyboard.TargetProperty="Width" From="50" To="200" DecelerationRatio=".9" Duration="0:0:0.5" />
+  </Storyboard>
+  <Storyboard x:Key="sbHideLeftMenu">
+    <DoubleAnimation Storyboard.TargetProperty="Width" From="200" To="50" AccelerationRatio=".9" Duration="0:0:0.5" />
+  </Storyboard>
+  <Storyboard x:Key="sbShowSetting">
+    <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-250,0,0,0" To="0,0,0,0" DecelerationRatio=".9"
+                            Duration="0:0:0.5" />
+  </Storyboard>
+  <Storyboard x:Key="sbHideSetting">
+    <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-250,0,0,0" AccelerationRatio=".9"
+                            Duration="0:0:0.5" />
+  </Storyboard>
 </ResourceDictionary>

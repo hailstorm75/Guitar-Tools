@@ -1,41 +1,17 @@
-﻿using ServicesLibrary;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using ServicesLibrary;
 
 namespace Controls
 {
     /// <summary>
     /// RadialMenu contains logic for the custom UserControl.
-    /// </summary> 
+    /// </summary>
     public partial class RadialMenu : UserControl
     {
-        #region Properties
-
-        /// <summary>
-        /// Item container control
-        /// </summary>
-        private Canvas Container { get; set; }
-
-        /// <summary>
-        /// Array of items
-        /// </summary>
-        private string[] Items { get; set; }
-
-        /// <summary>
-        /// Selected item index
-        /// </summary>
-        public int SelectedIndex { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public event EventHandler SelectionChanged;
-
-        #endregion
-
         #region Constructor
 
         /// <summary>
@@ -51,13 +27,13 @@ namespace Controls
             SelectedIndex = selectedIndex;
             SelectedItem.Content = Items[SelectedIndex];
 
-            Container = new Canvas() { Width = 100, Height = 100 };
-            MouseOver.MouseWheel += new MouseWheelEventHandler(MenuMouseWheel);
+            Container = new Canvas {Width = 100, Height = 100};
+            MouseOver.MouseWheel += MenuMouseWheel;
 
-            for (int i = 0; i < items.Length; i++)
+            for (var i = 0; i < items.Length; i++)
             {
-                double iter = (-90 + i * 360 / Items.Length) * Math.PI / 180;
-                CircularLabel item = new CircularLabel()
+                var iter = (-90 + i * 360 / Items.Length) * Math.PI / 180;
+                var item = new CircularLabel
                 {
                     RotationAngle = i * 30,
                     Text = Items[i],
@@ -65,8 +41,8 @@ namespace Controls
                 };
 
                 Container.Children.Add(item);
-                Canvas.SetLeft(item, (39.5 * Math.Cos(iter) + 50) - 18 / 2);
-                Canvas.SetTop(item, (39.5 * Math.Sin(iter) + 50) - 18 / 2);
+                Canvas.SetLeft(item, 39.5 * Math.Cos(iter) + 50 - 18 / 2);
+                Canvas.SetTop(item, 39.5 * Math.Sin(iter) + 50 - 18 / 2);
             }
 
             Container.RenderTransformOrigin = new Point(0.5, 0.5);
@@ -77,8 +53,32 @@ namespace Controls
 
         #endregion
 
+        #region Properties
+
         /// <summary>
-        /// 
+        /// Item container control
+        /// </summary>
+        private Canvas Container { get; }
+
+        /// <summary>
+        /// Array of items
+        /// </summary>
+        private string[] Items { get; }
+
+        /// <summary>
+        ///     Selected item index
+        /// </summary>
+        public int SelectedIndex { get; set; }
+
+        /// <summary>
+        /// </summary>
+        public event EventHandler SelectionChanged;
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
         /// </summary>
         private void RaiseSelectionChanged()
         {
@@ -86,11 +86,10 @@ namespace Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
         private void MenuMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            IntLimited i = new IntLimited(SelectedIndex + e.Delta / 120, 0, Items.Length);
+            var i = new IntLimited(SelectedIndex + e.Delta / 120, 0, Items.Length);
             SelectedIndex = i.Value;
             RaiseSelectionChanged();
 
@@ -99,5 +98,7 @@ namespace Controls
 
             Container.RenderTransform = new RotateTransform(-SelectedIndex * 360 / Items.Length);
         }
+
+        #endregion
     }
 }
