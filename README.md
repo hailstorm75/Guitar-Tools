@@ -1,3 +1,8 @@
+## Update
+Currently the project is stale.
+
+Since it was my first attempt at learning my ways around WPF, it is very unmaintainable, so I'll recreate this application once I'm finished with other projects.
+
 ## ❔ Description
 Displays guitar scales on a fretboard with extended string and fret support.
 Allows the user to select tuning, string amount, fret amount, scale type.
